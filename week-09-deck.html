@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoAI — Week 09 · Dionne · Social Media & Creator Partnerships</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f0f4ff;
+            --surface: #ffffff;
+            --surface-2: #e8eeff;
+            --border: #d4dcf5;
+            --text: #1a1d2e;
+            --text-2: #4a5075;
+            --text-3: #7b82a3;
+            --accent: #6366f1;
+            --accent-light: #e0e2ff;
+            --success: #22c55e;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        * { box-sizing: border-box; font-family: var(--font); margin: 0; padding: 0; }
+        body { background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; font-size: 17px; line-height: 1.55; }
+
+        .lang-zh { display: none; }
+        body.lang-zh .lang-en { display: none; }
+        body.lang-zh .lang-zh { display: block; }
+
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            z-index: 150;
+            box-shadow: 0 1px 0 rgba(255,255,255,0.8);
+        }
+        .lang-toggle {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            background: var(--surface-2);
+            padding: 4px 6px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+        .lang-toggle button {
+            padding: 6px 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: transparent;
+            color: var(--text-3);
+            transition: all 0.2s;
+        }
+        .lang-toggle button:hover { color: var(--text-2); }
+        .lang-toggle button.active { background: var(--surface); color: var(--accent); box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+
+        .slide {
+            min-height: 100vh;
+            display: none;
+            padding: 88px 36px 110px;
+            position: relative;
+        }
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            animation: slideIn 0.45s ease;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes staggerIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide.active .stagger-1 { animation: staggerIn 0.35s ease 0.05s both; }
+        .slide.active .stagger-2 { animation: staggerIn 0.35s ease 0.12s both; }
+        .slide.active .stagger-3 { animation: staggerIn 0.35s ease 0.2s both; }
+        .slide.active .stagger-4 { animation: staggerIn 0.35s ease 0.28s both; }
+        .slide.active .stagger-5 { animation: staggerIn 0.35s ease 0.36s both; }
+
+        .slide-inner { max-width: 780px; margin: 0 auto; width: 100%; }
+        .meta {
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        .meta-capsule {
+            display: inline-block;
+            font-size: 0.75rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.95);
+            background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #7c3aed 100%);
+            padding: 0.5rem 1.25rem;
+            border-radius: 999px;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            box-shadow: 0 2px 12px rgba(99, 102, 241, 0.35);
+        }
+        .hero-main {
+            font-size: clamp(1.85rem, 4.5vw, 2.75rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            color: var(--text);
+            margin: 0 0 0.5rem;
+            max-width: 720px;
+        }
+        .hero-line {
+            font-size: clamp(2.25rem, 5.5vw, 3.25rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.12;
+            color: var(--text);
+        }
+        .hero-line + .hero-line { margin-top: 0.12em; }
+        .subline { color: var(--text-2); font-size: 1.1rem; margin-top: 1.25rem; max-width: 560px; font-weight: 500; }
+        .byline { color: var(--text-3); font-size: 0.95rem; margin-top: 0.5rem; font-weight: 500; }
+        .focus-card {
+            margin-top: 2rem;
+            background: var(--surface);
+            border-radius: 20px;
+            padding: 1.5rem 1.75rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 24px rgba(99, 102, 241, 0.08), 0 0 0 1px rgba(255,255,255,0.8) inset;
+        }
+        .focus-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-2);
+            margin-bottom: 1rem;
+        }
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+        }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 0.5rem 1.1rem;
+            border-radius: 999px;
+        }
+        .pill.pill-green { background: rgba(52, 211, 153, 0.2); color: #047857; }
+        .pill.pill-blue { background: rgba(96, 165, 250, 0.2); color: #1d4ed8; }
+        .pill.pill-purple { background: rgba(192, 132, 252, 0.25); color: #6d28d9; }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+        .section-title {
+            font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            color: var(--text);
+        }
+        .section-title + .section-tagline {
+            font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+            font-weight: 600;
+            color: var(--text-2);
+            margin-top: 0.15rem;
+            margin-bottom: 1.1rem;
+        }
+        .body-copy { color: var(--text-2); font-size: 1.05rem; margin-bottom: 1.2rem; line-height: 1.6; }
+        .list-arrow { list-style: none; padding-left: 0; }
+        .list-arrow li {
+            position: relative;
+            padding-left: 1.4rem;
+            margin-bottom: 0.45rem;
+            color: var(--text-2);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .list-arrow li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        .list-check { list-style: none; padding-left: 0; }
+        .list-check li {
+            position: relative;
+            padding-left: 1.6rem;
+            margin-bottom: 0.4rem;
+            color: var(--text-2);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        .list-check li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: 700;
+        }
+        .block-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 0.55rem;
+            font-weight: 600;
+        }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; margin-top: 1.5rem; }
+        @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.4rem 1.6rem;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06);
+        }
+        a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        a:hover { text-decoration: underline; }
+        .metric { font-size: 2.25rem; font-weight: 800; color: var(--accent); letter-spacing: -0.02em; }
+        .metric-caption { font-size: 0.95rem; color: var(--text-3); margin-top: 0.2rem; font-weight: 500; }
+        .demo-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+            background: var(--surface-2);
+            border: 2px dashed var(--border);
+            border-radius: 16px;
+            color: var(--text-2);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .card-note { border-color: var(--accent); background: linear-gradient(135deg, rgba(99,102,241,0.06) 0%, var(--surface) 100%); }
+        .img-wrap { display: block; cursor: pointer; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); max-width: 100%; transition: transform 0.2s, box-shadow 0.2s; }
+        .img-wrap:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+        .img-wrap img { display: block; max-width: 100%; height: auto; }
+        .aurla-feedback-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+        .aurla-feedback-row .img-wrap { max-height: 140px; }
+        .aurla-feedback-row .img-wrap img { width: 100%; height: 100%; object-fit: cover; max-height: 140px; }
+        @media (max-width: 640px) { .aurla-feedback-row { grid-template-columns: 1fr; } .aurla-feedback-row .img-wrap { max-height: 180px; } .aurla-feedback-row .img-wrap img { max-height: 180px; } }
+        .recap-next-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.25rem; }
+        @media (max-width: 768px) { .recap-next-steps { grid-template-columns: 1fr; } }
+        .recap-block { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1rem 1.2rem; }
+        .recap-label { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+        .recap-block .list-arrow { margin-top: 0; }
+        .recap-block .list-arrow li { font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+        /* Pointer / Next Steps layout: icon circle + heading + subtitle + list */
+        .ptr-card {
+            display: flex;
+            gap: 1.1rem;
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 1.35rem 1.5rem;
+            border: 2px solid;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .ptr-card.ptr-this-week { border-color: #fecaca; background: linear-gradient(135deg, rgba(254,202,202,0.12) 0%, var(--surface) 100%); }
+        .ptr-card.ptr-next-steps { border-color: #c4b5fd; background: linear-gradient(135deg, rgba(196,181,253,0.12) 0%, var(--surface) 100%); }
+        .ptr-card.ptr-amber { border-color: #fde68a; background: linear-gradient(135deg, rgba(253,230,138,0.15) 0%, var(--surface) 100%); }
+        .ptr-card.ptr-emerald { border-color: #a7f3d0; background: linear-gradient(135deg, rgba(167,243,208,0.15) 0%, var(--surface) 100%); }
+        .ptr-icon-wrap {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+        }
+        .ptr-card.ptr-this-week .ptr-icon-wrap { background: linear-gradient(135deg, #f9a8d4 0%, #f472b6 100%); }
+        .ptr-card.ptr-next-steps .ptr-icon-wrap { background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%); }
+        .ptr-card.ptr-amber .ptr-icon-wrap { background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%); }
+        .ptr-card.ptr-emerald .ptr-icon-wrap { background: linear-gradient(135deg, #34d399 0%, #10b981 100%); }
+        .ptr-content { flex: 1; min-width: 0; }
+        .ptr-heading { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.2rem; }
+        .ptr-subtitle { font-size: 0.9rem; color: var(--text-3); margin-bottom: 0.75rem; font-weight: 500; }
+        .ptr-card .list-check, .ptr-card .list-arrow { margin-top: 0; }
+        .ptr-card .list-arrow li::before { color: var(--text-3); }
+        .ptr-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.25rem; }
+        @media (max-width: 640px) { .ptr-row { grid-template-columns: 1fr; } }
+        .launch-preview-col { display: flex; flex-direction: column; min-width: 0; }
+        .launch-preview-col .img-wrap { flex: 1; display: flex; align-items: center; justify-content: center; }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            z-index: 150;
+            box-shadow: 0 -1px 0 rgba(255,255,255,0.8);
+        }
+        .footer-credit { font-size: 0.85rem; color: var(--text-3); font-weight: 500; }
+        .footer-nav { display: flex; align-items: center; gap: 24px; }
+        .slide-counter { font-size: 0.85rem; color: var(--text-3); min-width: 3.5rem; text-align: center; font-weight: 600; }
+        .nav-btn {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            color: var(--text-2);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 8px 14px;
+            border-radius: 10px;
+            transition: all 0.2s;
+        }
+        .nav-btn:hover:not(:disabled) { background: var(--accent-light); color: var(--accent); border-color: var(--accent); }
+        .nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            background: rgba(26,29,46,0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            cursor: pointer;
+        }
+        .modal.open { display: flex; animation: fadeIn 0.2s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .modal img { max-width: 95%; max-height: 95%; object-fit: contain; border-radius: 12px; pointer-events: none; }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="lang-toggle">
+            <button type="button" class="lang-btn active" data-lang="en" aria-label="English">EN</button>
+            <button type="button" class="lang-btn" data-lang="zh" aria-label="中文">中文</button>
+        </div>
+    </header>
+
+    <!-- Slide 1: Title -->
+    <section class="slide slide-hero" data-slide="1">
+        <div class="slide-inner">
+            <p class="meta meta-capsule stagger-1">
+                <span class="lang-en">FRIDAY REPORT · 26 FEB 2026</span>
+                <span class="lang-zh">周五报告 · 2026 年 2 月 26 日</span>
+            </p>
+            <h1 class="hero-main stagger-2">
+                <span class="lang-en">Driving Social and Community Engagements Organically</span>
+                <span class="lang-zh">有机驱动社媒与社群互动</span>
+            </h1>
+            <p class="subline stagger-3">
+                <span class="lang-en">Teasers live · Pipeline growing · What’s coming next</span>
+                <span class="lang-zh">预告上线 · 线索增长 · 下一步规划</span>
+            </p>
+            <p class="byline stagger-3">
+                <span class="lang-en">Dionne · ChronoAI · Social Media & Creator Partnerships</span>
+                <span class="lang-zh">Dionne · ChronoAI · 社媒与创作者合作</span>
+            </p>
+            <div class="focus-card stagger-4">
+                <p class="focus-title"><span class="lang-en">Focus this week</span><span class="lang-zh">本周重点</span></p>
+                <div class="pills">
+                    <span class="pill pill-green">🌱 <span class="lang-en">Soulgarden</span><span class="lang-zh">Soulgarden</span></span>
+                    <span class="pill pill-blue">💬 <span class="lang-en">Organic + Affiliate</span><span class="lang-zh">自然互动 + 联盟</span></span>
+                    <span class="pill pill-purple">✨ <span class="lang-en">Vibe Code</span><span class="lang-zh">Vibe Code</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: Soulgarden -->
+    <section class="slide" data-slide="2">
+        <div class="slide-inner">
+            <p class="section-label stagger-1">
+                <span class="lang-en">FOCUS · SOULGARDEN · TEASER LIVE</span>
+                <span class="lang-zh">重点 · SOULGARDEN · 预告已上线</span>
+            </p>
+            <h2 class="section-title stagger-2">Soulgarden</h2>
+            <p class="section-tagline stagger-2">
+                <span class="lang-en">In Motion. 🌱</span>
+                <span class="lang-zh">推进中。🌱</span>
+            </p>
+            <div class="ptr-row stagger-3">
+                <div class="ptr-card ptr-this-week">
+                    <div class="ptr-icon-wrap">🌱</div>
+                    <div class="ptr-content">
+                        <p class="ptr-heading"><span class="lang-en">This Week</span><span class="lang-zh">本周</span></p>
+                        <p class="ptr-subtitle"><span class="lang-en">Teaser live</span><span class="lang-zh">预告已发</span></p>
+                        <ul class="list-check">
+                            <li><span class="lang-en">3 social posts live</span><span class="lang-zh">3 条社媒帖已发</span></li>
+                            <li><span class="lang-en">Newsletter #1 to GodGPT subscribers <strong>next Tue</strong></span><span class="lang-zh">Newsletter #1 发给 GodGPT 订阅者 <strong>下周二</strong></span></li>
+                            <li><span class="lang-en">Cadence: once per month, or whenever there are new updates</span><span class="lang-zh">节奏：每月一次，或有新更新时发送</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="launch-preview-col">
+                    <p class="block-label" style="margin-bottom: 0.5rem;"><span class="lang-en">LAUNCH POSTS FOR SOCIALS — PREVIEW</span><span class="lang-zh">社媒上线帖 — 预览</span></p>
+                    <div class="img-wrap" onclick="document.getElementById('modal-img').src='assets/soulgarden-social-preview.png'; document.getElementById('img-modal').classList.add('open');" role="button" tabindex="0" title="Click to expand">
+                        <img src="assets/soulgarden-social-preview.png" alt="SoulGarden @soulgarden.app social posts preview" data-src="assets/soulgarden-social-preview.png" style="max-height: 200px; width: auto; border-radius: 12px; cursor: pointer;">
+                    </div>
+                </div>
+            </div>
+            <div class="stagger-4" style="margin-top: 1.25rem;">
+                <div class="ptr-card ptr-next-steps" style="max-width: 100%;">
+                    <div class="ptr-icon-wrap">🎯</div>
+                    <div class="ptr-content">
+                        <p class="ptr-heading"><span class="lang-en">Next Steps</span><span class="lang-zh">下一步</span></p>
+                        <p class="ptr-subtitle"><span class="lang-en">Launch & party</span><span class="lang-zh">上线与派对</span></p>
+                        <ul class="list-arrow">
+                            <li><span class="lang-en">3 launch posts for socials</span><span class="lang-zh">3 条正式上线帖</span></li>
+                            <li><span class="lang-en"><strong>Launch party 12 Mar</strong> — influencers/target users for feedback + affiliate seeding</span><span class="lang-zh"><strong>3 月 12 日 launch party</strong> — 邀请 KOL/目标用户收集反馈并铺垫联盟</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Organic + Affiliate -->
+    <section class="slide" data-slide="3">
+        <div class="slide-inner">
+            <p class="section-label stagger-1">
+                <span class="lang-en">ORGANIC ENGAGEMENT · AFFILIATE BUILDING · WEEK 09</span>
+                <span class="lang-zh">自然互动 · 联盟拓展 · 第 09 周</span>
+            </p>
+            <h2 class="section-title stagger-2">
+                <span class="lang-en">Community & Affiliates</span>
+                <span class="lang-zh">社群与联盟</span>
+            </h2>
+            <p class="section-tagline stagger-2">
+                <span class="lang-en">Conversations Up, Pipeline Growing. 💬🤝</span>
+                <span class="lang-zh">对话升温，线索在涨。💬🤝</span>
+            </p>
+            <div class="ptr-row stagger-3">
+                <div class="ptr-card ptr-amber">
+                    <div class="ptr-icon-wrap">💬</div>
+                    <div class="ptr-content">
+                        <p class="ptr-heading"><span class="lang-en">This Week</span><span class="lang-zh">本周</span></p>
+                        <p class="ptr-subtitle"><span class="lang-en">Organic wins · 50+ leads, 1 affiliate call</span><span class="lang-zh">自然互动成果 · 50+ 线索，1 次联盟通话</span></p>
+                        <ul class="list-check">
+                            <li><span class="lang-en"><strong>Soulgarden:</strong> Reddit → Discord</span><span class="lang-zh"><strong>Soulgarden:</strong> Reddit → Discord</span></li>
+                            <li><span class="lang-en"><strong>Reddit:</strong> 3,000 combined impressions (top 2 posts)</span><span class="lang-zh"><strong>Reddit:</strong> 前 2 条帖合计 3,000 曝光</span></li>
+                            <li><span class="lang-en"><strong>GodGPT:</strong> User recommendation + 1-week check-in → <a href="https://aelfblockchain.sg.larksuite.com/docx/DicDd88FuoTktwxd17clVR8DgLg?from=from_copylink" target="_blank" rel="noopener">View doc ↗</a></span><span class="lang-zh"><strong>GodGPT:</strong> 用户推荐 + 一周回访 → <a href="https://aelfblockchain.sg.larksuite.com/docx/DicDd88FuoTktwxd17clVR8DgLg?from=from_copylink" target="_blank" rel="noopener">查看文档 ↗</a></span></li>
+                            <li><span class="lang-en"><strong>Affiliate:</strong> 50+ new leads, 1 call</span><span class="lang-zh"><strong>联盟:</strong> 50+ 新线索，1 次通话</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ptr-card ptr-next-steps">
+                    <div class="ptr-icon-wrap">📋</div>
+                    <div class="ptr-content">
+                        <p class="ptr-heading"><span class="lang-en">Next Steps</span><span class="lang-zh">下一步</span></p>
+                        <p class="ptr-subtitle"><span class="lang-en">Learnings & pipeline</span><span class="lang-zh">小结与线索跟进</span></p>
+                        <ul class="list-arrow">
+                            <li><span class="lang-en">Same replies/styles → flagged by bots/mods; real convos take time, authentic users → affiliates</span><span class="lang-zh">重复话术/风格易被系统/版主标记；真实对话需沉淀，真实用户可转联盟</span></li>
+                            <li><span class="lang-en">50+ leads/week outreach</span><span class="lang-zh">每周触达 50+ 线索</span></li>
+                            <li><span class="lang-en">Follow up after 3 days</span><span class="lang-zh">3 天后跟进</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: AuraSnap What & Who -->
+    <section class="slide" data-slide="4">
+        <div class="slide-inner">
+            <p class="section-label stagger-1">
+                <span class="lang-en">VIBE CODE · AURASNAP</span>
+                <span class="lang-zh">VIBE CODE · AURASNAP</span>
+            </p>
+            <h2 class="section-title stagger-2">AuraSnap</h2>
+            <p class="section-tagline stagger-2">
+                <span class="lang-en">What & Who. ✨</span>
+                <span class="lang-zh">是什么 · 给谁用。✨</span>
+            </p>
+            <div class="body-copy stagger-3">
+                <span class="lang-en"><strong>What:</strong> Digital aura photo on demand — phone only, no studio. AI + camera → personalised aura + meaning → saved to history.</span>
+                <span class="lang-zh"><strong>是什么：</strong>随时用手机拍「数字气场照」— 无需线下场地。AI + 相机 → 个人气场与解读 → 存入历史可追踪。</span>
+            </div>
+            <p class="stagger-3" style="color: var(--accent); font-style: italic; font-size: 1.05rem; margin-bottom: 1rem; font-weight: 600;">
+                <span class="lang-en">"Your energy, mapped. Your life, aligned."</span>
+                <span class="lang-zh">「你的能量，被看见。你的生活，更对齐。」</span>
+            </p>
+            <div class="card stagger-4">
+                <p class="block-label"><span class="lang-en">WHO</span><span class="lang-zh">目标用户</span></p>
+                <ul class="list-arrow">
+                    <li><span class="lang-en">Wellness-first Millennials/Gen Z, crystal & spiritual jewellery lovers, aesthetic-driven social users; core: women 20s–30s, digital-native</span><span class="lang-zh">注重身心灵的千禧/Z 世代、水晶/灵性首饰爱好者、追求美感与社媒的群体；核心：20–30 岁女性、数字原生</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: AuraSnap Gap & Why we win -->
+    <section class="slide" data-slide="5">
+        <div class="slide-inner">
+            <p class="section-label stagger-1">
+                <span class="lang-en">AURASNAP · GAP & WHY WE WIN</span>
+                <span class="lang-zh">AURASNAP · 缺口与我们的优势</span>
+            </p>
+            <h2 class="section-title stagger-2">
+                <span class="lang-en">Positioning</span>
+                <span class="lang-zh">定位</span>
+            </h2>
+            <p class="section-tagline stagger-2">
+                <span class="lang-en">First Aura-to-Lifestyle Platform.</span>
+                <span class="lang-zh">首个「气场 → 生活方式」平台。</span>
+            </p>
+            <div class="two-col stagger-3">
+                <div class="card">
+                    <p class="block-label"><span class="lang-en">GAP WE FILL (VS AURLA)</span><span class="lang-zh">我们补上的缺口（相对 Aurla）</span></p>
+                    <ul class="list-arrow">
+                        <li><span class="lang-en">No link to physical products/lifestyle</span><span class="lang-zh">无与实体产品/生活方式的连接</span></li>
+                        <li><span class="lang-en">Accuracy debates → better AI</span><span class="lang-zh">准确度争议 → 更强 AI</span></li>
+                        <li><span class="lang-en">No daily context / pattern over time</span><span class="lang-zh">无每日/长期脉络与变化</span></li>
+                        <li><span class="lang-en">No ecosystem (community, marketplace)</span><span class="lang-zh">无生态（社群、市集）</span></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <p class="block-label"><span class="lang-en">WHY WE WIN</span><span class="lang-zh">我们的优势</span></p>
+                    <ul class="list-check">
+                        <li><span class="lang-en">Account-first → history & re-engagement</span><span class="lang-zh">账号优先 → 历史与再触达</span></li>
+                        <li><span class="lang-en">Aura History — time-series view of your aura over time</span><span class="lang-zh">Aura History — 气场随时间的时间轴</span></li>
+                        <li><span class="lang-en">AI personalisation that improves with use</span><span class="lang-zh">随使用加深的 AI 个性化</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="stagger-4" style="margin-top: 1.25rem;">
+                <p class="block-label" style="margin-bottom: 0.5rem;"><span class="lang-en">FEEDBACK ON AURLA</span><span class="lang-zh">Aurla 用户反馈</span></p>
+                <div class="aurla-feedback-row">
+                    <div class="img-wrap" onclick="document.getElementById('modal-img').src='assets/aurla-feedback-1.png'; document.getElementById('img-modal').classList.add('open');" role="button" tabindex="0" title="Click to expand">
+                        <img src="assets/aurla-feedback-1.png" alt="Aurla review — tracking option" data-src="assets/aurla-feedback-1.png">
+                    </div>
+                    <div class="img-wrap" onclick="document.getElementById('modal-img').src='assets/aurla-feedback-2.png'; document.getElementById('img-modal').classList.add('open');" role="button" tabindex="0" title="Click to expand">
+                        <img src="assets/aurla-feedback-2.png" alt="Aurla review — Very cool" data-src="assets/aurla-feedback-2.png">
+                    </div>
+                    <div class="img-wrap" onclick="document.getElementById('modal-img').src='assets/aurla-feedback-3.png'; document.getElementById('img-modal').classList.add('open');" role="button" tabindex="0" title="Click to expand">
+                        <img src="assets/aurla-feedback-3.png" alt="Aurla review — Amazing" data-src="assets/aurla-feedback-3.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: Live Demo + Journey & Model + Business opportunities -->
+    <section class="slide" data-slide="6">
+        <div class="slide-inner">
+            <p class="section-label stagger-1">
+                <span class="lang-en">AURASNAP · LIVE DEMO & OPPORTUNITIES</span>
+                <span class="lang-zh">AURASNAP · 现场演示与商机</span>
+            </p>
+            <h2 class="section-title stagger-2">
+                <span class="lang-en">Live Demo</span>
+                <span class="lang-zh">现场演示</span>
+            </h2>
+            <p class="section-tagline stagger-2">
+                <span class="lang-en">Walkthrough + potential business opportunities.</span>
+                <span class="lang-zh">产品演示与潜在商机概览。</span>
+            </p>
+            <div class="demo-placeholder stagger-3">
+                <span class="lang-en">▶ Live demo walkthrough</span>
+                <span class="lang-zh">▶ 现场演示走一遍</span>
+            </div>
+            <div class="two-col stagger-4" style="margin-top: 1.25rem;">
+                <div class="card">
+                    <p class="block-label"><span class="lang-en">JOURNEY · MODEL</span><span class="lang-zh">路径 · 模式</span></p>
+                    <ul class="list-arrow">
+                        <li><span class="lang-en">Sign up → Snap → Read → Save & track → Return daily</span><span class="lang-zh">注册 → 拍照 → 解读 → 保存追踪 → 每日回访</span></li>
+                        <li><span class="lang-en">Freemium · Crystal stack · Space scan · Marketplace</span><span class="lang-zh">免费增值 · 水晶叠戴 · 空间扫描 · 市集</span></li>
+                    </ul>
+                </div>
+                <div class="card card-note">
+                    <p class="block-label"><span class="lang-en">POTENTIAL BUSINESS OPPORTUNITIES</span><span class="lang-zh">潜在商机（可展开说明）</span></p>
+                    <ul class="list-arrow">
+                        <li><span class="lang-en">Freemium → premium / in-app conversion</span><span class="lang-zh">免费增值 → 高级/应用内转化</span></li>
+                        <li><span class="lang-en">Crystal & lifestyle product tie-in / commerce</span><span class="lang-zh">水晶与生活方式产品联动 / 电商</span></li>
+                        <li><span class="lang-en">Brand & B2B partnerships (wellness, retail)</span><span class="lang-zh">品牌与 B2B 合作（ wellness、零售）</span></li>
+                        <li><span class="lang-en">Community & marketplace (creator / seller ecosystem)</span><span class="lang-zh">社群与市集（创作者/卖家生态）</span></li>
+                        <li><span class="lang-en">Data & insights (anonymised, trend / research)</span><span class="lang-zh">数据与洞察（匿名化、趋势/研究）</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Demo & Thanks + Next steps recap -->
+    <section class="slide" data-slide="7">
+        <div class="slide-inner">
+            <p class="section-label stagger-1">
+                <span class="lang-en">WEEK 09 CLOSING</span>
+                <span class="lang-zh">第 09 周收尾</span>
+            </p>
+            <h2 class="section-title stagger-2">
+                <span class="lang-en">What’s Next</span>
+                <span class="lang-zh">下一步</span>
+            </h2>
+            <p class="section-tagline stagger-2">
+                <span class="lang-en">Live demo & Q&A. 🙏</span>
+                <span class="lang-zh">现场演示与 Q&A。🙏</span>
+            </p>
+            <div class="recap-next-steps stagger-3">
+                <div class="recap-block">
+                    <p class="recap-label">🌱 <span class="lang-en">Soulgarden</span><span class="lang-zh">Soulgarden</span></p>
+                    <ul class="list-arrow">
+                        <li><span class="lang-en">3 launch posts for socials</span><span class="lang-zh">3 条正式上线帖</span></li>
+                        <li><span class="lang-en"><strong>Launch party 12 Mar</strong> — feedback + affiliate seeding</span><span class="lang-zh"><strong>3 月 12 日 launch party</strong> — 反馈与联盟铺垫</span></li>
+                    </ul>
+                </div>
+                <div class="recap-block">
+                    <p class="recap-label">💬 <span class="lang-en">Organic engagements</span><span class="lang-zh">自然互动</span></p>
+                    <ul class="list-arrow">
+                        <li><span class="lang-en">Keep building real conversations (Reddit, Discord)</span><span class="lang-zh">持续经营真实对话（Reddit、Discord）</span></li>
+                        <li><span class="lang-en">50+ leads/week outreach, follow up after 3 days</span><span class="lang-zh">每周触达 50+ 线索，3 天后跟进</span></li>
+                    </ul>
+                </div>
+                <div class="recap-block">
+                    <p class="recap-label">✨ <span class="lang-en">Vibe code (AuraSnap)</span><span class="lang-zh">Vibe code (AuraSnap)</span></p>
+                    <ul class="list-arrow">
+                        <li><span class="lang-en">Live demo & product walkthrough</span><span class="lang-zh">现场演示与产品走查</span></li>
+                        <li><span class="lang-en">Explore business opportunities (freemium, marketplace, partnerships)</span><span class="lang-zh">探索商机（免费增值、市集、合作）</span></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="stagger-4" style="color: var(--text-3); font-size: 0.95rem; margin-top: 1rem;"><span class="lang-en">Dionne · ChronoAI · Social Media & Creator Partnerships · Week 09 · Feb 20–26</span><span class="lang-zh">Dionne · ChronoAI · 社媒与创作者合作 · 第 09 周 · 2 月 20–26 日</span></p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <span class="footer-credit">
+            <span class="lang-en">ChronoAI · Dionne — Week 09</span>
+            <span class="lang-zh">ChronoAI · Dionne — 第 09 周</span>
+        </span>
+        <div class="footer-nav">
+            <button class="nav-btn" id="prev" aria-label="Previous">←</button>
+            <span class="slide-counter" id="counter">01 / 07</span>
+            <button class="nav-btn" id="next" aria-label="Next">→</button>
+        </div>
+    </footer>
+
+    <div class="modal" id="img-modal" onclick="this.classList.remove('open')">
+        <img id="modal-img" src="" alt="Expanded">
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const total = slides.length;
+        let current = 0;
+
+        function goTo(i) {
+            i = Math.max(0, Math.min(i, total - 1));
+            current = i;
+            slides.forEach((s, j) => s.classList.toggle('active', j === i));
+            document.getElementById('counter').textContent = String(i + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+            document.getElementById('prev').disabled = i === 0;
+            document.getElementById('next').disabled = i === total - 1;
+        }
+
+        document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+        document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') goTo(current - 1);
+            if (e.key === 'ArrowRight') goTo(current + 1);
+        });
+
+        goTo(0);
+
+        // Language toggle
+        const body = document.body;
+        document.querySelectorAll('.lang-toggle .lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                document.querySelectorAll('.lang-toggle .lang-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                body.classList.toggle('lang-zh', lang === 'zh');
+            });
+        });
+
+        document.querySelectorAll('.slide img[data-src]').forEach(img => {
+            const wrap = img.closest('.img-wrap') || img.parentElement;
+            wrap.style.cursor = 'pointer';
+            wrap.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('modal-img').src = img.dataset.src || img.src;
+                document.getElementById('img-modal').classList.add('open');
+            });
+        });
+    </script>
+</body>
+</html>
