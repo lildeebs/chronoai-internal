@@ -33,15 +33,9 @@
         * { box-sizing: border-box; font-family: var(--font); margin: 0; padding: 0; }
         body { background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
-        .lang-zh { display: none; }
+        body .lang-zh { display: none; }
         body.lang-zh .lang-en { display: none; }
         body.lang-zh .lang-zh { display: inline; }
-        body.lang-zh p .lang-zh,
-        body.lang-zh li .lang-zh,
-        body.lang-zh h1 .lang-zh,
-        body.lang-zh h2 .lang-zh,
-        body.lang-zh span .lang-zh { display: inline; }
-        body.lang-zh .lang-zh-block { display: block; }
 
         .topbar {
             position: fixed; top: 0; left: 0; right: 0; height: 52px;
