@@ -44,19 +44,18 @@
         body.lang-zh .lang-zh-block { display: block; }
 
         .topbar {
-            position: fixed; top: 0; left: 0; right: 0; height: 48px;
+            position: fixed; top: 0; left: 0; right: 0; height: 52px;
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 32px; background: rgba(9,9,11,0.85); backdrop-filter: blur(12px);
+            padding: 0 32px; background: var(--surface);
             border-bottom: 1px solid var(--border); z-index: 150;
         }
-        .topbar-left { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
-        .topbar-left strong { color: var(--text-2); font-weight: 700; }
+        .topbar-left { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
         .lang-toggle { display: flex; gap: 2px; background: var(--surface-2); padding: 3px 4px; border-radius: 8px; border: 1px solid var(--border); }
         .lang-toggle button { padding: 4px 12px; font-size: 0.78rem; font-weight: 600; border: none; border-radius: 6px; cursor: pointer; background: transparent; color: var(--text-3); transition: all 0.2s ease; }
         .lang-toggle button:hover { color: var(--text-2); }
         .lang-toggle button.active { background: var(--surface-3); color: var(--accent); }
 
-        .slide { min-height: 100vh; display: none; padding: 88px 48px 100px; position: relative; }
+        .slide { min-height: 100vh; display: none; padding: 92px 40px 116px; position: relative; }
         .slide.active { display: flex; flex-direction: column; justify-content: center; animation: slideIn 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
         @keyframes slideIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
         @keyframes stagger { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
@@ -69,18 +68,20 @@
 
         .inner { max-width: 820px; margin: 0 auto; width: 100%; }
 
-        .capsule { display: inline-block; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); border: 1.5px solid rgba(129,140,248,0.4); padding: .4rem 1rem; border-radius: 999px; font-weight: 600; margin-bottom: 2rem; }
-        .hero { font-size: clamp(2.8rem,7vw,4.2rem); font-weight: 900; letter-spacing: -0.045em; line-height: 1.05; color: var(--text); }
-        .hero-2 { font-size: clamp(2rem,4.5vw,2.8rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.1; color: var(--text); }
+        .capsule { display: inline-block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 2px solid var(--accent); padding: .45rem 1.15rem; border-radius: 999px; font-weight: 600; margin-bottom: 2.25rem; }
+        .hero { font-size: clamp(2.5rem,6vw,3.75rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; color: var(--text); margin: 0 0 .5rem; max-width: 780px; }
+        .hero-2 { font-size: clamp(2.25rem,4.5vw,3.25rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.15; color: var(--text); }
         .hero-sub { font-size: clamp(1.3rem,2.8vw,1.65rem); font-weight: 500; color: var(--text-2); margin-top: .4rem; line-height: 1.35; }
-        .body-text { color: var(--text-2); font-size: 1.05rem; line-height: 1.65; margin-top: 1rem; max-width: 600px; }
-        .byline { color: var(--text-3); font-size: 0.9rem; margin-top: .75rem; font-weight: 500; }
+        .subline { color: var(--text-2); font-size: 1.25rem; margin-top: 1.5rem; max-width: 560px; font-weight: 500; line-height: 1.5; }
+        .byline { color: var(--text-3); font-size: 1.05rem; margin-top: .6rem; font-weight: 500; }
 
-        .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2rem; }
-        .pill { display: inline-flex; align-items: center; gap: .4rem; font-size: .82rem; font-weight: 600; padding: .45rem 1rem; border-radius: 999px; border: 1.5px solid; background: transparent; }
-        .pill-cyan { border-color: rgba(34,211,238,0.4); color: var(--cyan); }
-        .pill-amber { border-color: rgba(251,191,36,0.4); color: var(--amber); }
-        .pill-purple { border-color: rgba(167,139,250,0.4); color: var(--purple); }
+        .focus-card { margin-top: 2.25rem; background: var(--surface); border-radius: 10px; padding: 1.6rem 1.9rem; border: 2px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        .focus-title { font-size: 0.7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 1rem; }
+        .pill-row { display: flex; flex-wrap: wrap; gap: 8px 12px; }
+        .pill { display: inline-flex; align-items: center; gap: .4rem; font-size: .88rem; font-weight: 600; padding: .5rem 1.1rem; border-radius: 999px; border: 2px solid; background: transparent; }
+        .pill-cyan { border-color: var(--cyan); background: rgba(34,211,238,0.25); color: #67e8f9; }
+        .pill-amber { border-color: var(--amber); background: rgba(251,191,36,0.25); color: #fcd34d; }
+        .pill-purple { border-color: var(--purple); background: rgba(167,139,250,0.25); color: #c4b5fd; }
 
         .credit { font-size: 0.78rem; letter-spacing: 0.06em; color: var(--text-3); font-weight: 500; margin-top: 1.5rem; }
 
@@ -91,6 +92,9 @@
         .info-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: .75rem; margin-bottom: 2rem; }
         @media (max-width: 640px) { .info-grid { grid-template-columns: 1fr 1fr; } }
         .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.15rem; }
+        .info-cyan .info-card { border-color: rgba(34,211,238,0.35); }
+        .info-amber .info-card { border-color: rgba(251,191,36,0.35); }
+        .info-purple .info-card { border-color: rgba(167,139,250,0.35); }
         .info-card .ic-icon { font-size: 1.3rem; margin-bottom: .5rem; }
         .info-card .ic-title { font-size: .85rem; font-weight: 700; color: var(--text); margin-bottom: .2rem; }
         .info-card .ic-desc { font-size: .78rem; color: var(--text-3); line-height: 1.45; }
@@ -132,7 +136,7 @@
         .quote-text { font-size: .95rem; font-style: italic; color: var(--text-2); line-height: 1.55; }
         .quote-attr { font-size: .78rem; color: var(--text-3); margin-top: .4rem; font-weight: 600; }
 
-        .footer { position: fixed; bottom: 0; left: 0; right: 0; height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; background: rgba(9,9,11,0.85); backdrop-filter: blur(12px); border-top: 1px solid var(--border); z-index: 150; }
+        .footer { position: fixed; bottom: 0; left: 0; right: 0; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; background: var(--surface); border-top: 1px solid var(--border); z-index: 150; }
         .footer-credit { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
         .footer-nav { display: flex; align-items: center; gap: 16px; }
         .slide-counter { font-size: .75rem; letter-spacing: .05em; color: var(--text-3); min-width: 3.2rem; text-align: center; font-weight: 600; }
@@ -143,7 +147,8 @@
 <body>
     <header class="topbar">
         <span class="topbar-left">
-            <strong>ChronoAI</strong> · <span class="lang-en">Social Media & Creator Partnerships</span><span class="lang-zh">社媒与创作者合作</span> · <span class="lang-en">Week 10</span><span class="lang-zh">第 10 周</span> · <span class="lang-en">Monday Update</span><span class="lang-zh">周一更新</span> · 2 March 2026
+            <span class="lang-en">Week 10 · Monday Targets</span>
+            <span class="lang-zh">第 10 周 · 周一目标</span>
         </span>
         <div class="lang-toggle">
             <button type="button" class="lang-btn active" data-lang="en">EN</button>
@@ -159,26 +164,25 @@
                 <span class="lang-zh">每周目标 · 2026 年 3 月 2 日 – 6 日</span>
             </p>
             <h1 class="hero s2">
-                <span class="lang-en">Grow Reach.</span>
-                <span class="lang-zh">扩大触达。</span>
+                <span class="lang-en">Grow Visibility.</span>
+                <span class="lang-zh">扩大曝光。</span>
             </h1>
             <h1 class="hero s2" style="margin-top:.1em;">
-                <span class="lang-en">Strengthen</span>
-                <span class="lang-zh">强化</span>
+                <span class="lang-en">Strengthen the Pipeline.</span>
+                <span class="lang-zh">强化转化管线。</span>
             </h1>
-            <h1 class="hero s2" style="margin-top:.1em;">
-                <span class="lang-en">the Pipeline.</span>
-                <span class="lang-zh">转化管线。</span>
-            </h1>
-            <div class="pill-row s3">
-                <span class="pill pill-cyan">📣 <span class="lang-en">Grow Visibility Organically</span><span class="lang-zh">有机扩大曝光</span></span>
-                <span class="pill pill-amber">⚙️ <span class="lang-en">Build the Engine</span><span class="lang-zh">构建引擎</span></span>
-                <span class="pill pill-purple">🔬 <span class="lang-en">Improve AuraSnap</span><span class="lang-zh">改进 AuraSnap</span></span>
-            </div>
-            <p class="credit s4">
+            <p class="byline s3">
                 <span class="lang-en">Dionne · Social Media & Creator Partnerships</span>
                 <span class="lang-zh">Dionne · 社媒与创作者合作</span>
             </p>
+            <div class="focus-card s4">
+                <p class="focus-title"><span class="lang-en">Focus this week</span><span class="lang-zh">本周重点</span></p>
+                <div class="pill-row">
+                    <span class="pill pill-cyan">📣 <span class="lang-en">Grow Visibility Organically</span><span class="lang-zh">有机扩大曝光</span></span>
+                    <span class="pill pill-amber">⚙️ <span class="lang-en">Build the Engine</span><span class="lang-zh">构建引擎</span></span>
+                    <span class="pill pill-purple">🔬 <span class="lang-en">Improve AuraSnap</span><span class="lang-zh">改进 AuraSnap</span></span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -190,18 +194,14 @@
                 <span class="lang-zh">优先事项 01 · 内容与有机触达</span>
             </p>
             <h2 class="hero-2 s2">
-                <span class="lang-en">Grow</span>
-                <span class="lang-zh">扩大</span>
-            </h2>
-            <h2 class="hero-2 s2" style="margin-top:.05em;">
-                <span class="lang-en">Visibility.</span>
-                <span class="lang-zh">曝光。</span>
+                <span class="lang-en">Grow Visibility.</span>
+                <span class="lang-zh">扩大曝光。</span>
             </h2>
             <p class="context s3">
-                <span class="lang-en">Content across SoulGarden, GodGPT, Reddit, and 10 genviral accounts. Every post compounds our organic presence and feeds the conversion pipeline.</span>
+                <span class="lang-en">This week I publish content across SoulGarden, GodGPT, Reddit, and 10 genviral accounts. Every post compounds our organic presence and feeds the conversion pipeline.</span>
                 <span class="lang-zh">覆盖 SoulGarden、GodGPT、Reddit 和 10 个 genviral 账号的内容。每条帖子都在积累有机存在感，为转化管线输送能量。</span>
             </p>
-            <div class="info-grid s4">
+            <div class="info-grid info-cyan s4">
                 <div class="info-card">
                     <div class="ic-icon">🌱</div>
                     <div class="ic-title">SoulGarden</div>
@@ -210,7 +210,7 @@
                 <div class="info-card">
                     <div class="ic-icon">💬</div>
                     <div class="ic-title">GodGPT</div>
-                    <div class="ic-desc"><span class="lang-en">2 live posts</span><span class="lang-zh">2 条实时帖</span></div>
+                    <div class="ic-desc"><span class="lang-en">2 posts to publish</span><span class="lang-zh">2 条待发帖</span></div>
                 </div>
                 <div class="info-card">
                     <div class="ic-icon">📡</div>
@@ -236,7 +236,7 @@
                 </div>
                 <div class="goal-block gb-cyan">
                     <p class="goal-label"><span class="lang-en">GOAL 2 · ORGANIC REACH</span><span class="lang-zh">目标 2 · 有机触达</span></p>
-                    <p class="goal-text"><span class="lang-en">Deliver evidence pack: 5+ Reddit communities, 1+ user review, 10 genviral posts (1 per account, set up last week).</span><span class="lang-zh">提交证据包：5+ Reddit 社群参与、1+ 用户评价、10 条 genviral 帖（每账号 1 条，上周已建）。</span></p>
+                    <p class="goal-text"><span class="lang-en">Compile evidence pack: engage 5+ Reddit communities, collect 1+ user review, publish 10 genviral posts (1 per account, set up last week).</span><span class="lang-zh">提交证据包：5+ Reddit 社群参与、1+ 用户评价、10 条 genviral 帖（每账号 1 条，上周已建）。</span></p>
                     <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: Doc / screenshots compiled</span><span class="lang-zh">交付物：文档 / 截图汇编</span></p>
                     <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Metric: Pipeline · Organic trust</span><span class="lang-zh">指标：管线 · 有机信任</span></p>
                 </div>
@@ -252,18 +252,14 @@
                 <span class="lang-zh">优先事项 02 · 管线与基础设施</span>
             </p>
             <h2 class="hero-2 s2">
-                <span class="lang-en">Build</span>
-                <span class="lang-zh">构建</span>
-            </h2>
-            <h2 class="hero-2 s2" style="margin-top:.05em;">
-                <span class="lang-en">the Engine.</span>
-                <span class="lang-zh">引擎。</span>
+                <span class="lang-en">Build the Engine.</span>
+                <span class="lang-zh">构建引擎。</span>
             </h2>
             <p class="context s3">
-                <span class="lang-en">The SoulGarden Soft Launch Party is 12 March. This week we lay the groundwork — outreach, tracking, lead pipeline, and Riteset affiliate strategy — so launch week runs on systems, not scramble.</span>
+                <span class="lang-en">The SoulGarden Soft Launch Party is 12 March. This week I lay the groundwork — outreach, tracking, lead pipeline, and Riteset affiliate strategy — so launch week runs on systems, not scramble.</span>
                 <span class="lang-zh">SoulGarden 软启动派对在 3 月 12 日。本周我们打好地基 — 触达、追踪、线索管线和 Riteset 联盟策略 — 让上线周靠系统运转，而不是手忙脚乱。</span>
             </p>
-            <div class="info-grid s4" style="grid-template-columns: repeat(4,1fr);">
+            <div class="info-grid info-amber s4" style="grid-template-columns: repeat(4,1fr);">
                 <div class="info-card">
                     <div class="ic-icon">🎯</div>
                     <div class="ic-title"><span class="lang-en">Outreach</span><span class="lang-zh">触达</span></div>
@@ -277,7 +273,7 @@
                 <div class="info-card">
                     <div class="ic-icon">📋</div>
                     <div class="ic-title"><span class="lang-en">Leads</span><span class="lang-zh">线索</span></div>
-                    <div class="ic-desc"><span class="lang-en">50+ contacted · 3-day follow-up</span><span class="lang-zh">50+ 已联系 · 3 天跟进</span></div>
+                    <div class="ic-desc"><span class="lang-en">Upfluence · 50+ leads · 3-day follow-up</span><span class="lang-zh">50+ 待联系 · 3 天跟进</span></div>
                 </div>
                 <div class="info-card">
                     <div class="ic-icon">🔗</div>
@@ -292,14 +288,14 @@
             <div class="goal-row s5">
                 <div class="goal-block gb-amber">
                     <p class="goal-label"><span class="lang-en">GOAL 3 · LAUNCH PREP + TRACKING</span><span class="lang-zh">目标 3 · 上线准备 + 追踪</span></p>
-                    <p class="goal-text"><span class="lang-en">Deliver outreach list of 10 influencers/target users for Soft Launch Party (12 Mar). Set up SoulGarden tracking: total users, active users, app installs, paying customers.</span><span class="lang-zh">为软启动派对（3 月 12 日）提交 10 位触达清单。搭建 SoulGarden 追踪：总用户、活跃用户、安装量、付费用户。</span></p>
+                    <p class="goal-text"><span class="lang-en">Prepare outreach list of 10 influencers/target users for Soft Launch Party (12 Mar). Set up SoulGarden tracking: total users, active users, app installs, paying customers.</span><span class="lang-zh">为软启动派对（3 月 12 日）提交 10 位触达清单。搭建 SoulGarden 追踪：总用户、活跃用户、安装量、付费用户。</span></p>
                     <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: Outreach doc + dashboard / tracking view</span><span class="lang-zh">交付物：触达文档 + 仪表板 / 追踪视图</span></p>
                     <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Metric: 10 contacted · 4 metrics configured</span><span class="lang-zh">指标：10 人已触达 · 4 项指标已配置</span></p>
                 </div>
                 <div class="goal-block gb-amber">
-                    <p class="goal-label"><span class="lang-en">GOAL 4 · LEAD PIPELINE + RITESET</span><span class="lang-zh">目标 4 · 线索管线 + RITESET</span></p>
-                    <p class="goal-text"><span class="lang-en">Deliver updated lead log for SoulGarden launch (50+ leads contacted, follow-up after 3 days). Deliver Riteset socials platform set-up doc + 1-page affiliate tease strategy.</span><span class="lang-zh">为 SoulGarden 上线提交更新的线索日志（50+ 线索已联系，3 天后跟进）。提交 Riteset 社媒搭建文档 + 1 页联盟预热策略。</span></p>
-                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: Lead log (sheet/doc) + 2 Riteset docs</span><span class="lang-zh">交付物：线索日志 + 2 份 Riteset 文档</span></p>
+                    <p class="goal-label"><span class="lang-en">GOAL 4 · UPFLUENCE + RITESET</span><span class="lang-zh">目标 4 · UPFLUENCE + RITESET</span></p>
+                    <p class="goal-text"><span class="lang-en">Update Upfluence community log for SoulGarden launch (contact 50+ leads, follow up after 3 days). Prepare Riteset socials platform set-up doc + 1-page affiliate tease strategy.</span><span class="lang-zh">为 SoulGarden 上线提交更新的线索日志（50+ 线索已联系，3 天后跟进）。提交 Riteset 社媒搭建文档 + 1 页联盟预热策略。</span></p>
+                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: Upfluence community log + 2 Riteset docs</span><span class="lang-zh">交付物：线索日志 + 2 份 Riteset 文档</span></p>
                     <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Metric: 50+ contacts · Affiliate pipeline · ARR</span><span class="lang-zh">指标：50+ 联系 · 联盟管线 · ARR</span></p>
                 </div>
             </div>
@@ -314,27 +310,23 @@
                 <span class="lang-zh">优先事项 03 · 产品 · AURASNAP</span>
             </p>
             <h2 class="hero-2 s2">
-                <span class="lang-en">Improve</span>
-                <span class="lang-zh">打磨</span>
-            </h2>
-            <h2 class="hero-2 s2" style="margin-top:.05em;">
-                <span class="lang-en">Product.</span>
-                <span class="lang-zh">产品。</span>
+                <span class="lang-en">Improve Product.</span>
+                <span class="lang-zh">打磨产品。</span>
             </h2>
             <p class="context s3">
-                <span class="lang-en">Two improvements shipped this week. Each iteration brings AuraSnap closer to user-testing readiness — tighter experience, fewer rough edges, stronger retention loop.</span>
+                <span class="lang-en">Two improvements to ship this week. Each iteration brings AuraSnap closer to user-testing readiness — tighter experience, fewer rough edges, stronger retention loop.</span>
                 <span class="lang-zh">本周交付两项改进。每次迭代都让 AuraSnap 更接近用户测试 — 更流畅的体验、更少的粗糙边缘、更强的留存闭环。</span>
             </p>
-            <div class="info-grid s4" style="grid-template-columns: repeat(3,1fr);">
+            <div class="info-grid info-purple s4" style="grid-template-columns: repeat(3,1fr);">
                 <div class="info-card">
                     <div class="ic-icon">✨</div>
                     <div class="ic-title"><span class="lang-en">Improvement 1</span><span class="lang-zh">改进 1</span></div>
-                    <div class="ic-desc"><span class="lang-en">Change log or shipped feature</span><span class="lang-zh">变更日志或已上线功能</span></div>
+                    <div class="ic-desc"><span class="lang-en">Change log or new feature</span><span class="lang-zh">变更日志或新功能</span></div>
                 </div>
                 <div class="info-card">
                     <div class="ic-icon">✨</div>
                     <div class="ic-title"><span class="lang-en">Improvement 2</span><span class="lang-zh">改进 2</span></div>
-                    <div class="ic-desc"><span class="lang-en">Change log or shipped feature</span><span class="lang-zh">变更日志或已上线功能</span></div>
+                    <div class="ic-desc"><span class="lang-en">Change log or new feature</span><span class="lang-zh">变更日志或新功能</span></div>
                 </div>
                 <div class="info-card">
                     <div class="ic-icon">🔬</div>
@@ -348,7 +340,7 @@
             </p>
             <div class="goal-block gb-purple s5" style="max-width:520px;">
                 <p class="goal-label"><span class="lang-en">GOAL 5 · AURASNAP IMPROVEMENTS</span><span class="lang-zh">目标 5 · AURASNAP 改进</span></p>
-                <p class="goal-text"><span class="lang-en">Deliver 2 change logs or shipped features for AuraSnap by Friday.</span><span class="lang-zh">周五前交付 2 份变更日志或已上线功能。</span></p>
+                <p class="goal-text"><span class="lang-en">Ship 2 improvements for AuraSnap by Friday — change logs or new features.</span><span class="lang-zh">周五前交付 2 份变更日志或已上线功能。</span></p>
                 <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: Change log docs or links / screenshots</span><span class="lang-zh">交付物：变更日志文档或链接 / 截图</span></p>
                 <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Metric: Product quality · User retention</span><span class="lang-zh">指标：产品质量 · 用户留存</span></p>
             </div>
@@ -363,13 +355,9 @@
                 <span class="lang-zh">3 月 6 日周五 · 5 大目标 · 二元验收</span>
             </p>
             <h2 class="audit-hero s2">
-                <span class="lang-en">Goals to Check Off</span>
-                <span class="lang-zh">本周要完成的目标</span>
+                <span class="lang-en">Goals to Check Off This Week.</span>
+                <span class="lang-zh">本周要完成的目标。</span>
             </h2>
-            <p class="hero-sub s2">
-                <span class="lang-en">This Week.</span>
-                <span class="lang-zh">这一周。</span>
-            </p>
             <div class="audit-grid s3">
                 <div class="audit-col ac-cyan">
                     <p class="audit-col-title">
@@ -377,11 +365,11 @@
                         <span class="lang-zh">曝光 · 目标 1 + 2</span>
                     </p>
                     <ul class="audit-list">
-                        <li><span class="lang-en">3 SoulGarden posts published?</span><span class="lang-zh">3 条 SoulGarden 帖已发？</span></li>
-                        <li><span class="lang-en">2 GodGPT posts published?</span><span class="lang-zh">2 条 GodGPT 帖已发？</span></li>
-                        <li><span class="lang-en">5+ Reddit communities engaged?</span><span class="lang-zh">5+ Reddit 社群已参与？</span></li>
-                        <li><span class="lang-en">1+ user review collected?</span><span class="lang-zh">1+ 用户评价已收集？</span></li>
-                        <li><span class="lang-en">10 genviral posts live?</span><span class="lang-zh">10 条 genviral 帖已发？</span></li>
+                        <li><span class="lang-en">Publish 3 SoulGarden posts</span><span class="lang-zh">发布 3 条 SoulGarden 帖</span></li>
+                        <li><span class="lang-en">Publish 2 GodGPT posts</span><span class="lang-zh">发布 2 条 GodGPT 帖</span></li>
+                        <li><span class="lang-en">Engage 5+ Reddit communities</span><span class="lang-zh">参与 5+ Reddit 社群</span></li>
+                        <li><span class="lang-en">Collect 1+ user review</span><span class="lang-zh">收集 1+ 用户评价</span></li>
+                        <li><span class="lang-en">Publish 10 genviral posts</span><span class="lang-zh">发布 10 条 genviral 帖</span></li>
                     </ul>
                 </div>
                 <div class="audit-col ac-amber">
@@ -390,11 +378,11 @@
                         <span class="lang-zh">引擎 · 目标 3 + 4</span>
                     </p>
                     <ul class="audit-list">
-                        <li><span class="lang-en">10 influencers/users contacted?</span><span class="lang-zh">10 人已触达？</span></li>
-                        <li><span class="lang-en">4 tracking metrics configured?</span><span class="lang-zh">4 项追踪指标已配置？</span></li>
-                        <li><span class="lang-en">50+ SoulGarden leads contacted?</span><span class="lang-zh">50+ SoulGarden 线索已联系？</span></li>
-                        <li><span class="lang-en">Riteset set-up doc delivered?</span><span class="lang-zh">Riteset 搭建文档已交？</span></li>
-                        <li><span class="lang-en">1-page strategy outline delivered?</span><span class="lang-zh">1 页策略大纲已交？</span></li>
+                        <li><span class="lang-en">Contact 10 influencers / target users</span><span class="lang-zh">联系 10 位影响力人士/用户</span></li>
+                        <li><span class="lang-en">Configure 4 tracking metrics</span><span class="lang-zh">配置 4 项追踪指标</span></li>
+                        <li><span class="lang-en">Update Upfluence log · 50+ leads</span><span class="lang-zh">联系 50+ SoulGarden 线索</span></li>
+                        <li><span class="lang-en">Prepare Riteset set-up doc</span><span class="lang-zh">准备 Riteset 搭建文档</span></li>
+                        <li><span class="lang-en">Prepare 1-page strategy outline</span><span class="lang-zh">准备 1 页策略大纲</span></li>
                     </ul>
                 </div>
                 <div class="audit-col ac-purple">
@@ -403,9 +391,9 @@
                         <span class="lang-zh">产品 · 目标 5</span>
                     </p>
                     <ul class="audit-list">
-                        <li><span class="lang-en">AuraSnap improvement 1 shipped?</span><span class="lang-zh">AuraSnap 改进 1 已交？</span></li>
-                        <li><span class="lang-en">AuraSnap improvement 2 shipped?</span><span class="lang-zh">AuraSnap 改进 2 已交？</span></li>
-                        <li><span class="lang-en">Change logs / screenshots provided?</span><span class="lang-zh">变更日志 / 截图已提供？</span></li>
+                        <li><span class="lang-en">Ship AuraSnap improvement 1</span><span class="lang-zh">交付 AuraSnap 改进 1</span></li>
+                        <li><span class="lang-en">Ship AuraSnap improvement 2</span><span class="lang-zh">交付 AuraSnap 改进 2</span></li>
+                        <li><span class="lang-en">Provide change logs / screenshots</span><span class="lang-zh">提供变更日志 / 截图</span></li>
                     </ul>
                 </div>
             </div>
