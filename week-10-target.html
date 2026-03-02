@@ -110,6 +110,12 @@
         .gb-amber .goal-label { color: var(--amber); }
         .gb-purple .goal-label { color: var(--purple); }
         .goal-text { font-size: .95rem; color: var(--text); font-weight: 600; line-height: 1.5; margin-bottom: .65rem; }
+        .goal-bullets { list-style: none; padding: 0; margin: 0 0 .65rem; }
+        .goal-bullets li { position: relative; padding-left: 1.1rem; font-size: .9rem; color: var(--text); font-weight: 500; line-height: 1.55; margin-bottom: .3rem; }
+        .goal-bullets li::before { content: '→'; position: absolute; left: 0; font-weight: 600; font-size: .8rem; }
+        .gb-cyan .goal-bullets li::before { color: var(--cyan); }
+        .gb-amber .goal-bullets li::before { color: var(--amber); }
+        .gb-purple .goal-bullets li::before { color: var(--purple); }
         .goal-check { font-size: .85rem; color: var(--text-2); line-height: 1.7; }
         .goal-check .ck { color: var(--green); font-weight: 700; margin-right: .3rem; }
 
@@ -230,15 +236,20 @@
             <div class="goal-row s5">
                 <div class="goal-block gb-cyan">
                     <p class="goal-label"><span class="lang-en">GOAL 1 · SOCIAL CONTENT</span><span class="lang-zh">目标 1 · 社媒内容</span></p>
-                    <p class="goal-text"><span class="lang-en">Publish 3 SoulGarden + 2 GodGPT social posts by Friday.</span><span class="lang-zh">周五前发布 3 条 SoulGarden + 2 条 GodGPT 社媒帖。</span></p>
+                    <ul class="goal-bullets">
+                        <li><span class="lang-en">Publish 3 SoulGarden posts</span><span class="lang-zh">发布 3 条 SoulGarden 帖</span></li>
+                        <li><span class="lang-en">Publish 2 GodGPT posts</span><span class="lang-zh">发布 2 条 GodGPT 帖</span></li>
+                    </ul>
                     <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: Link or screenshot per post</span><span class="lang-zh">交付物：每条帖子的链接或截图</span></p>
-                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Metric: Audience growth · Conversion rate</span><span class="lang-zh">指标：受众增长 · 转化率</span></p>
                 </div>
                 <div class="goal-block gb-cyan">
                     <p class="goal-label"><span class="lang-en">GOAL 2 · ORGANIC REACH</span><span class="lang-zh">目标 2 · 有机触达</span></p>
-                    <p class="goal-text"><span class="lang-en">Compile evidence pack: engage 5+ Reddit communities, collect 1+ user review, publish 10 genviral posts (1 per account, set up last week).</span><span class="lang-zh">提交证据包：5+ Reddit 社群参与、1+ 用户评价、10 条 genviral 帖（每账号 1 条，上周已建）。</span></p>
-                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: Doc / screenshots compiled</span><span class="lang-zh">交付物：文档 / 截图汇编</span></p>
-                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Metric: Pipeline · Organic trust</span><span class="lang-zh">指标：管线 · 有机信任</span></p>
+                    <ul class="goal-bullets">
+                        <li><span class="lang-en">Engage 5+ Reddit communities</span><span class="lang-zh">参与 5+ Reddit 社群</span></li>
+                        <li><span class="lang-en">Collect 1+ user review</span><span class="lang-zh">收集 1+ 用户评价</span></li>
+                        <li><span class="lang-en">Publish 10 genviral posts (1 per account)</span><span class="lang-zh">发布 10 条 genviral 帖（每账号 1 条）</span></li>
+                    </ul>
+                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: Evidence pack (doc / screenshots)</span><span class="lang-zh">交付物：证据包（文档 / 截图）</span></p>
                 </div>
             </div>
         </div>
@@ -288,15 +299,20 @@
             <div class="goal-row s5">
                 <div class="goal-block gb-amber">
                     <p class="goal-label"><span class="lang-en">GOAL 3 · LAUNCH PREP + TRACKING</span><span class="lang-zh">目标 3 · 上线准备 + 追踪</span></p>
-                    <p class="goal-text"><span class="lang-en">Prepare outreach list of 10 influencers/target users for Soft Launch Party (12 Mar). Set up SoulGarden tracking: total users, active users, app installs, paying customers.</span><span class="lang-zh">为软启动派对（3 月 12 日）提交 10 位触达清单。搭建 SoulGarden 追踪：总用户、活跃用户、安装量、付费用户。</span></p>
-                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: Outreach doc + dashboard / tracking view</span><span class="lang-zh">交付物：触达文档 + 仪表板 / 追踪视图</span></p>
-                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Metric: 10 contacted · 4 metrics configured</span><span class="lang-zh">指标：10 人已触达 · 4 项指标已配置</span></p>
+                    <ul class="goal-bullets">
+                        <li><span class="lang-en">Outreach 10 influencers / target users (Soft Launch 12 Mar)</span><span class="lang-zh">触达 10 位影响力人士/用户（软启动 3 月 12 日）</span></li>
+                        <li><span class="lang-en">Set up tracking: users, active, installs, paying</span><span class="lang-zh">搭建追踪：用户、活跃、安装、付费</span></li>
+                    </ul>
+                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: Outreach doc + dashboard</span><span class="lang-zh">交付物：触达文档 + 仪表板</span></p>
                 </div>
                 <div class="goal-block gb-amber">
-                    <p class="goal-label"><span class="lang-en">GOAL 4 · UPFLUENCE + RITESET</span><span class="lang-zh">目标 4 · UPFLUENCE + RITESET</span></p>
-                    <p class="goal-text"><span class="lang-en">Update Upfluence community log for SoulGarden launch (contact 50+ leads, follow up after 3 days). Prepare Riteset socials platform set-up doc + 1-page affiliate tease strategy.</span><span class="lang-zh">为 SoulGarden 上线提交更新的线索日志（50+ 线索已联系，3 天后跟进）。提交 Riteset 社媒搭建文档 + 1 页联盟预热策略。</span></p>
-                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: Upfluence community log + 2 Riteset docs</span><span class="lang-zh">交付物：线索日志 + 2 份 Riteset 文档</span></p>
-                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Metric: 50+ contacts · Affiliate pipeline · ARR</span><span class="lang-zh">指标：50+ 联系 · 联盟管线 · ARR</span></p>
+                    <p class="goal-label"><span class="lang-en">GOAL 4 · LEADS + AFFILIATE STRATEGY</span><span class="lang-zh">目标 4 · 线索 + 联盟策略</span></p>
+                    <ul class="goal-bullets">
+                        <li><span class="lang-en">Update Upfluence log: 50+ leads, 3-day follow-up</span><span class="lang-zh">更新线索日志：50+ 线索，3 天跟进</span></li>
+                        <li><span class="lang-en">Riteset socials set-up doc</span><span class="lang-zh">Riteset 社媒搭建文档</span></li>
+                        <li><span class="lang-en">1-page affiliate tease strategy</span><span class="lang-zh">1 页联盟预热策略</span></li>
+                    </ul>
+                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: Upfluence log + 2 Riteset docs</span><span class="lang-zh">交付物：线索日志 + 2 份 Riteset 文档</span></p>
                 </div>
             </div>
         </div>
@@ -339,10 +355,12 @@
                 <span class="lang-zh">本周目标</span>
             </p>
             <div class="goal-block gb-purple s5" style="max-width:520px;">
-                <p class="goal-label"><span class="lang-en">GOAL 5 · AURASNAP IMPROVEMENTS</span><span class="lang-zh">目标 5 · AURASNAP 改进</span></p>
-                <p class="goal-text"><span class="lang-en">Ship 2 improvements for AuraSnap by Friday — change logs or new features.</span><span class="lang-zh">周五前交付 2 份变更日志或已上线功能。</span></p>
-                <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: Change log docs or links / screenshots</span><span class="lang-zh">交付物：变更日志文档或链接 / 截图</span></p>
-                <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Metric: Product quality · User retention</span><span class="lang-zh">指标：产品质量 · 用户留存</span></p>
+                    <p class="goal-label"><span class="lang-en">GOAL 5 · AURASNAP IMPROVEMENTS</span><span class="lang-zh">目标 5 · AURASNAP 改进</span></p>
+                    <ul class="goal-bullets">
+                        <li><span class="lang-en">Ship improvement 1 (change log or feature)</span><span class="lang-zh">交付改进 1（变更日志或功能）</span></li>
+                        <li><span class="lang-en">Ship improvement 2 (change log or feature)</span><span class="lang-zh">交付改进 2（变更日志或功能）</span></li>
+                    </ul>
+                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: 2 change log docs or screenshots</span><span class="lang-zh">交付物：2 份变更日志或截图</span></p>
             </div>
         </div>
     </section>
