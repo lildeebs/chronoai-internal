@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoAI · Week 10 · Dionne · Friday Review</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #09090b;
+            --surface: #111114;
+            --surface-2: #18181b;
+            --surface-3: #1e1e23;
+            --border: #27272a;
+            --border-2: #3f3f46;
+            --text: #fafafa;
+            --text-2: #a1a1aa;
+            --text-3: #71717a;
+            --accent: #818cf8;
+            --accent-soft: rgba(129,140,248,0.12);
+            --cyan: #22d3ee;
+            --cyan-soft: rgba(34,211,238,0.12);
+            --amber: #fbbf24;
+            --amber-soft: rgba(251,191,36,0.12);
+            --purple: #a78bfa;
+            --purple-soft: rgba(167,139,250,0.12);
+            --green: #34d399;
+            --green-soft: rgba(52,211,153,0.12);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        * { box-sizing: border-box; font-family: var(--font); margin: 0; padding: 0; }
+        body { background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+        body .lang-zh { display: none; }
+        body.lang-zh .lang-en { display: none; }
+        body.lang-zh .lang-zh { display: inline; }
+
+        .topbar {
+            position: fixed; top: 0; left: 0; right: 0; height: 52px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 32px; background: var(--surface);
+            border-bottom: 1px solid var(--border); z-index: 150;
+        }
+        .topbar-left { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
+        .lang-toggle { display: flex; gap: 2px; background: var(--surface-2); padding: 3px 4px; border-radius: 8px; border: 1px solid var(--border); }
+        .lang-toggle button { padding: 4px 12px; font-size: 0.78rem; font-weight: 600; border: none; border-radius: 6px; cursor: pointer; background: transparent; color: var(--text-3); transition: all 0.2s ease; }
+        .lang-toggle button:hover { color: var(--text-2); }
+        .lang-toggle button.active { background: var(--surface-3); color: var(--accent); }
+
+        .slide { min-height: 100vh; display: none; padding: 92px 40px 116px; position: relative; }
+        .slide.active { display: flex; flex-direction: column; justify-content: center; animation: slideIn 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+        @keyframes slideIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes stagger { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+        .slide.active .s1 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .06s both; }
+        .slide.active .s2 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .14s both; }
+        .slide.active .s3 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .22s both; }
+        .slide.active .s4 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .30s both; }
+        .slide.active .s5 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .38s both; }
+        .slide.active .s6 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .46s both; }
+
+        .inner { max-width: 820px; margin: 0 auto; width: 100%; }
+
+        .capsule { display: inline-block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 2px solid var(--accent); padding: .45rem 1.15rem; border-radius: 999px; font-weight: 600; margin-bottom: 2.25rem; }
+        .hero { font-size: clamp(2.5rem,6vw,3.75rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; color: var(--text); margin: 0 0 .5rem; max-width: 780px; }
+        .hero-2 { font-size: clamp(2.25rem,4.5vw,3.25rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.15; color: var(--text); }
+        .hero-sub { font-size: clamp(1.3rem,2.8vw,1.65rem); font-weight: 500; color: var(--text-2); margin-top: .4rem; line-height: 1.35; }
+        .subline { color: var(--text-2); font-size: 1.15rem; margin-top: 1.25rem; max-width: 580px; font-weight: 500; line-height: 1.55; }
+        .byline { color: var(--text-3); font-size: 1.05rem; margin-top: .6rem; font-weight: 500; }
+
+        .focus-card { margin-top: 2.25rem; background: var(--surface); border-radius: 10px; padding: 1.6rem 1.9rem; border: 2px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        .focus-title { font-size: 0.7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 1rem; }
+        .pill-row { display: flex; flex-wrap: wrap; gap: 8px 12px; }
+        .pill { display: inline-flex; align-items: center; gap: .4rem; font-size: .88rem; font-weight: 600; padding: .5rem 1.1rem; border-radius: 999px; border: 2px solid; background: transparent; }
+        .pill-cyan { border-color: var(--cyan); background: rgba(34,211,238,0.25); color: #67e8f9; }
+        .pill-amber { border-color: var(--amber); background: rgba(251,191,36,0.25); color: #fcd34d; }
+        .pill-purple { border-color: var(--purple); background: rgba(167,139,250,0.25); color: #c4b5fd; }
+        .pill-green { border-color: var(--green); background: rgba(52,211,153,0.25); color: #6ee7b7; }
+
+        .label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-3); font-weight: 700; margin-bottom: .6rem; }
+        .context { color: var(--text-2); font-size: 1rem; line-height: 1.65; margin-bottom: 1.75rem; max-width: 640px; }
+
+        .metric-row { display: grid; grid-template-columns: repeat(4,1fr); gap: .75rem; margin-bottom: 1.5rem; }
+        @media (max-width: 640px) { .metric-row { grid-template-columns: 1fr 1fr; } }
+        .metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.15rem 1.25rem; text-align: center; }
+        .metric-card .mc-num { font-size: 2rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; }
+        .mc-cyan { color: var(--cyan); }
+        .mc-amber { color: var(--amber); }
+        .mc-purple { color: var(--purple); }
+        .mc-green { color: var(--green); }
+        .mc-accent { color: var(--accent); }
+        .metric-card .mc-label { font-size: 0.72rem; font-weight: 600; color: var(--text-3); margin-top: .35rem; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.35; }
+
+        .ptr-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.25rem; }
+        @media (max-width: 640px) { .ptr-row { grid-template-columns: 1fr; } }
+        .ptr-card {
+            display: flex; gap: 1rem;
+            background: var(--surface); border-radius: 10px;
+            padding: 1.4rem 1.6rem; border: 2px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+        .ptr-card.ptr-cyan { border-color: var(--cyan); }
+        .ptr-card.ptr-amber { border-color: var(--amber); }
+        .ptr-card.ptr-purple { border-color: var(--purple); }
+        .ptr-card.ptr-green { border-color: var(--green); }
+        .ptr-card.ptr-accent { border-color: var(--accent); }
+        .ptr-icon { flex-shrink: 0; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.15rem; background: var(--surface-2); }
+        .ptr-card.ptr-cyan .ptr-icon { background: var(--cyan-soft); }
+        .ptr-card.ptr-amber .ptr-icon { background: var(--amber-soft); }
+        .ptr-card.ptr-purple .ptr-icon { background: var(--purple-soft); }
+        .ptr-card.ptr-green .ptr-icon { background: var(--green-soft); }
+        .ptr-card.ptr-accent .ptr-icon { background: var(--accent-soft); }
+        .ptr-body { flex: 1; min-width: 0; }
+        .ptr-heading { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: .2rem; text-transform: uppercase; letter-spacing: 0.04em; }
+        .ptr-sub { font-size: .8rem; color: var(--text-3); margin-bottom: .75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+
+        .list-check { list-style: none; padding: 0; }
+        .list-check li { position: relative; padding-left: 1.5rem; margin-bottom: .45rem; color: var(--text-2); font-size: .95rem; line-height: 1.55; }
+        .list-check li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+        .list-arrow { list-style: none; padding: 0; }
+        .list-arrow li { position: relative; padding-left: 1.5rem; margin-bottom: .45rem; color: var(--text-2); font-size: .95rem; line-height: 1.55; }
+        .list-arrow li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+
+        .full-card { background: var(--surface); border: 2px solid var(--border); border-radius: 10px; padding: 1.4rem 1.6rem; box-shadow: 0 2px 8px rgba(0,0,0,0.25); margin-top: 1rem; }
+        .full-card.fc-accent { border-color: var(--accent); }
+        .full-card.fc-green { border-color: var(--green); }
+        .full-card.fc-amber { border-color: var(--amber); }
+
+        .progress-bar-wrap { margin-top: 1.25rem; }
+        .progress-label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .5rem; }
+        .progress-label .pl-text { font-size: .78rem; font-weight: 700; color: var(--text-3); letter-spacing: 0.08em; text-transform: uppercase; }
+        .progress-label .pl-pct { font-size: 1.6rem; font-weight: 900; color: var(--green); letter-spacing: -0.02em; }
+        .progress-track { width: 100%; height: 10px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
+        .progress-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--green), var(--cyan)); transition: width 1.2s cubic-bezier(0.22,1,0.36,1); }
+
+        .recap-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 1.25rem; }
+        @media (max-width: 768px) { .recap-grid { grid-template-columns: 1fr; } }
+        .recap-block { background: var(--surface); border: 2px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .recap-block.rb-cyan { border-color: var(--cyan); }
+        .recap-block.rb-amber { border-color: var(--amber); }
+        .recap-block.rb-purple { border-color: var(--purple); }
+        .recap-title { font-size: .95rem; font-weight: 700; color: var(--text); margin-bottom: .5rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+        .callout { margin-top: 1.5rem; padding: 1.25rem 1.5rem; background: var(--accent-soft); border: 2px solid var(--accent); border-radius: 10px; }
+        .callout p { font-size: .95rem; color: var(--text); font-weight: 600; line-height: 1.55; }
+        .callout .cl-highlight { color: var(--accent); }
+
+        .footer { position: fixed; bottom: 0; left: 0; right: 0; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; background: var(--surface); border-top: 1px solid var(--border); z-index: 150; }
+        .footer-credit { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
+        .footer-nav { display: flex; align-items: center; gap: 16px; }
+        .slide-counter { font-size: .75rem; letter-spacing: .05em; color: var(--text-3); min-width: 3.2rem; text-align: center; font-weight: 600; }
+        .nav-btn { background: transparent; border: 1px solid var(--border); color: var(--text-2); font-size: .9rem; cursor: pointer; padding: 5px 11px; border-radius: 6px; transition: all .2s ease; }
+        .nav-btn:hover { background: var(--surface-2); color: var(--accent); border-color: rgba(129,140,248,0.4); }
+        .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 600; color: var(--text-3); text-decoration: none; padding: 5px 12px; border-radius: 6px; border: 1px solid var(--border); transition: all 0.2s ease; }
+        .back-btn:hover { color: var(--accent); border-color: rgba(129,140,248,0.4); background: var(--surface-2); }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <a class="back-btn" href="overview.html">← Overview</a>
+        <span class="topbar-left">
+            <span class="lang-en">Week 10 · Friday Review</span>
+            <span class="lang-zh">第 10 周 · 周五复盘</span>
+        </span>
+        <div class="lang-toggle">
+            <button type="button" class="lang-btn active" data-lang="en">EN</button>
+            <button type="button" class="lang-btn" data-lang="zh">中文</button>
+        </div>
+    </header>
+
+    <!-- Slide 1: Title -->
+    <section class="slide" data-slide="1">
+        <div class="inner">
+            <p class="capsule s1">
+                <span class="lang-en">FRIDAY REVIEW · 2–6 MARCH 2026</span>
+                <span class="lang-zh">周五复盘 · 2026 年 3 月 2–6 日</span>
+            </p>
+            <h1 class="hero s2">
+                <span class="lang-en">Doing the Manual Legwork.</span>
+                <span class="lang-zh">亲力亲为，打好地基。</span>
+            </h1>
+            <p class="subline s3">
+                <span class="lang-en">Organic outreach. In-house content. All free, all us. Driving toward Gate 1: 200 downloads.</span>
+                <span class="lang-zh">有机触达。内容自产。零成本全内部。驱动 Gate 1：200 次下载。</span>
+            </p>
+            <p class="byline s3">
+                <span class="lang-en">Dionne · Social Media & Creator Partnerships</span>
+                <span class="lang-zh">Dionne · 社媒与创作者合作</span>
+            </p>
+            <div class="focus-card s4">
+                <p class="focus-title">
+                    <span class="lang-en">This week's focus</span>
+                    <span class="lang-zh">本周重点</span>
+                </p>
+                <div class="pill-row">
+                    <span class="pill pill-cyan">📣 <span class="lang-en">Organic Outreach</span><span class="lang-zh">有机触达</span></span>
+                    <span class="pill pill-amber">🎬 <span class="lang-en">In-House Content</span><span class="lang-zh">内部内容生产</span></span>
+                    <span class="pill pill-green">🎯 <span class="lang-en">Gate 1 · 200 Downloads</span><span class="lang-zh">Gate 1 · 200 下载</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: Focus #1 — Organic Outreach -->
+    <section class="slide" data-slide="2">
+        <div class="inner">
+            <p class="label s1">
+                <span class="lang-en">FOCUS 01 · ORGANIC OUTREACH · 200 USERS FOR GATE 1</span>
+                <span class="lang-zh">重点 01 · 有机触达 · GATE 1 的 200 用户</span>
+            </p>
+            <h2 class="hero-2 s2">
+                <span class="lang-en">Organic Outreach.</span>
+                <span class="lang-zh">有机触达。</span>
+            </h2>
+            <p class="hero-sub s2">
+                <span class="lang-en">Real conversations. Real communities. Zero ad spend.</span>
+                <span class="lang-zh">真实对话。真实社群。零广告支出。</span>
+            </p>
+            <div class="metric-row s3">
+                <div class="metric-card">
+                    <p class="mc-num mc-cyan">50</p>
+                    <p class="mc-label">
+                        <span class="lang-en">Individuals Engaged</span>
+                        <span class="lang-zh">触达个人</span>
+                    </p>
+                </div>
+                <div class="metric-card">
+                    <p class="mc-num mc-amber">58</p>
+                    <p class="mc-label">
+                        <span class="lang-en">KOLs Reached</span>
+                        <span class="lang-zh">KOL 已联系</span>
+                    </p>
+                </div>
+                <div class="metric-card">
+                    <p class="mc-num mc-purple">108</p>
+                    <p class="mc-label">
+                        <span class="lang-en">Total Contacts</span>
+                        <span class="lang-zh">总联系人</span>
+                    </p>
+                </div>
+                <div class="metric-card">
+                    <p class="mc-num mc-green">200</p>
+                    <p class="mc-label">
+                        <span class="lang-en">Gate 1 Target</span>
+                        <span class="lang-zh">Gate 1 目标</span>
+                    </p>
+                </div>
+            </div>
+            <div class="ptr-row s4">
+                <div class="ptr-card ptr-cyan">
+                    <div class="ptr-icon">💬</div>
+                    <div class="ptr-body">
+                        <p class="ptr-heading">
+                            <span class="lang-en">Community Outreach</span>
+                            <span class="lang-zh">社群触达</span>
+                        </p>
+                        <p class="ptr-sub">
+                            <span class="lang-en">Discord + Reddit</span>
+                            <span class="lang-zh">Discord + Reddit</span>
+                        </p>
+                        <ul class="list-check">
+                            <li><span class="lang-en">Engaged 50 individuals across manifestation communities</span><span class="lang-zh">在灵性社群中与 50 人互动</span></li>
+                            <li><span class="lang-en">Active in Discord and Reddit channels</span><span class="lang-zh">活跃于 Discord 和 Reddit 频道</span></li>
+                            <li><span class="lang-en">Building genuine relationships, not just broadcasting</span><span class="lang-zh">建立真实关系，不只是广播</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ptr-card ptr-amber">
+                    <div class="ptr-icon">🎯</div>
+                    <div class="ptr-body">
+                        <p class="ptr-heading">
+                            <span class="lang-en">KOL Outreach</span>
+                            <span class="lang-zh">KOL 触达</span>
+                        </p>
+                        <p class="ptr-sub">
+                            <span class="lang-en">Influencer Pipeline</span>
+                            <span class="lang-zh">影响力人士管线</span>
+                        </p>
+                        <ul class="list-check">
+                            <li><span class="lang-en">Reached out to 58 KOLs this week</span><span class="lang-zh">本周已联系 58 位 KOL</span></li>
+                            <li><span class="lang-en">Week 11 target: scale to 200 influencers</span><span class="lang-zh">第 11 周目标：扩展至 200 位</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Highlight #2 — In-House Content Creation -->
+    <section class="slide" data-slide="3">
+        <div class="inner">
+            <p class="label s1">
+                <span class="lang-en">HIGHLIGHT · IN-HOUSE CONTENT CREATION</span>
+                <span class="lang-zh">亮点 · 内部内容生产</span>
+            </p>
+            <h2 class="hero-2 s2">
+                <span class="lang-en">Content. All In-House.</span>
+                <span class="lang-zh">内容。全部自产。</span>
+            </h2>
+            <p class="hero-sub s2">
+                <span class="lang-en">12 accounts. 10 TikToks. AI influencers. Midjourney. Zero outsourcing.</span>
+                <span class="lang-zh">12 个账号。10 个 TikTok。AI 网红。Midjourney。零外包。</span>
+            </p>
+            <div class="metric-row s3">
+                <div class="metric-card">
+                    <p class="mc-num mc-cyan">12</p>
+                    <p class="mc-label">
+                        <span class="lang-en">Social Accounts Managed</span>
+                        <span class="lang-zh">管理社媒账号</span>
+                    </p>
+                </div>
+                <div class="metric-card">
+                    <p class="mc-num mc-amber">10</p>
+                    <p class="mc-label">
+                        <span class="lang-en">TikTok Accounts (AI Influencers)</span>
+                        <span class="lang-zh">TikTok 账号（AI 网红）</span>
+                    </p>
+                </div>
+                <div class="metric-card">
+                    <p class="mc-num mc-purple">29</p>
+                    <p class="mc-label">
+                        <span class="lang-en">Midjourney Designs</span>
+                        <span class="lang-zh">Midjourney 设计</span>
+                    </p>
+                </div>
+                <div class="metric-card">
+                    <p class="mc-num mc-green">6</p>
+                    <p class="mc-label">
+                        <span class="lang-en">AI Influencer Videos</span>
+                        <span class="lang-zh">AI 网红视频</span>
+                    </p>
+                </div>
+            </div>
+            <div class="ptr-row s4">
+                <div class="ptr-card ptr-amber">
+                    <div class="ptr-icon">🎬</div>
+                    <div class="ptr-body">
+                        <p class="ptr-heading">
+                            <span class="lang-en">Social Operations</span>
+                            <span class="lang-zh">社媒运营</span>
+                        </p>
+                        <p class="ptr-sub">
+                            <span class="lang-en">Consistent cadence</span>
+                            <span class="lang-zh">稳定节奏</span>
+                        </p>
+                        <ul class="list-check">
+                            <li><span class="lang-en">Managing 12 social accounts — posting aggressively, consistent cadence</span><span class="lang-zh">管理 12 个社媒账号 — 高频发布，稳定节奏</span></li>
+                            <li><span class="lang-en">Running 10 TikTok accounts with AI influencer content fully in-house</span><span class="lang-zh">运营 10 个 TikTok 账号，AI 网红内容全部自产</span></li>
+                            <li><span class="lang-en">24 hours content creation invested this week</span><span class="lang-zh">本周投入 24 小时内容创作</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ptr-card ptr-purple">
+                    <div class="ptr-icon">✨</div>
+                    <div class="ptr-body">
+                        <p class="ptr-heading">
+                            <span class="lang-en">Creative Output</span>
+                            <span class="lang-zh">创意产出</span>
+                        </p>
+                        <p class="ptr-sub">
+                            <span class="lang-en">Midjourney + AI Influencers</span>
+                            <span class="lang-zh">Midjourney + AI 网红</span>
+                        </p>
+                        <ul class="list-check">
+                            <li><span class="lang-en">New this week: Midjourney — guided by Dannick, generated 29 designs → next 5 carousels done, scheduled for posting this month</span><span class="lang-zh">本周新增：Midjourney — 在 Dannick 指导下生成 29 张设计 → 接下来 5 组轮播图已完成，已排期本月发布</span></li>
+                            <li><span class="lang-en">6 AI influencer videos produced — collaborating with Wendy on unique AI personas</span><span class="lang-zh">制作 6 条 AI 网红视频 — 与 Wendy 协作创建独特 AI 人设</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: The Bigger Picture — Gate 1 + Progress -->
+    <section class="slide" data-slide="4">
+        <div class="inner">
+            <p class="label s1">
+                <span class="lang-en">THE BIGGER PICTURE · GATE 1 · ORGANIC GROWTH</span>
+                <span class="lang-zh">全局视角 · GATE 1 · 有机增长</span>
+            </p>
+            <h2 class="hero-2 s2">
+                <span class="lang-en">Organic = Free. In-House = Ours.</span>
+                <span class="lang-zh">有机 = 免费。自产 = 自控。</span>
+            </h2>
+            <p class="context s3">
+                <span class="lang-en">Everything we're doing is organic. No ad spend. No agencies. All content created in-house. All outreach done manually. This is how we grow and test market organically to get to Gate 1: 200 app downloads.</span>
+                <span class="lang-zh">所有动作都是有机的。零广告、零外包。内容全自产，触达全手动。我们用有机方式增长和验证市场，迈向 Gate 1：200 次应用下载。</span>
+            </p>
+            <div class="progress-bar-wrap s3">
+                <div class="progress-label">
+                    <span class="pl-text">
+                        <span class="lang-en">Week 10 Goals Completion</span>
+                        <span class="lang-zh">第 10 周目标完成度</span>
+                    </span>
+                    <span class="pl-pct">80%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div class="ptr-row s4" style="margin-top: 1.75rem;">
+                <div class="ptr-card ptr-green" style="grid-column: 1 / -1;">
+                    <div class="ptr-icon">🎯</div>
+                    <div class="ptr-body">
+                        <p class="ptr-heading">
+                            <span class="lang-en">Gate 1 Strategy</span>
+                            <span class="lang-zh">Gate 1 策略</span>
+                        </p>
+                        <p class="ptr-sub">
+                            <span class="lang-en">200 organic app downloads</span>
+                            <span class="lang-zh">200 次有机应用下载</span>
+                        </p>
+                        <ul class="list-check">
+                            <li><span class="lang-en">108 total contacts made this week (50 community + 58 KOLs) — feeding the funnel</span><span class="lang-zh">本周共建立 108 个联系（50 社群 + 58 KOL）— 填充漏斗</span></li>
+                            <li><span class="lang-en">12 social accounts publishing consistently — building organic presence</span><span class="lang-zh">12 个社媒账号持续发布 — 构建有机存在感</span></li>
+                            <li><span class="lang-en">10 TikTok accounts with AI influencer content — scaling reach without scaling cost</span><span class="lang-zh">10 个 TikTok 账号的 AI 网红内容 — 扩大覆盖而不增加成本</span></li>
+                            <li><span class="lang-en">All organic. All free. All in-house.</span><span class="lang-zh">全有机。全免费。全自产。</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="callout s5">
+                <p>
+                    <span class="lang-en"><span class="cl-highlight">80% of this week's work completed.</span> The remaining 20% carries into Week 11 as we amplify reach across platforms.</span>
+                    <span class="lang-zh"><span class="cl-highlight">本周 80% 工作已完成。</span>剩余 20% 将在第 11 周继续推进，并加大各平台覆盖。</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: What's Next — Week 11 -->
+    <section class="slide" data-slide="5">
+        <div class="inner">
+            <p class="label s1">
+                <span class="lang-en">WEEK 10 CLOSING · WHAT'S NEXT</span>
+                <span class="lang-zh">第 10 周收尾 · 下一步</span>
+            </p>
+            <h2 class="hero-2 s2">
+                <span class="lang-en">What's Next.</span>
+                <span class="lang-zh">下一步。</span>
+            </h2>
+            <p class="hero-sub s2">
+                <span class="lang-en">Week 11: 9–13 March 2026</span>
+                <span class="lang-zh">第 11 周：2026 年 3 月 9–13 日</span>
+            </p>
+            <div class="recap-grid s3">
+                <div class="recap-block rb-cyan">
+                    <p class="recap-title">📣 <span class="lang-en">Scale Outreach</span><span class="lang-zh">扩大触达</span></p>
+                    <ul class="list-arrow">
+                        <li><span class="lang-en">200 influencers outreach target</span><span class="lang-zh">200 位影响力人士触达目标</span></li>
+                        <li><span class="lang-en">Deepen community engagement on Reddit + Discord</span><span class="lang-zh">深化 Reddit + Discord 社群互动</span></li>
+                        <li><span class="lang-en">Convert contacts into app downloads</span><span class="lang-zh">将联系人转化为应用下载</span></li>
+                    </ul>
+                </div>
+                <div class="recap-block rb-amber">
+                    <p class="recap-title">🎬 <span class="lang-en">Amplify Content</span><span class="lang-zh">加大内容</span></p>
+                    <ul class="list-arrow">
+                        <li><span class="lang-en">Scale from 24h to 48h content creation</span><span class="lang-zh">内容创作从 24 小时扩至 48 小时</span></li>
+                        <li><span class="lang-en">Amplify reach across all social platforms</span><span class="lang-zh">在所有社媒平台上扩大覆盖</span></li>
+                        <li><span class="lang-en">Publish more carousel posts + AI influencer videos</span><span class="lang-zh">发布更多轮播图 + AI 网红视频</span></li>
+                    </ul>
+                </div>
+                <div class="recap-block rb-purple">
+                    <p class="recap-title">🎯 <span class="lang-en">Gate 1 Push</span><span class="lang-zh">Gate 1 冲刺</span></p>
+                    <ul class="list-arrow">
+                        <li><span class="lang-en">Drive toward 200 organic app downloads</span><span class="lang-zh">推进 200 次有机下载</span></li>
+                        <li><span class="lang-en">Test and validate market organically</span><span class="lang-zh">有机测试与验证市场</span></li>
+                        <li><span class="lang-en">Complete remaining 20% from Week 10</span><span class="lang-zh">完成第 10 周剩余 20%</span></li>
+                    </ul>
+                </div>
+            </div>
+            <p class="s4" style="color: var(--text-3); font-size: 0.88rem; margin-top: 1.5rem;">
+                <span class="lang-en">Dionne · Social Media & Creator Partnerships · Week 10 · 2–6 March 2026</span>
+                <span class="lang-zh">Dionne · 社媒与创作者合作 · 第 10 周 · 2026 年 3 月 2–6 日</span>
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <span class="footer-credit">
+            <span class="lang-en">Dionne · Social Media & Creator Partnerships</span>
+            <span class="lang-zh">Dionne · 社媒与创作者合作</span>
+        </span>
+        <div class="footer-nav">
+            <button class="nav-btn" id="prev">←</button>
+            <span class="slide-counter" id="counter">01 / 05</span>
+            <button class="nav-btn" id="next">→</button>
+        </div>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const total = slides.length;
+        let current = 0;
+        function goTo(i) {
+            current = ((i % total) + total) % total;
+            slides.forEach((s, j) => s.classList.toggle('active', j === current));
+            document.getElementById('counter').textContent =
+                String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+        }
+        document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+        document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') goTo(current - 1);
+            if (e.key === 'ArrowRight') goTo(current + 1);
+        });
+        goTo(0);
+        document.querySelectorAll('.lang-toggle .lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.lang-toggle .lang-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.body.classList.toggle('lang-zh', btn.dataset.lang === 'zh');
+            });
+        });
+    </script>
+</body>
+</html>
