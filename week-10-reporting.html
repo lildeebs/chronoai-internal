@@ -297,6 +297,12 @@
                     </div>
                 </div>
             </div>
+            <div class="embed-section s5" style="margin-top: 1rem;">
+                <p class="embed-label"><span class="lang-en">UPFLUENCE · PER-ACCOUNT ANALYTICS EXAMPLE</span><span class="lang-zh">UPFLUENCE · 单账号分析示例</span></p>
+                <div class="embed-frame" style="background: var(--surface); cursor: pointer;" onclick="document.getElementById('img-modal').style.display='flex'; document.getElementById('modal-img').src='assets/upfluence-account-analytics.png';">
+                    <img src="assets/upfluence-account-analytics.png" alt="Upfluence per-account analytics example" style="width: 100%; display: block; border-radius: 10px;">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -416,6 +422,10 @@
             </p>
         </div>
     </section>
+
+    <div id="img-modal" style="display:none; position:fixed; inset:0; z-index:200; background:rgba(9,9,11,0.92); align-items:center; justify-content:center; padding:2rem; cursor:pointer;" onclick="this.style.display='none'">
+        <img id="modal-img" src="" alt="Expanded" style="max-width:95%; max-height:95%; object-fit:contain; border-radius:12px; pointer-events:none;">
+    </div>
 
     <footer class="footer">
         <span class="footer-credit">
