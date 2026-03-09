@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoAI · Week 11 · Dionne · Weekly Targets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #09090b;
+            --surface: #111114;
+            --surface-2: #18181b;
+            --surface-3: #1e1e23;
+            --border: #27272a;
+            --border-2: #3f3f46;
+            --text: #fafafa;
+            --text-2: #a1a1aa;
+            --text-3: #71717a;
+            --accent: #818cf8;
+            --accent-soft: rgba(129,140,248,0.12);
+            --cyan: #22d3ee;
+            --cyan-soft: rgba(34,211,238,0.12);
+            --amber: #fbbf24;
+            --amber-soft: rgba(251,191,36,0.12);
+            --purple: #a78bfa;
+            --purple-soft: rgba(167,139,250,0.12);
+            --green: #34d399;
+            --green-soft: rgba(52,211,153,0.12);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        * { box-sizing: border-box; font-family: var(--font); margin: 0; padding: 0; }
+        body { background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+        body .lang-zh { display: none; }
+        body.lang-zh .lang-en { display: none; }
+        body.lang-zh .lang-zh { display: inline; }
+
+        .topbar {
+            position: fixed; top: 0; left: 0; right: 0; height: 52px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 32px; background: var(--surface);
+            border-bottom: 1px solid var(--border); z-index: 150;
+        }
+        .topbar-left { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
+        .lang-toggle { display: flex; gap: 2px; background: var(--surface-2); padding: 3px 4px; border-radius: 8px; border: 1px solid var(--border); }
+        .lang-toggle button { padding: 4px 12px; font-size: 0.78rem; font-weight: 600; border: none; border-radius: 6px; cursor: pointer; background: transparent; color: var(--text-3); transition: all 0.2s ease; }
+        .lang-toggle button:hover { color: var(--text-2); }
+        .lang-toggle button.active { background: var(--surface-3); color: var(--accent); }
+
+        .slide { min-height: 100vh; display: none; padding: 92px 40px 116px; position: relative; }
+        .slide.active { display: flex; flex-direction: column; justify-content: center; animation: slideIn 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+        @keyframes slideIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes stagger { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+        .slide.active .s1 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .06s both; }
+        .slide.active .s2 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .14s both; }
+        .slide.active .s3 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .22s both; }
+        .slide.active .s4 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .30s both; }
+        .slide.active .s5 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .38s both; }
+        .slide.active .s6 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .46s both; }
+
+        .inner { max-width: 820px; margin: 0 auto; width: 100%; }
+
+        .capsule { display: inline-block; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 2px solid var(--accent); padding: .45rem 1.15rem; border-radius: 999px; font-weight: 600; margin-bottom: 2.25rem; }
+        .hero { font-size: clamp(2.5rem,6vw,3.75rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; color: var(--text); margin: 0 0 .5rem; max-width: 780px; }
+        .hero-2 { font-size: clamp(2.25rem,4.5vw,3.25rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.15; color: var(--text); }
+        .subline { color: var(--text-2); font-size: 1.15rem; margin-top: 1.25rem; max-width: 580px; font-weight: 500; line-height: 1.5; }
+        .byline { color: var(--text-3); font-size: 1.05rem; margin-top: .6rem; font-weight: 500; }
+
+        .focus-card { margin-top: 2.25rem; background: var(--surface); border-radius: 10px; padding: 1.6rem 1.9rem; border: 2px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        .focus-title { font-size: 0.7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 1rem; }
+        .pill-row { display: flex; flex-wrap: wrap; gap: 8px 12px; }
+        .pill { display: inline-flex; align-items: center; gap: .4rem; font-size: .88rem; font-weight: 600; padding: .5rem 1.1rem; border-radius: 999px; border: 2px solid; background: transparent; }
+        .pill-cyan { border-color: var(--cyan); background: rgba(34,211,238,0.25); color: #67e8f9; }
+        .pill-amber { border-color: var(--amber); background: rgba(251,191,36,0.25); color: #fcd34d; }
+        .pill-purple { border-color: var(--purple); background: rgba(167,139,250,0.25); color: #c4b5fd; }
+
+        .label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-3); font-weight: 700; margin-bottom: .6rem; }
+        .context { color: var(--text-2); font-size: 1rem; line-height: 1.6; margin-bottom: 1.75rem; max-width: 620px; }
+
+        .value-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; margin-top: 1.5rem; }
+        @media (max-width: 640px) { .value-grid { grid-template-columns: 1fr; } }
+        .value-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem 1.35rem; border-left: 3px solid var(--accent); }
+        .value-card .vc-title { font-size: .8rem; font-weight: 700; letter-spacing: .06em; color: var(--accent); margin-bottom: .5rem; }
+        .value-card .vc-body { font-size: .9rem; color: var(--text-2); line-height: 1.55; }
+        .value-card .vc-value { font-size: .8rem; color: var(--green); font-weight: 600; margin-top: .5rem; }
+
+        .goal1-evidence { margin: 1.25rem 0; }
+        .goal1-discord-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+        @media (max-width: 640px) { .goal1-discord-grid { grid-template-columns: 1fr; } }
+        .goal1-discord-card { border-radius: 10px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); }
+        .goal1-discord-card a { display: block; text-decoration: none; color: inherit; }
+        .goal1-discord-card img { display: block; width: 100%; height: auto; max-height: 180px; object-fit: cover; object-position: top; }
+        .goal1-discord-card a:hover { opacity: 0.95; }
+        .goal1-discord-card a:hover img { opacity: 0.9; }
+        .goal1-evidence-caption { font-size: .75rem; color: var(--text-3); margin-top: .5rem; font-weight: 500; }
+
+        .cheru-example { margin: 1.5rem 0; padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; border-left: 3px solid var(--cyan); }
+        .cheru-example-title { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); font-weight: 700; margin-bottom: .4rem; }
+        .cheru-example-head { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: .35rem; }
+        .cheru-example-head a { color: var(--accent); text-decoration: none; }
+        .cheru-example-head a:hover { text-decoration: underline; }
+        .cheru-example-story { font-size: .9rem; color: var(--text-2); line-height: 1.55; margin-bottom: 1rem; }
+        .cheru-example-profile { width: 100%; border-radius: 8px; border: 1px solid var(--border); overflow: hidden; }
+        .cheru-example-profile a { display: block; text-decoration: none; color: inherit; }
+        .cheru-example-profile a:hover { opacity: 0.92; }
+        .cheru-example-profile img { display: block; width: 100%; height: auto; min-height: 200px; object-fit: cover; object-position: top; }
+        .cheru-example-caption { font-size: .7rem; color: var(--text-3); margin-top: .5rem; }
+
+        .info-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: .75rem; margin-bottom: 2rem; }
+        @media (max-width: 640px) { .info-grid { grid-template-columns: 1fr 1fr; } }
+        .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.15rem; }
+        .info-cyan .info-card { border-color: rgba(34,211,238,0.35); }
+        .info-amber .info-card { border-color: rgba(251,191,36,0.35); }
+        .info-purple .info-card { border-color: rgba(167,139,250,0.35); }
+        .info-card .ic-icon { font-size: 1.3rem; margin-bottom: .5rem; }
+        .info-card .ic-title { font-size: .85rem; font-weight: 700; color: var(--text); margin-bottom: .2rem; }
+        .info-card .ic-desc { font-size: .78rem; color: var(--text-3); line-height: 1.45; }
+
+        .divider-label { font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-3); font-weight: 700; margin-bottom: 1.25rem; padding-bottom: .6rem; border-bottom: 1px solid var(--border); }
+
+        .goal-block { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.35rem 1.5rem; margin-bottom: .75rem; }
+        .goal-block.gb-cyan { border-left: 3px solid var(--cyan); }
+        .goal-block.gb-amber { border-left: 3px solid var(--amber); }
+        .goal-block.gb-purple { border-left: 3px solid var(--purple); }
+        .goal-label { font-size: .7rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; margin-bottom: .4rem; }
+        .gb-cyan .goal-label { color: var(--cyan); }
+        .gb-amber .goal-label { color: var(--amber); }
+        .gb-purple .goal-label { color: var(--purple); }
+        .goal-bullets { list-style: none; padding: 0; margin: 0 0 .65rem; }
+        .goal-bullets li { position: relative; padding-left: 1.1rem; font-size: .9rem; color: var(--text); font-weight: 500; line-height: 1.55; margin-bottom: .3rem; }
+        .goal-bullets li::before { content: '→'; position: absolute; left: 0; font-weight: 600; font-size: .8rem; }
+        .gb-cyan .goal-bullets li::before { color: var(--cyan); }
+        .gb-amber .goal-bullets li::before { color: var(--amber); }
+        .gb-purple .goal-bullets li::before { color: var(--purple); }
+        .goal-check { font-size: .85rem; color: var(--text-2); line-height: 1.7; }
+        .goal-check .ck { color: var(--green); font-weight: 700; margin-right: .3rem; }
+        .goal-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+        @media (max-width: 640px) { .goal-row { grid-template-columns: 1fr; } }
+
+        .audit-hero { font-size: clamp(2.2rem,5vw,3.2rem); font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; }
+        .audit-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; margin-top: 1.5rem; }
+        @media (max-width: 768px) { .audit-grid { grid-template-columns: 1fr; } }
+        .audit-col { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.4rem; }
+        .audit-col.ac-cyan { border-top: 3px solid var(--cyan); }
+        .audit-col.ac-amber { border-top: 3px solid var(--amber); }
+        .audit-col.ac-purple { border-top: 3px solid var(--purple); }
+        .audit-col-title { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--text); margin-bottom: .65rem; }
+        .audit-list { list-style: none; padding: 0; }
+        .audit-list li { position: relative; padding-left: 1.6rem; font-size: .85rem; color: var(--text-2); line-height: 1.65; margin-bottom: .45rem; }
+        .audit-list li::before { content: ''; position: absolute; left: 0; top: .3rem; width: .85rem; height: .85rem; border-radius: 3px; border: 1.5px solid var(--text-3); }
+        .ac-cyan .audit-list li::before { border-color: var(--cyan); }
+        .ac-amber .audit-list li::before { border-color: var(--amber); }
+        .ac-purple .audit-list li::before { border-color: var(--purple); }
+
+        .quote-block { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+        .quote-attr { font-size: .78rem; color: var(--text-3); margin-top: .4rem; font-weight: 600; }
+        .audit-score { display: inline-flex; align-items: center; gap: 1.25rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .audit-score-badge { display: inline-flex; align-items: center; gap: .75rem; padding: .65rem 1.25rem; background: rgba(6, 78, 59, 0.6); border: 1px solid var(--green); border-radius: 10px; box-shadow: 0 0 0 1px rgba(52, 211, 153, 0.15); }
+        .audit-score-num { font-size: 1.85rem; font-weight: 900; color: var(--green); letter-spacing: -0.02em; line-height: 1; }
+        .audit-score-label { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); font-weight: 700; }
+        .audit-score-meta { font-size: .8rem; color: var(--text-3); font-weight: 500; }
+        .key-line { font-size: .95rem; font-weight: 600; color: var(--text); margin: 1rem 0 .75rem; padding-left: 1rem; border-left: 3px solid var(--accent); }
+
+        .footer { position: fixed; bottom: 0; left: 0; right: 0; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; background: var(--surface); border-top: 1px solid var(--border); z-index: 150; }
+        .footer-credit { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
+        .footer-nav { display: flex; align-items: center; gap: 16px; }
+        .slide-counter { font-size: .75rem; letter-spacing: .05em; color: var(--text-3); min-width: 3.2rem; text-align: center; font-weight: 600; }
+        .nav-btn { background: transparent; border: 1px solid var(--border); color: var(--text-2); font-size: .9rem; cursor: pointer; padding: 5px 11px; border-radius: 6px; transition: all .2s ease; }
+        .nav-btn:hover { background: var(--surface-2); color: var(--accent); border-color: rgba(129,140,248,0.4); }
+        .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 600; color: var(--text-3); text-decoration: none; padding: 5px 12px; border-radius: 6px; border: 1px solid var(--border); transition: all 0.2s ease; }
+        .back-btn:hover { color: var(--accent); border-color: rgba(129,140,248,0.4); background: var(--surface-2); }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <a class="back-btn" href="../overview.html">← Overview</a>
+        <span class="topbar-left">
+            <span class="lang-en">Week 11 · Monday Targets</span>
+            <span class="lang-zh">第 11 周 · 周一目标</span>
+        </span>
+        <div class="lang-toggle">
+            <button type="button" class="lang-btn active" data-lang="en">EN</button>
+            <button type="button" class="lang-btn" data-lang="zh">中文</button>
+        </div>
+    </header>
+
+    <!-- Slide 1: Title — Drive Community. Drive 200. -->
+    <section class="slide" data-slide="1">
+        <div class="inner">
+            <p class="capsule s1">
+                <span class="lang-en">WEEK 11 · 9–13 MAR 2026 · CHO AUDIT 9/10</span>
+                <span class="lang-zh">第 11 周 · 3 月 9–13 日 · CHO 审核 9/10</span>
+            </p>
+            <h1 class="hero s2">
+                <span class="lang-en">Find where they gather.</span>
+                <span class="lang-zh">找到他们聚集之处。</span>
+            </h1>
+            <h1 class="hero s2" style="margin-top:.1em;">
+                <span class="lang-en">Build there. Reach 200.</span>
+                <span class="lang-zh">在那里建设。触达 200。</span>
+            </h1>
+            <p class="subline s3">
+                <span class="lang-en">Community isn't a feature — it's the foundation. Understanding communities is my main role: where they form, why they stick, how to build there.</span>
+                <span class="lang-zh">社群不是功能，而是根基。理解社群是我的核心职责：它们在哪形成、为何留存、如何在那里建设。</span>
+            </p>
+            <p class="byline s3">
+                <span class="lang-en">Dionne · Social Media & Creator Partnerships</span>
+                <span class="lang-zh">Dionne · 社媒与创作者合作</span>
+            </p>
+            <div class="focus-card s4">
+                <p class="focus-title"><span class="lang-en">This week</span><span class="lang-zh">本周</span></p>
+                <div class="pill-row">
+                    <span class="pill pill-cyan"><span class="lang-en">🌱 Build where they gather</span><span class="lang-zh">🌱 在他们聚集处建设</span></span>
+                    <span class="pill pill-amber"><span class="lang-en">✨ Nurture belonging</span><span class="lang-zh">✨ 培育归属感</span></span>
+                    <span class="pill pill-purple"><span class="lang-en">📊 Measure what matters</span><span class="lang-zh">📊 衡量关键指标</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: What community gives (Value — colleague's voice) -->
+    <section class="slide" data-slide="2">
+        <div class="inner">
+            <h2 class="hero-2 s2">
+                <span class="lang-en">What community gives ChronoAI.</span>
+                <span class="lang-zh">社群为 ChronoAI 带来什么。</span>
+            </h2>
+            <p class="context s3">
+                <span class="lang-en">A deeper truth: people yearn for community. Not tools — belonging. SoulGarden is the proof. We want to connect with high-intent people inside these spaces. Many of them love to engage and are looking for real humans to connect with. That's where my role sits: to listen to their needs and wants, and to build genuine relationships. That takes time.</span>
+                <span class="lang-zh">一个更深的真相：人们渴望社群。不是工具，而是归属。SoulGarden 就是证明。我们想与这些空间里的高意图用户连接。他们中许多人乐于参与，也在寻找真实的人与之连接。我的角色正在这里：倾听他们的需求与愿望，建立真实的关系。这需要时间。</span>
+            </p>
+            <p class="key-line s3"><span class="lang-en">Bottom line for the business: community = pipeline quality + retention + organic growth. All three feed Gate 1 and 200.</span><span class="lang-zh">对业务而言：社群 = 管线质量 + 留存 + 有机增长。三者都支撑 Gate 1 与 200。</span></p>
+            <div class="value-grid s4">
+                <div class="value-card">
+                    <p class="vc-title"><span class="lang-en">Pipeline quality</span><span class="lang-zh">管线质量</span></p>
+                    <p class="vc-body"><span class="lang-en">Right communities → right users. We show up where high-intent manifestation users already are.</span><span class="lang-zh">对的社群 → 对的用户。我们在高意图用户已在的地方出现。</span></p>
+                    <p class="vc-value"><span class="lang-en">Value: faster path to 200 installs.</span><span class="lang-zh">价值：更快达成 200 安装。</span></p>
+                </div>
+                <div class="value-card">
+                    <p class="vc-title"><span class="lang-en">Belonging, not just installs</span><span class="lang-zh">归属，不止安装</span></p>
+                    <p class="vc-body"><span class="lang-en">People yearn for community. SoulGarden embodies it: daily rituals, shared habits, users who invite others.</span><span class="lang-zh">人们渴望社群。SoulGarden 将其具象化：每日仪式、共同习惯、用户邀请用户。</span></p>
+                    <p class="vc-value"><span class="lang-en">Value: retention through belonging.</span><span class="lang-zh">价值：因归属而留存。</span></p>
+                </div>
+                <div class="value-card">
+                    <p class="vc-title"><span class="lang-en">Organic growth</span><span class="lang-zh">有机增长</span></p>
+                    <p class="vc-body"><span class="lang-en">Community members → users → advocates. Growth that compounds without paid ads.</span><span class="lang-zh">社群成员 → 用户 → 推广大使。不靠付费的复合增长。</span></p>
+                    <p class="vc-value"><span class="lang-en">Value: scalable acquisition.</span><span class="lang-zh">价值：可规模化的获客。</span></p>
+                </div>
+                <div class="value-card">
+                    <p class="vc-title"><span class="lang-en">This week's deliverables</span><span class="lang-zh">本周交付</span></p>
+                    <p class="vc-body"><span class="lang-en">10+ communities mapped, 100 KOLs + 2 onboarded, nurture plan + 5 user feedback, 13 posts live, 1 dashboard. All tie to Gate 1.</span><span class="lang-zh">10+ 社群落图、100 KOL + 2 位入驻、培育计划 + 5 份用户反馈、13 帖上线、1 个仪表板。全部指向 Gate 1。</span></p>
+                    <p class="vc-value"><span class="lang-en">Value: clear outcomes that drive 200.</span><span class="lang-zh">价值：清晰结果，驱动 200。</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Priority 1 — Community (Goals 1 + 2) -->
+    <section class="slide" data-slide="3">
+        <div class="inner">
+            <h2 class="hero-2 s2">
+                <span class="lang-en">Identify. Build. Drive.</span>
+                <span class="lang-zh">识别。建设。驱动。</span>
+            </h2>
+            <p class="context s3">
+                <span class="lang-en">Understanding communities is at the heart of my role. This week: map where SoulGarden's people already gather — and build there. Technology should connect, not isolate.</span>
+                <span class="lang-zh">理解社群是我工作的核心。本周：画出 SoulGarden 用户已在的阵地，并在那里建设。科技应连接人，而非隔离。</span>
+            </p>
+            <p class="key-line s3"><span class="lang-en">Why this comes first: without the right communities and KOLs, we're marketing into the void. Finding them is the foundation for 200.</span><span class="lang-zh">为何优先：没有对的社群与 KOL，我们就是在对虚空营销。找到他们是 200 的根基。</span></p>
+            <div class="info-grid info-cyan s4" style="grid-template-columns: repeat(2,1fr);">
+                <div class="info-card">
+                    <div class="ic-icon">📱</div>
+                    <div class="ic-title"><span class="lang-en">WhatsApp channel</span><span class="lang-zh">WhatsApp 频道</span></div>
+                    <div class="ic-desc"><span class="lang-en">10+ high-intent communities · ranked</span><span class="lang-zh">10+ 高意图社群 · 已排序</span></div>
+                </div>
+                <div class="info-card">
+                    <div class="ic-icon">🎯</div>
+                    <div class="ic-title"><span class="lang-en">KOL pipeline</span><span class="lang-zh">KOL 管线</span></div>
+                    <div class="ic-desc"><span class="lang-en">100 contacts · min. 2 onboarded</span><span class="lang-zh">100 联系人 · 至少 2 位入驻</span></div>
+                </div>
+            </div>
+            <div class="goal1-evidence s4">
+                <div class="goal1-discord-grid">
+                    <div class="goal1-discord-card">
+                        <a href="https://discord.gg/RsVXhk6cpP" target="_blank" rel="noopener" title="Join SCA Subliminal Haven">
+                            <img src="assets/discord-sca-subliminal-haven.png" alt="SCA Subliminal Haven — law of attraction, subliminal, manifestation, shifting">
+                        </a>
+                        <p class="goal1-evidence-caption" style="padding:.4rem .5rem 0;"><span class="lang-en">SCA Subliminal Haven</span><span class="lang-zh">SCA Subliminal Haven</span> · 37 members · <a href="https://discord.gg/RsVXhk6cpP" target="_blank" rel="noopener" style="color:var(--accent);">Join</a></p>
+                    </div>
+                    <div class="goal1-discord-card">
+                        <a href="https://discord.gg/theshifterscafe" target="_blank" rel="noopener" title="Join The Shifters Café">
+                            <img src="assets/discord-theshifters-cafe.png" alt="The Shifters Café — spirituality, witchcraft, manifestation, shifting">
+                        </a>
+                        <p class="goal1-evidence-caption" style="padding:.4rem .5rem 0;"><span class="lang-en">The Shifters Café</span><span class="lang-zh">The Shifters Café</span> · 206 members · <a href="https://discord.gg/theshifterscafe" target="_blank" rel="noopener" style="color:var(--accent);">Join</a></p>
+                    </div>
+                    <div class="goal1-discord-card">
+                        <a href="https://discord.gg/wYnvddHzt2" target="_blank" rel="noopener" title="Join Chloee's Café">
+                            <img src="assets/discord-chloeecafe.png" alt="Chloee's Café — subliminals, journaling, manifestation">
+                        </a>
+                        <p class="goal1-evidence-caption" style="padding:.4rem .5rem 0;"><span class="lang-en">Chloee's Café</span><span class="lang-zh">Chloee's Café</span> · 31 members · <a href="https://discord.gg/wYnvddHzt2" target="_blank" rel="noopener" style="color:var(--accent);">Join</a></p>
+                    </div>
+                </div>
+                <p class="goal1-evidence-caption" style="margin-top:.6rem;"><span class="lang-en">High-intent Discord channels in the manifestation realm. First: SCA Subliminal Haven (linked).</span><span class="lang-zh">显化领域高意图 Discord 频道。第一：SCA Subliminal Haven（已链接）。</span></p>
+            </div>
+            <div class="cheru-example s4">
+                <p class="cheru-example-title"><span class="lang-en">Example · Connecting with a high-intent creator</span><span class="lang-zh">示例 · 与高意图创作者连接</span></p>
+                <p class="cheru-example-head"><span class="lang-en">Cheru Crystals</span><span class="lang-zh">Cheru Crystals</span> · <a href="https://www.instagram.com/cherucrystals/?hl=en" target="_blank" rel="noopener">@cherucrystals</a></p>
+                <p class="cheru-example-story">
+                    <span class="lang-en">We're connecting with Cheru to explore opportunities and bridge our products with hers. Her space — crystals, spirituality, wellness — sits right in the manifestation realm SoulGarden serves. Same audience, shared values: people looking for meaning, ritual, and belonging. Story-tell with the screenshots below: her profile and content show why she's a fit and how we're building the relationship.</span>
+                    <span class="lang-zh">我们正在与 Cheru 连接，探索机会并将我们的产品与她的结合。她的领域 — 水晶、灵性、疗愈 — 正在 SoulGarden 服务的显化领域内。同一受众、共同价值：寻找意义、仪式与归属的人。用下方截图讲故事：她的主页与内容展示为何她是合适人选，以及我们如何建立关系。</span>
+                </p>
+                <div class="cheru-example-profile">
+                    <a href="https://www.instagram.com/cherucrystals/?hl=en" target="_blank" rel="noopener" title="View @cherucrystals on Instagram">
+                        <img src="assets/cherucrystals-profile.png" alt="Cheru Crystals Instagram profile — click to open @cherucrystals">
+                    </a>
+                </div>
+                <p class="cheru-example-caption"><span class="lang-en">Profile screenshot · links to her Instagram.</span><span class="lang-zh">主页截图 · 点击跳转其 Instagram。</span></p>
+            </div>
+            <div class="goal-row s5">
+                <div class="goal-block gb-cyan">
+                    <p class="goal-label"><span class="lang-en">High-intent communities</span><span class="lang-zh">高意图社群</span></p>
+                    <ul class="goal-bullets">
+                        <li><span class="lang-en">Deliver 1 WhatsApp channel: 10+ communities (Reddit, Discord, etc.) ranked by intent and fit</span><span class="lang-zh">交付 1 个 WhatsApp 频道：10+ 社群（Reddit、Discord 等）按意图与匹配度排序</span></li>
+                    </ul>
+                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: 1 WhatsApp channel</span><span class="lang-zh">交付物：1 个 WhatsApp 频道</span></p>
+                </div>
+                <div class="goal-block gb-cyan">
+                    <p class="goal-label"><span class="lang-en">KOL pipeline + onboarding</span><span class="lang-zh">KOL 管线 + 入驻</span></p>
+                    <ul class="goal-bullets">
+                        <li><span class="lang-en">Deliver 100 KOLs (manifestation realm) + onboard min. 2 high-intent KOLs</span><span class="lang-zh">交付 100 位 KOL（显化领域）+ 至少 2 位高意图 KOL 入驻</span></li>
+                        <li><span class="lang-en">Track community-sourced installs</span><span class="lang-zh">追踪社群来源安装</span></li>
+                    </ul>
+                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: KOL list + onboarding evidence for 2</span><span class="lang-zh">交付物：KOL 名单 + 2 位入驻证明</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Priority 2 — Nurture (Goal 3) -->
+    <section class="slide" data-slide="4">
+        <div class="inner">
+            <h2 class="hero-2 s2">
+                <span class="lang-en">Nurture existing users.</span>
+                <span class="lang-zh">培育现有用户。</span>
+            </h2>
+            <p class="context s3">
+                <span class="lang-en">Communities stick when people feel they belong. Nurturing is part of understanding community — the 29 we have get first touchpoints; 5+ feedback responses and a retention baseline prove we're building real community, not just installs.</span>
+                <span class="lang-zh">当人们感到归属时，社群才会留存。培育是理解社群的一部分 — 现有 29 位用户获得首次触达；5+ 份反馈与留存基线证明我们在建真正的社群，而不只是安装量。</span>
+            </p>
+            <p class="key-line s3"><span class="lang-en">Why it matters: these 29 users are our first community cohort. How we treat them sets retention and word-of-mouth for 200.</span><span class="lang-zh">为何重要：这 29 位用户是我们的首批社群 cohort。我们如何对待他们，决定了留存与口碑，进而影响 200。</span></p>
+            <div class="info-grid info-amber s4" style="grid-template-columns: repeat(3,1fr);">
+                <div class="info-card">
+                    <div class="ic-icon">👥</div>
+                    <div class="ic-title"><span class="lang-en">Reach</span><span class="lang-zh">触达</span></div>
+                    <div class="ic-desc"><span class="lang-en">100% organic users (13–16)</span><span class="lang-zh">100% 有机用户（13–16）</span></div>
+                </div>
+                <div class="info-card">
+                    <div class="ic-icon">💬</div>
+                    <div class="ic-title"><span class="lang-en">Feedback</span><span class="lang-zh">反馈</span></div>
+                    <div class="ic-desc"><span class="lang-en">5+ user responses</span><span class="lang-zh">5+ 用户回复</span></div>
+                </div>
+                <div class="info-card">
+                    <div class="ic-icon">📊</div>
+                    <div class="ic-title"><span class="lang-en">Baseline</span><span class="lang-zh">基线</span></div>
+                    <div class="ic-desc"><span class="lang-en">Day-7 retention</span><span class="lang-zh">7 日留存</span></div>
+                </div>
+            </div>
+            <div class="goal-block gb-amber s5" style="max-width:520px;">
+                <p class="goal-label"><span class="lang-en">Nurture plan + touchpoints</span><span class="lang-zh">培育计划 + 触达</span></p>
+                <ul class="goal-bullets">
+                    <li><span class="lang-en">Deliver nurture plan + execute first touchpoints for 29 installs</span><span class="lang-zh">交付培育计划并对 29 次安装执行首次触达</span></li>
+                    <li><span class="lang-en">5+ user feedback responses; Day-7 retention baseline</span><span class="lang-zh">5+ 用户反馈；7 日留存基线</span></li>
+                </ul>
+                <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: nurture plan + execution evidence + user feedback summary</span><span class="lang-zh">交付物：培育计划 + 执行证明 + 用户反馈摘要</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Priority 3 — Content + Data (Goals 4 + 5) -->
+    <section class="slide" data-slide="5">
+        <div class="inner">
+            <h2 class="hero-2 s2">
+                <span class="lang-en">Content and dashboard.</span>
+                <span class="lang-zh">内容与仪表板。</span>
+            </h2>
+            <p class="context s3">
+                <span class="lang-en">Content and data serve community strategy: they show which channels and behaviours actually build toward 200. My community lens — where we show up, what we measure — ties it all together.</span>
+                <span class="lang-zh">内容与数据服务于社群策略：它们显示哪些渠道和行为在真正推动 200。我的社群视角 — 我们在哪出现、我们衡量什么 — 把这一切串起来。</span>
+            </p>
+            <p class="key-line s3"><span class="lang-en">Why it matters: content and dashboard show where we're winning and what to double down on — so we invest in what drives 200.</span><span class="lang-zh">为何重要：内容与仪表板显示我们在哪赢、该加码什么，从而把资源投在能驱动 200 的地方。</span></p>
+            <div class="info-grid info-purple s4" style="grid-template-columns: repeat(2,1fr);">
+                <div class="info-card">
+                    <div class="ic-icon">📅</div>
+                    <div class="ic-title"><span class="lang-en">Content</span><span class="lang-zh">内容</span></div>
+                    <div class="ic-desc"><span class="lang-en">13 posts live · 1 performance report</span><span class="lang-zh">13 帖上线 · 1 份表现报告</span></div>
+                </div>
+                <div class="info-card">
+                    <div class="ic-icon">📊</div>
+                    <div class="ic-title"><span class="lang-en">Dashboard</span><span class="lang-zh">仪表板</span></div>
+                    <div class="ic-desc"><span class="lang-en">6 metrics · tracking framework</span><span class="lang-zh">6 项指标 · 追踪框架</span></div>
+                </div>
+            </div>
+            <div class="goal-row s5">
+                <div class="goal-block gb-purple">
+                    <p class="goal-label"><span class="lang-en">Schedule content + report</span><span class="lang-zh">排期内容 + 报告</span></p>
+                    <ul class="goal-bullets">
+                        <li><span class="lang-en">Schedule all SoulGarden content; 13 posts live + 1 first-week performance report</span><span class="lang-zh">排期全部 SoulGarden 内容；13 帖上线 + 1 份首周表现报告</span></li>
+                    </ul>
+                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: 13 posts live + performance report</span><span class="lang-zh">交付物：13 帖上线 + 表现报告</span></p>
+                </div>
+                <div class="goal-block gb-purple">
+                    <p class="goal-label"><span class="lang-en">Dashboard + tracking</span><span class="lang-zh">仪表板 + 追踪</span></p>
+                    <ul class="goal-bullets">
+                        <li><span class="lang-en">Deliver 1 working dashboard + 1 tracking framework; 6 core metrics (installs, active, paying, frequency, retention, organic vs. internal)</span><span class="lang-zh">交付 1 个可用仪表板 + 1 份追踪框架；6 项核心指标</span></li>
+                    </ul>
+                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: live dashboard link + tracking framework doc</span><span class="lang-zh">交付物：仪表板链接 + 追踪框架文档</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: Friday Audit -->
+    <section class="slide" data-slide="6">
+        <div class="inner">
+            <h2 class="audit-hero s2">
+                <span class="lang-en">What we're checking by Friday.</span>
+                <span class="lang-zh">周五前要确认的事。</span>
+            </h2>
+            <div class="audit-grid s3">
+                <div class="audit-col ac-cyan">
+                    <p class="audit-col-title"><span class="lang-en">Community</span><span class="lang-zh">社群</span></p>
+                    <ul class="audit-list">
+                        <li><span class="lang-en">Deliver 1 WhatsApp channel (10+ communities ranked)</span><span class="lang-zh">交付 1 个 WhatsApp 频道（10+ 社群已排序）</span></li>
+                        <li><span class="lang-en">Deliver 100 KOL list + onboard min. 2</span><span class="lang-zh">交付 100 KOL 名单 + 至少 2 位入驻</span></li>
+                        <li><span class="lang-en">Track community-sourced installs</span><span class="lang-zh">追踪社群来源安装</span></li>
+                    </ul>
+                </div>
+                <div class="audit-col ac-amber">
+                    <p class="audit-col-title"><span class="lang-en">Nurture</span><span class="lang-zh">培育</span></p>
+                    <ul class="audit-list">
+                        <li><span class="lang-en">Deliver nurture plan + execution evidence</span><span class="lang-zh">交付培育计划 + 执行证明</span></li>
+                        <li><span class="lang-en">5+ user feedback responses</span><span class="lang-zh">5+ 用户反馈</span></li>
+                        <li><span class="lang-en">Day-7 retention baseline</span><span class="lang-zh">7 日留存基线</span></li>
+                    </ul>
+                </div>
+                <div class="audit-col ac-purple">
+                    <p class="audit-col-title"><span class="lang-en">Content & data</span><span class="lang-zh">内容与数据</span></p>
+                    <ul class="audit-list">
+                        <li><span class="lang-en">13 posts live + 1 performance report</span><span class="lang-zh">13 帖上线 + 1 份表现报告</span></li>
+                        <li><span class="lang-en">1 dashboard + 1 tracking framework (6 metrics)</span><span class="lang-zh">1 个仪表板 + 1 份追踪框架（6 项指标）</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="audit-score s4">
+                <div class="audit-score-badge">
+                    <span class="audit-score-num">9/10</span>
+                    <span class="audit-score-label"><span class="lang-en">CHO Audit</span><span class="lang-zh">CHO 审核</span></span>
+                </div>
+                <span class="audit-score-meta"><span class="lang-en">5 priorities · 6 deliverables · 5 days</span><span class="lang-zh">5 项重点 · 6 项交付 · 5 天</span></span>
+            </div>
+            <div class="quote-block s4">
+                <p class="quote-attr">
+                    <span class="lang-en">Dionne · Social Media & Creator Partnerships · ChronoAI · Week 11</span>
+                    <span class="lang-zh">Dionne · 社媒与创作者合作 · ChronoAI · 第 11 周</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <span class="footer-credit">
+            <span class="lang-en">Dionne · Social Media & Creator Partnerships</span>
+            <span class="lang-zh">Dionne · 社媒与创作者合作</span>
+        </span>
+        <div class="footer-nav">
+            <button class="nav-btn" id="prev">←</button>
+            <span class="slide-counter" id="counter">01 / 06</span>
+            <button class="nav-btn" id="next">→</button>
+        </div>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const total = slides.length;
+        let current = 0;
+        function goTo(i) {
+            current = ((i % total) + total) % total;
+            slides.forEach((s, j) => s.classList.toggle('active', j === current));
+            document.getElementById('counter').textContent = String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+        }
+        document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
+        document.getElementById('next').addEventListener('click', () => goTo(current + 1));
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') goTo(current - 1);
+            if (e.key === 'ArrowRight') goTo(current + 1);
+        });
+        goTo(0);
+        document.querySelectorAll('.lang-toggle .lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.lang-toggle .lang-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.body.classList.toggle('lang-zh', btn.dataset.lang === 'zh');
+            });
+        });
+    </script>
+</body>
+</html>
