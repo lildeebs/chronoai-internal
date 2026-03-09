@@ -112,6 +112,20 @@
             border: 1px solid rgba(52,211,153,0.3);
         }
 
+        .week-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        .week-row:last-child { margin-bottom: 0; }
+        .week-row .deck-card { margin-bottom: 0; }
+        .week-row--single .deck-card { grid-column: 1 / -1; }
+        @media (max-width: 620px) {
+            .week-row { grid-template-columns: 1fr; }
+            .week-row--single .deck-card { grid-column: 1; }
+        }
+
         .deck-card {
             display: flex;
             flex-direction: column;
@@ -275,52 +289,57 @@
             Week 11 · 9–13 March 2026 &nbsp;<span class="status-badge">In Progress</span>
         </p>
 
-        <a class="deck-card current fade-5" href="week-11-target/week-11-target.html">
-            <p class="dc-type dc-type-monday">Monday Update Week 11</p>
-            <p class="dc-title">Find where they gather. Build there. Reach 200.</p>
-            <p class="dc-subtitle">Community-first targets · Discord, KOLs, nurture, content &amp; dashboard.</p>
-            <p class="dc-desc">10+ communities (WhatsApp channel). 100 KOLs + 2 onboarded. Nurture plan + 5 feedback. 13 posts + 1 dashboard. CHO Audit 9/10.</p>
-            <div class="dc-meta">
-                <span>Monday 9 March 2026 · 6 slides</span>
-                <span class="dc-arrow">→</span>
-            </div>
-        </a>
+        <div class="week-row week-row--single fade-5">
+            <a class="deck-card current" href="week-11-target/week-11-target.html">
+                <p class="dc-type dc-type-monday">Monday Update Week 11</p>
+                <p class="dc-title">Find where they gather. Build there. Reach 200.</p>
+                <p class="dc-subtitle">Community-first targets · Discord, KOLs, nurture, content &amp; dashboard.</p>
+                <p class="dc-desc">10+ communities (WhatsApp channel). 100 KOLs + 2 onboarded. Nurture plan + 5 feedback. 13 posts + 1 dashboard. CHO Audit 9/10.</p>
+                <div class="dc-meta">
+                    <span>Monday 9 March 2026 · 6 slides</span>
+                    <span class="dc-arrow">→</span>
+                </div>
+            </a>
+        </div>
 
         <div class="archive-section">
             <p class="archive-label fade-6">Archive</p>
 
-            <a class="deck-card archive fade-7" href="week-10-target/week-10-target.html">
-                <p class="dc-type dc-type-monday">Monday Update Week 10</p>
-                <p class="dc-title">Grow Visibility. Strengthen the Pipeline.</p>
-                <p class="dc-subtitle">Content publishing, organic outreach, AuraSnap improvements.</p>
-                <p class="dc-desc">5 SoulGarden + GodGPT posts. 10 influencer outreach for Soft Launch Party. 50+ lead pipeline. Riteset socials set-up. 2 AuraSnap improvements shipped.</p>
-                <div class="dc-meta">
-                    <span>Monday 2 March 2026 · 5 slides</span>
-                    <span class="dc-arrow">→</span>
-                </div>
-            </a>
+            <div class="week-row fade-7">
+                <a class="deck-card archive" href="week-10-target/week-10-target.html">
+                    <p class="dc-type dc-type-monday">Monday Update Week 10</p>
+                    <p class="dc-title">Grow Visibility. Strengthen the Pipeline.</p>
+                    <p class="dc-subtitle">Content publishing, organic outreach, AuraSnap improvements.</p>
+                    <p class="dc-desc">5 SoulGarden + GodGPT posts. 10 influencer outreach for Soft Launch Party. 50+ lead pipeline. Riteset socials set-up. 2 AuraSnap improvements shipped.</p>
+                    <div class="dc-meta">
+                        <span>Monday 2 March 2026 · 5 slides</span>
+                        <span class="dc-arrow">→</span>
+                    </div>
+                </a>
+                <a class="deck-card archive" href="week-10-reporting/week-10-reporting.html">
+                    <p class="dc-type dc-type-friday">Friday Review Week 10</p>
+                    <p class="dc-title">Ready to Drive SoulGarden to 200 Users.</p>
+                    <p class="dc-subtitle">Content engine, outreach pipeline, and measurement framework built. 100% organic.</p>
+                    <p class="dc-desc">108 contacts across Reddit, Discord &amp; KOLs. 18 accounts set up (8 owned + 10 AI-powered TikTok). 18 carousels &amp; reels created. 29 app installs baseline. Gate 1: 200 active SoulGarden users.</p>
+                    <div class="dc-meta">
+                        <span>Friday 6 March 2026 · 7 slides</span>
+                        <span class="dc-arrow">→</span>
+                    </div>
+                </a>
+            </div>
 
-            <a class="deck-card archive fade-8" href="week-10-reporting/week-10-reporting.html">
-                <p class="dc-type dc-type-friday">Friday Review Week 10</p>
-                <p class="dc-title">Ready to Drive SoulGarden to 200 Users.</p>
-                <p class="dc-subtitle">Content engine, outreach pipeline, and measurement framework built. 100% organic.</p>
-                <p class="dc-desc">108 contacts across Reddit, Discord &amp; KOLs. 18 accounts set up (8 owned + 10 AI-powered TikTok). 18 carousels &amp; reels created. 29 app installs baseline. Gate 1: 200 active SoulGarden users.</p>
-                <div class="dc-meta">
-                    <span>Friday 6 March 2026 · 7 slides</span>
-                    <span class="dc-arrow">→</span>
-                </div>
-            </a>
-
-            <a class="deck-card archive fade-9" href="week-09-reporting/week-09-reporting.html">
-                <p class="dc-type dc-type-friday">Friday Review Week 09</p>
-                <p class="dc-title">Driving Social and Community Engagements Organically.</p>
-                <p class="dc-subtitle">Teasers live · Pipeline growing · What's coming next.</p>
-                <p class="dc-desc">SoulGarden 3 posts live + newsletter finalised. Reddit 19K+ views, 45 interested parties. 50+ affiliate leads identified. AuraSnap concept + positioning done.</p>
-                <div class="dc-meta">
-                    <span>23–27 February 2026 · 7 slides</span>
-                    <span class="dc-arrow">→</span>
-                </div>
-            </a>
+            <div class="week-row week-row--single fade-8">
+                <a class="deck-card archive" href="week-09-reporting/week-09-reporting.html">
+                    <p class="dc-type dc-type-friday">Friday Review Week 09</p>
+                    <p class="dc-title">Driving Social and Community Engagements Organically.</p>
+                    <p class="dc-subtitle">Teasers live · Pipeline growing · What's coming next.</p>
+                    <p class="dc-desc">SoulGarden 3 posts live + newsletter finalised. Reddit 19K+ views, 45 interested parties. 50+ affiliate leads identified. AuraSnap concept + positioning done.</p>
+                    <div class="dc-meta">
+                        <span>23–27 February 2026 · 7 slides</span>
+                        <span class="dc-arrow">→</span>
+                    </div>
+                </a>
+            </div>
         </div>
 
         <div class="footer">
