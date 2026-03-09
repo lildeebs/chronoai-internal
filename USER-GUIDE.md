@@ -1,6 +1,6 @@
 # 员工使用说明 / USER GUIDE
 
-**Weekly Goal Audit & Friday Review — CHO 审计与复盘闭环**
+**Weekly Goal Audit & Friday Review - CHO 审计与复盘闭环**
 
 This document is the canonical reference for **reporting (Friday) decks** and **target (Monday) decks**. Use it when building or improving weekly slides and tasks.
 
@@ -35,8 +35,8 @@ The process has two tracks. The system routes your message by **trigger words**.
 
 **What you get:** A **[Goal Audit Report]** that:
 
-- **Audit score & warning zone** — Overall score (out of 10) and main risks (e.g. no deliverables, no strategic alignment).
-- **Item-by-item audit & revision guidance** — The bot does **not** rewrite goals for you. It points out missing elements and gives a **fill-in-the-blank framework** for you to complete.
+- **Audit score & warning zone** - Overall score (out of 10) and main risks (e.g. no deliverables, no strategic alignment).
+- **Item-by-item audit & revision guidance** - The bot does **not** rewrite goals for you. It points out missing elements and gives a **fill-in-the-blank framework** for you to complete.
 
 **Your action:** Fill in deliverables and metrics, edit your goals, and send again until the system archives them.
 
@@ -108,13 +108,13 @@ The system scores Monday goals against **5 rules**. More rules passed → higher
 
 ---
 
-## IV. Week 10 goals (2 Mar – 6 Mar) — confirmed copy
+## IV. Week 10 goals (2 Mar – 6 Mar) - confirmed copy
 
 Use this copy for the Week 10 deck (Monday target / Friday reporting). One paragraph per goal.
 
 **SoulGarden**
 - Prepare the next 3 posts for socials.
-- SoulGarden Soft Launch Party, 12 Mar — curating 1 influencer and 2 target-user attendance to build seeding community and capture user feedback.
+- SoulGarden Soft Launch Party, 12 Mar - curating 1 influencer and 2 target-user attendance to build seeding community and capture user feedback.
 
 **Organic engagements (GodGPT)**
 - Keep building real conversations (Reddit, Discord) across 10+ Reddit communities, speak with 1–2 users of our digital products to get review/feedback.
@@ -130,4 +130,4 @@ When building the **Week 10 Friday (reporting)** deck, report on these and set n
 
 ---
 
-*Source: 员工使用说明_USER-GUIDE.pdf — saved as reference for reporting (Fri) and target (Mon) decks.*
+*Source: 员工使用说明_USER-GUIDE.pdf - saved as reference for reporting (Fri) and target (Mon) decks.*

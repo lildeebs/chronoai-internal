@@ -26,7 +26,7 @@ CHO-formatted goals: binary verification, clear deliverables, quantitative accep
 
 ---
 
-## Bot submission (copy only the 5 lines below — no headings, no ---)
+## Bot submission (copy only the 5 lines below - no headings, no ---)
 
 Paste this block into the audit bot. Consolidated to 5 goals. Uses **Publish** or **Deliver**; each goal has Deliverable + Quantitative + Core metric.
 

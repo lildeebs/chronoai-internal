@@ -1,4 +1,4 @@
-# Week 10 Audit Response — 9/10
+# Week 10 Audit Response - 9/10
 
 Received from the Weekly Goal Audit Bot on Friday 6 March 2026.
 
@@ -18,7 +18,7 @@ Received from the Weekly Goal Audit Bot on Friday 6 March 2026.
 
 ### Key Rewrite Guidance Applied to Week 11
 
-1. **Goal 1 (Content)**: Clarify measurable impact of self-serve design framework — content velocity, engagement, time-to-publish.
+1. **Goal 1 (Content)**: Clarify measurable impact of self-serve design framework - content velocity, engagement, time-to-publish.
 2. **Goal 2 (Outreach)**: Define conversion funnel from contacts → measurable outcome (downloads, sign-ups), not just contact count.
 3. **Goal 3 (Scaling)**: Don't chase volume (200 influencers) without validated conversion rate. Focus on impact, not count.
 4. **Goal 5 (Infrastructure)**: Specify top 1-2 measurable benefits expected in Week 11.

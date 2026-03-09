@@ -162,6 +162,12 @@
         .audit-score-label { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); font-weight: 700; }
         .audit-score-meta { font-size: .8rem; color: var(--text-3); font-weight: 500; }
         .key-line { font-size: .95rem; font-weight: 600; color: var(--text); margin: 1rem 0 .75rem; padding-left: 1rem; border-left: 3px solid var(--accent); }
+        .visual-numbers { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; margin: 1rem 0; align-items: center; }
+        .visual-num { display: inline-flex; align-items: baseline; gap: .25rem; background: var(--surface); border: 2px solid var(--border); border-radius: 8px; padding: .4rem .75rem; }
+        .visual-num .big { font-size: 1.35rem; font-weight: 800; color: var(--accent); }
+        .visual-num .label { font-size: .75rem; color: var(--text-3); font-weight: 600; }
+        .slide-section-label { display: inline-flex; align-items: center; gap: .4rem; font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--text-3); margin-bottom: .75rem; }
+        .slide-section-label .num { width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--accent); color: var(--bg); font-size: .75rem; display: inline-flex; align-items: center; justify-content: center; }
 
         .footer { position: fixed; bottom: 0; left: 0; right: 0; height: 56px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; background: var(--surface); border-top: 1px solid var(--border); z-index: 150; }
         .footer-credit { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
@@ -186,7 +192,7 @@
         </div>
     </header>
 
-    <!-- Slide 1: Title — Drive Community. Drive 200. -->
+    <!-- Slide 1: Title - Drive Community. Drive 200. -->
     <section class="slide" data-slide="1">
         <div class="inner">
             <p class="capsule s1">
@@ -202,78 +208,84 @@
                 <span class="lang-zh">在那里建设。触达 200。</span>
             </h1>
             <p class="subline s3">
-                <span class="lang-en">Community isn't a feature — it's the foundation. It's how we reach 200 without burning budget, and how we keep them. My role: own where we show up, who we partner with, and how we build belonging.</span>
-                <span class="lang-zh">社群不是功能，而是根基。它是我们触达 200 且不烧预算的方式，也是留存的方式。我的职责：主导我们在哪出现、与谁合作、如何建立归属。</span>
+                <span class="lang-en">Community = how we get to 200 and keep users. I find where they are. I partner with creators. I build belonging.</span>
+                <span class="lang-zh">社群 = 我们如何触达 200 并留住用户。我找到他们在哪、与创作者合作、建立归属。</span>
             </p>
             <p class="byline s3">
                 <span class="lang-en">Dionne · Social Media &amp; Creator Partnerships</span>
                 <span class="lang-zh">Dionne · 社媒与创作者合作</span>
             </p>
             <div class="focus-card s4">
-                <p class="focus-title"><span class="lang-en">This week</span><span class="lang-zh">本周</span></p>
+                <p class="focus-title"><span class="lang-en">This week · 3 things</span><span class="lang-zh">本周 · 三件事</span></p>
                 <div class="pill-row">
-                    <span class="pill pill-cyan"><span class="lang-en">🌱 Build where they gather</span><span class="lang-zh">🌱 在他们聚集处建设</span></span>
-                    <span class="pill pill-amber"><span class="lang-en">✨ Nurture belonging</span><span class="lang-zh">✨ 培育归属感</span></span>
-                    <span class="pill pill-purple"><span class="lang-en">📊 Measure what matters</span><span class="lang-zh">📊 衡量关键指标</span></span>
+                    <span class="pill pill-cyan"><span class="lang-en">🌱 1. Find & build</span><span class="lang-zh">🌱 1. 找到并建设</span></span>
+                    <span class="pill pill-amber"><span class="lang-en">✨ 2. Keep users</span><span class="lang-zh">✨ 2. 留住用户</span></span>
+                    <span class="pill pill-purple"><span class="lang-en">📊 3. Count & report</span><span class="lang-zh">📊 3. 计数与汇报</span></span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 2: What community gives (Value — colleague's voice) -->
+    <!-- Slide 2: What community gives (Value - colleague's voice) -->
     <section class="slide" data-slide="2">
         <div class="inner">
+            <p class="slide-section-label s2" style="margin-bottom:.5rem;"><span class="lang-en">What community gives</span><span class="lang-zh">社群带来什么</span></p>
             <h2 class="hero-2 s2">
-                <span class="lang-en">What community gives ChronoAI.</span>
-                <span class="lang-zh">社群为 ChronoAI 带来什么。</span>
+                <span class="lang-en">Not tools. Belonging.</span>
+                <span class="lang-zh">不是工具。是归属。</span>
             </h2>
             <p class="context s3">
-                <span class="lang-en">People yearn for community — not tools, but belonging. SoulGarden is the proof. My remit: find high-intent people in these spaces, listen to what they need, and build genuine relationships. That's how we turn community into pipeline, retention, and growth the company can measure.</span>
-                <span class="lang-zh">人们渴望的是社群 — 不是工具，而是归属。SoulGarden 就是证明。我的职责：在这些空间找到高意图用户、倾听需求、建立真实关系。这样我们才能把社群转化为公司可衡量的管线、留存与增长。</span>
+                <span class="lang-en">People want a place to belong. I find them. I listen. I build real links. That gives ChronoAI: more users, users who stay, users who bring others. All lead to 200.</span>
+                <span class="lang-zh">人们想要归属。我找到他们、倾听、建立真实连接。这样 ChronoAI 得到：更多用户、留下的用户、带新人的用户。都指向 200。</span>
             </p>
-            <p class="key-line s3"><span class="lang-en">Bottom line: community = pipeline quality + retention + organic growth. All three feed Gate 1 and 200. I own the strategy and execution that turn that into outcomes.</span><span class="lang-zh">结论：社群 = 管线质量 + 留存 + 有机增长，三者支撑 Gate 1 与 200。我负责将之转化为可交付结果的策略与执行。</span></p>
             <div class="value-grid s4">
                 <div class="value-card">
-                    <p class="vc-title"><span class="lang-en">Pipeline quality</span><span class="lang-zh">管线质量</span></p>
-                    <p class="vc-body"><span class="lang-en">Right communities → right users. We show up where high-intent manifestation users already are.</span><span class="lang-zh">对的社群 → 对的用户。我们在高意图用户已在的地方出现。</span></p>
-                    <p class="vc-value"><span class="lang-en">Value: faster path to 200 installs.</span><span class="lang-zh">价值：更快达成 200 安装。</span></p>
+                    <p class="vc-title"><span class="lang-en">More users</span><span class="lang-zh">更多用户</span></p>
+                    <p class="vc-body"><span class="lang-en">Right places = right people. We go where our users already are.</span><span class="lang-zh">对的地方 = 对的人。我们去用户已在的地方。</span></p>
                 </div>
                 <div class="value-card">
-                    <p class="vc-title"><span class="lang-en">Belonging, not just installs</span><span class="lang-zh">归属，不止安装</span></p>
-                    <p class="vc-body"><span class="lang-en">People yearn for community. SoulGarden embodies it: daily rituals, shared habits, users who invite others.</span><span class="lang-zh">人们渴望社群。SoulGarden 将其具象化：每日仪式、共同习惯、用户邀请用户。</span></p>
-                    <p class="vc-value"><span class="lang-en">Value: retention through belonging.</span><span class="lang-zh">价值：因归属而留存。</span></p>
+                    <p class="vc-title"><span class="lang-en">Users who stay</span><span class="lang-zh">留下的用户</span></p>
+                    <p class="vc-body"><span class="lang-en">People want community. SoulGarden gives that. Users stay longer.</span><span class="lang-zh">人们想要社群。SoulGarden 提供。用户留得更久。</span></p>
                 </div>
                 <div class="value-card">
-                    <p class="vc-title"><span class="lang-en">Organic growth</span><span class="lang-zh">有机增长</span></p>
-                    <p class="vc-body"><span class="lang-en">Community members → users → advocates. Growth that compounds without paid ads.</span><span class="lang-zh">社群成员 → 用户 → 推广大使。不靠付费的复合增长。</span></p>
-                    <p class="vc-value"><span class="lang-en">Value: scalable acquisition.</span><span class="lang-zh">价值：可规模化的获客。</span></p>
+                    <p class="vc-title"><span class="lang-en">Users who bring others</span><span class="lang-zh">带来新人的用户</span></p>
+                    <p class="vc-body"><span class="lang-en">Community members invite friends. Growth without big ad spend.</span><span class="lang-zh">社群成员邀请朋友。增长不靠大笔广告。</span></p>
                 </div>
                 <div class="value-card">
-                    <p class="vc-title"><span class="lang-en">This week's deliverables</span><span class="lang-zh">本周交付</span></p>
-                    <p class="vc-body"><span class="lang-en">10+ communities mapped, 100 KOLs + 2 onboarded, nurture plan + 5 user feedback, 13 posts live, 1 dashboard. All tie to Gate 1.</span><span class="lang-zh">10+ 社群落图、100 KOL + 2 位入驻、培育计划 + 5 份用户反馈、13 帖上线、1 个仪表板。全部指向 Gate 1。</span></p>
-                    <p class="vc-value"><span class="lang-en">Value: clear outcomes that drive 200.</span><span class="lang-zh">价值：清晰结果，驱动 200。</span></p>
+                    <p class="vc-title"><span class="lang-en">This week</span><span class="lang-zh">本周</span></p>
+                    <p class="vc-body"><span class="lang-en">1 map. 100 list. 2 creators. 5 feedback. 13 posts. 1 dashboard. All for 200.</span><span class="lang-zh">1 地图。100 名单。2 创作者。5 反馈。13 帖。1 仪表板。都为 200。</span></p>
                 </div>
+            </div>
+            <p class="context s4" style="margin-top:1rem; font-weight: 600;"><span class="lang-en">By Friday you will see:</span><span class="lang-zh">周五前你会看到：</span></p>
+            <div class="visual-numbers s4">
+                <span class="visual-num"><span class="big">1</span> <span class="label"><span class="lang-en">map</span><span class="lang-zh">地图</span></span></span>
+                <span class="visual-num"><span class="big">100</span> <span class="label"><span class="lang-en">list</span><span class="lang-zh">名单</span></span></span>
+                <span class="visual-num"><span class="big">2</span> <span class="label"><span class="lang-en">creators</span><span class="lang-zh">创作者</span></span></span>
+                <span class="visual-num"><span class="big">5</span> <span class="label"><span class="lang-en">feedback</span><span class="lang-zh">反馈</span></span></span>
+                <span class="visual-num"><span class="big">13</span> <span class="label"><span class="lang-en">posts</span><span class="lang-zh">帖</span></span></span>
+                <span class="visual-num"><span class="big">1</span> <span class="label"><span class="lang-en">dashboard</span><span class="lang-zh">仪表板</span></span></span>
+                <span class="visual-num" style="border-color: var(--green);"><span class="big" style="color: var(--green);">200</span> <span class="label"><span class="lang-en">goal</span><span class="lang-zh">目标</span></span></span>
             </div>
         </div>
     </section>
 
-    <!-- Slide 3: Priority 1 — Community (Goals 1 + 2) -->
+    <!-- Slide 3: Priority 1 - Community (Goals 1 + 2) -->
     <section class="slide" data-slide="3">
         <div class="inner">
+            <p class="slide-section-label s2"><span class="num">1</span> <span class="lang-en">Find & build</span><span class="lang-zh">找到并建设</span></p>
             <h2 class="hero-2 s2">
-                <span class="lang-en">Priority 1: Identify. Build. Drive.</span>
-                <span class="lang-zh">重点 1：识别。建设。驱动。</span>
+                <span class="lang-en">Find them. Build there. Drive 200.</span>
+                <span class="lang-zh">找到他们。在那里建设。驱动 200。</span>
             </h2>
             <p class="context s3">
-                <span class="lang-en">Communities and creator partnerships are the pipeline that feeds everything else. This week: map where SoulGarden's people already gather — and build there. Technology should connect, not isolate.</span>
-                <span class="lang-zh">社群与创作者合作是支撑其余一切的管线。本周：画出 SoulGarden 用户已在的阵地，并在那里建设。科技应连接人，而非隔离。</span>
+                <span class="lang-en">Where do our users gather? We map it. We show up. We partner with creators. No map = no users. This is the base for 200.</span>
+                <span class="lang-zh">用户在哪聚集？我们画地图、出现、与创作者合作。没有地图就没有用户。这是 200 的根基。</span>
             </p>
-            <p class="key-line s3"><span class="lang-en">Why first: without the right communities and KOLs, we're marketing into the void. This is the foundation the rest of 200 is built on.</span><span class="lang-zh">为何优先：没有对的社群与 KOL 就是在对虚空营销。这是达成 200 的根基。</span></p>
             <div class="info-grid info-cyan s4" style="grid-template-columns: repeat(2,1fr);">
                 <div class="info-card">
                     <div class="ic-icon">📱</div>
                     <div class="ic-title"><span class="lang-en">WhatsApp channel</span><span class="lang-zh">WhatsApp 频道</span></div>
-                    <div class="ic-desc"><span class="lang-en">10+ high-intent communities · ranked</span><span class="lang-zh">10+ 高意图社群 · 已排序</span></div>
+                    <div class="ic-desc"><span class="lang-en">10+ high intent communities · ranked</span><span class="lang-zh">10+ 高意图社群 · 已排序</span></div>
                 </div>
                 <div class="info-card">
                     <div class="ic-icon">🎯</div>
@@ -285,111 +297,109 @@
                 <div class="goal1-discord-grid">
                     <div class="goal1-discord-card">
                         <a href="https://discord.gg/RsVXhk6cpP" target="_blank" rel="noopener" title="Join SCA Subliminal Haven">
-                            <img src="assets/discord-sca-subliminal-haven.png" alt="SCA Subliminal Haven — law of attraction, subliminal, manifestation, shifting">
+                            <img src="assets/discord-sca-subliminal-haven.png" alt="SCA Subliminal Haven - law of attraction, subliminal, manifestation, shifting">
                         </a>
                         <p class="goal1-evidence-caption" style="padding:.4rem .5rem 0;"><span class="lang-en">SCA Subliminal Haven</span><span class="lang-zh">SCA Subliminal Haven</span> · 37 members · <a href="https://discord.gg/RsVXhk6cpP" target="_blank" rel="noopener" style="color:var(--accent);">Join</a></p>
                     </div>
                     <div class="goal1-discord-card">
                         <a href="https://discord.gg/theshifterscafe" target="_blank" rel="noopener" title="Join The Shifters Café">
-                            <img src="assets/discord-theshifters-cafe.png" alt="The Shifters Café — spirituality, witchcraft, manifestation, shifting">
+                            <img src="assets/discord-theshifters-cafe.png" alt="The Shifters Café - spirituality, witchcraft, manifestation, shifting">
                         </a>
                         <p class="goal1-evidence-caption" style="padding:.4rem .5rem 0;"><span class="lang-en">The Shifters Café</span><span class="lang-zh">The Shifters Café</span> · 206 members · <a href="https://discord.gg/theshifterscafe" target="_blank" rel="noopener" style="color:var(--accent);">Join</a></p>
                     </div>
                     <div class="goal1-discord-card">
                         <a href="https://discord.gg/wYnvddHzt2" target="_blank" rel="noopener" title="Join Chloee's Café">
-                            <img src="assets/discord-chloeecafe.png" alt="Chloee's Café — subliminals, journaling, manifestation">
+                            <img src="assets/discord-chloeecafe.png" alt="Chloee's Café - subliminals, journaling, manifestation">
                         </a>
                         <p class="goal1-evidence-caption" style="padding:.4rem .5rem 0;"><span class="lang-en">Chloee's Café</span><span class="lang-zh">Chloee's Café</span> · 31 members · <a href="https://discord.gg/wYnvddHzt2" target="_blank" rel="noopener" style="color:var(--accent);">Join</a></p>
                     </div>
                 </div>
-                <p class="goal1-evidence-caption" style="margin-top:.6rem;"><span class="lang-en">High-intent Discord channels in the manifestation realm.</span><span class="lang-zh">显化领域高意图 Discord 频道。</span></p>
+                <p class="goal1-evidence-caption" style="margin-top:.6rem;"><span class="lang-en">Discord channels where our users are.</span><span class="lang-zh">用户所在的 Discord 频道。</span></p>
             </div>
             <div class="cheru-example s4">
-                <p class="cheru-example-title"><span class="lang-en">Story · High-intent creators &amp; the community that inspired the vibe coded app</span><span class="lang-zh">故事 · 高意图创作者与启发 vibe coded 应用的社群</span></p>
+                <p class="cheru-example-title"><span class="lang-en">Example · Creator who inspired my Vibe Coded app</span><span class="lang-zh">示例 · 启发我 Vibe Coded 应用的创作者</span></p>
                 <p class="cheru-example-head"><span class="lang-en">Cheru Crystals</span><span class="lang-zh">Cheru Crystals</span> · <a href="https://www.instagram.com/cherucrystals/?hl=en" target="_blank" rel="noopener">@cherucrystals</a></p>
                 <p class="cheru-example-story">
-                    <span class="lang-en">We're actively reaching out to high-intent creators, community leads, and business owners in the manifestation space. The crystal and spirituality community — where Cheru sits — is part of what inspired the vibe coded app in the first place. Same world: meaning, ritual, belonging. Connecting with people like Cheru is how we build in the places that already shaped our product.</span>
-                    <span class="lang-zh">我们正在主动连接显化领域的高意图创作者、社群主理人与品牌主。水晶与灵性社群 — Cheru 所在的世界 — 正是当初启发 vibe coded 应用的土壤之一。同一世界：意义、仪式、归属。与像 Cheru 这样的人连接，就是在塑造我们产品的地方继续建设。</span>
+                    <span class="lang-en">We connect with creators and community owners like Cheru. Her world (crystals, spirituality) inspired my Vibe Coded app. Same audience. We build where our product came from.</span>
+                    <span class="lang-zh">我们连接像 Cheru 这样的创作者与社群主。她的世界（水晶、灵性）启发了我做 Vibe Coded 应用。同一受众。我们在产品诞生的地方建设。</span>
                 </p>
                 <div class="cheru-example-profile">
                     <a href="https://www.instagram.com/cherucrystals/?hl=en" target="_blank" rel="noopener" title="View @cherucrystals on Instagram">
-                        <img src="assets/cherucrystals-profile.png" alt="Cheru Crystals Instagram profile — click to open @cherucrystals">
+                        <img src="assets/cherucrystals-profile.png" alt="Cheru Crystals Instagram profile - click to open @cherucrystals">
                     </a>
                 </div>
                 <p class="cheru-example-caption"><span class="lang-en">Profile screenshot · links to her Instagram.</span><span class="lang-zh">主页截图 · 点击跳转其 Instagram。</span></p>
             </div>
             <div class="goal-row s5">
                 <div class="goal-block gb-cyan">
-                    <p class="goal-label"><span class="lang-en">High-intent communities</span><span class="lang-zh">高意图社群</span></p>
+                    <p class="goal-label"><span class="lang-en">10+ communities</span><span class="lang-zh">10+ 社群</span></p>
                     <ul class="goal-bullets">
-                        <li><span class="lang-en">Deliver 1 WhatsApp channel: 10+ communities (Reddit, Discord, etc.) ranked by intent and fit</span><span class="lang-zh">交付 1 个 WhatsApp 频道：10+ 社群（Reddit、Discord 等）按意图与匹配度排序</span></li>
+                        <li><span class="lang-en">1 list: 10+ places (Reddit, Discord) where our users are. Ranked.</span><span class="lang-zh">1 份名单：10+ 个用户所在的地方（Reddit、Discord）。已排序。</span></li>
                     </ul>
-                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: 1 WhatsApp channel</span><span class="lang-zh">交付物：1 个 WhatsApp 频道</span></p>
+                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Give: 1 WhatsApp channel</span><span class="lang-zh">交付：1 个 WhatsApp 频道</span></p>
                 </div>
                 <div class="goal-block gb-cyan">
-                    <p class="goal-label"><span class="lang-en">KOL pipeline + onboarding</span><span class="lang-zh">KOL 管线 + 入驻</span></p>
+                    <p class="goal-label"><span class="lang-en">100 list + 2 creators</span><span class="lang-zh">100 名单 + 2 创作者</span></p>
                     <ul class="goal-bullets">
-                        <li><span class="lang-en">Deliver 100 KOLs (manifestation realm) + onboard min. 2 high-intent KOLs</span><span class="lang-zh">交付 100 位 KOL（显化领域）+ 至少 2 位高意图 KOL 入驻</span></li>
-                        <li><span class="lang-en">Track community-sourced installs</span><span class="lang-zh">追踪社群来源安装</span></li>
+                        <li><span class="lang-en">100 names. At least 2 say yes and join. Track installs from community.</span><span class="lang-zh">100 个名字。至少 2 位答应并加入。追踪来自社群的安装。</span></li>
                     </ul>
-                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: KOL list + onboarding evidence for 2</span><span class="lang-zh">交付物：KOL 名单 + 2 位入驻证明</span></p>
+                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Give: list + proof for 2</span><span class="lang-zh">交付：名单 + 2 位证明</span></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Slide 4: Priority 2 — Nurture (Goal 3) -->
+    <!-- Slide 4: Priority 2 - Nurture (Goal 3) -->
     <section class="slide" data-slide="4">
         <div class="inner">
+            <p class="slide-section-label s2"><span class="num">2</span> <span class="lang-en">Keep users</span><span class="lang-zh">留住用户</span></p>
             <h2 class="hero-2 s2">
-                <span class="lang-en">Priority 2: Nurture existing users.</span>
-                <span class="lang-zh">重点 2：培育现有用户。</span>
+                <span class="lang-en">They're here. Make them stay.</span>
+                <span class="lang-zh">他们来了。让他们留下。</span>
             </h2>
             <p class="context s3">
-                <span class="lang-en">Communities stick when people feel they belong. The 29 we have are our first cohort — first touchpoints, 5+ feedback responses, and a Day-7 retention baseline prove we're building real community, not just installs.</span>
-                <span class="lang-zh">当人们感到归属时，社群才会留存。现有 29 位用户是我们的首批 cohort；首次触达、5+ 份反馈与 7 日留存基线证明我们在建真正的社群，而不只是安装量。</span>
+                <span class="lang-en">We have 29 users. We talk to them. We get 5+ replies. We check: do they still use the app after 7 days? That shows we build community, not just downloads.</span>
+                <span class="lang-zh">我们有 29 位用户。我们与他们沟通。拿到 5+ 条回复。我们看：7 天后他们还在用吗？这证明我们在建社群，不止下载。</span>
             </p>
-            <p class="key-line s3"><span class="lang-en">Value to company: retention data + early advocates. How we treat this cohort sets the tone for scaling to 200.</span><span class="lang-zh">对公司价值：留存数据 + 早期倡导者。我们如何对待这批用户，决定了向 200 扩展的基调。</span></p>
             <div class="info-grid info-amber s4" style="grid-template-columns: repeat(3,1fr);">
                 <div class="info-card">
                     <div class="ic-icon">👥</div>
-                    <div class="ic-title"><span class="lang-en">Reach</span><span class="lang-zh">触达</span></div>
-                    <div class="ic-desc"><span class="lang-en">100% organic users (13–16)</span><span class="lang-zh">100% 有机用户（13–16）</span></div>
+                    <div class="ic-title"><span class="lang-en">Talk to all</span><span class="lang-zh">触达全部</span></div>
+                    <div class="ic-desc"><span class="lang-en">13–16 users we can reach</span><span class="lang-zh">13–16 位可触达用户</span></div>
                 </div>
                 <div class="info-card">
                     <div class="ic-icon">💬</div>
-                    <div class="ic-title"><span class="lang-en">Feedback</span><span class="lang-zh">反馈</span></div>
-                    <div class="ic-desc"><span class="lang-en">5+ user responses</span><span class="lang-zh">5+ 用户回复</span></div>
+                    <div class="ic-title"><span class="lang-en">5+ replies</span><span class="lang-zh">5+ 条回复</span></div>
+                    <div class="ic-desc"><span class="lang-en">User feedback</span><span class="lang-zh">用户反馈</span></div>
                 </div>
                 <div class="info-card">
                     <div class="ic-icon">📊</div>
-                    <div class="ic-title"><span class="lang-en">Baseline</span><span class="lang-zh">基线</span></div>
-                    <div class="ic-desc"><span class="lang-en">Day-7 retention</span><span class="lang-zh">7 日留存</span></div>
+                    <div class="ic-title"><span class="lang-en">Day 7</span><span class="lang-zh">第 7 天</span></div>
+                    <div class="ic-desc"><span class="lang-en">Still using app?</span><span class="lang-zh">还在用吗？</span></div>
                 </div>
             </div>
             <div class="goal-block gb-amber s5" style="max-width:520px;">
-                <p class="goal-label"><span class="lang-en">Nurture plan + touchpoints</span><span class="lang-zh">培育计划 + 触达</span></p>
+                <p class="goal-label"><span class="lang-en">Plan + talk to 29 users</span><span class="lang-zh">计划 + 与 29 位用户沟通</span></p>
                 <ul class="goal-bullets">
-                    <li><span class="lang-en">Deliver nurture plan + execute first touchpoints for 29 installs</span><span class="lang-zh">交付培育计划并对 29 次安装执行首次触达</span></li>
-                    <li><span class="lang-en">5+ user feedback responses; Day-7 retention baseline</span><span class="lang-zh">5+ 用户反馈；7 日留存基线</span></li>
+                    <li><span class="lang-en">1 plan. Talk to all 29. Get 5+ replies. Check Day 7: who is still here?</span><span class="lang-zh">1 份计划。与 29 位沟通。拿到 5+ 回复。第 7 天检查：谁还在？</span></li>
                 </ul>
-                <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: nurture plan + execution evidence + user feedback summary</span><span class="lang-zh">交付物：培育计划 + 执行证明 + 用户反馈摘要</span></p>
+                <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Give: plan + proof + short feedback summary</span><span class="lang-zh">交付：计划 + 证明 + 反馈摘要</span></p>
             </div>
         </div>
     </section>
 
-    <!-- Slide 5: Priority 3 — Content + Data (Goals 4 + 5) -->
+    <!-- Slide 5: Priority 3 - Content + Data (Goals 4 + 5) -->
     <section class="slide" data-slide="5">
         <div class="inner">
+            <p class="slide-section-label s2"><span class="num">3</span> <span class="lang-en">Count & report</span><span class="lang-zh">计数与汇报</span></p>
             <h2 class="hero-2 s2">
-                <span class="lang-en">Priority 3: Content and dashboard.</span>
-                <span class="lang-zh">重点 3：内容与仪表板。</span>
+                <span class="lang-en">Show up. Measure. Double down.</span>
+                <span class="lang-zh">出现。衡量。加码。</span>
             </h2>
             <p class="context s3">
-                <span class="lang-en">Content and data serve community strategy: they show which channels and behaviours actually build toward 200. My lens — where we show up, what we measure — gives leadership visibility into what's working and where to invest.</span>
-                <span class="lang-zh">内容与数据服务于社群策略：显示哪些渠道和行为在推动 200。我的视角 — 我们在哪出现、衡量什么 — 让管理层看清什么有效、该在哪加码。</span>
+                <span class="lang-en">We post 13 times. We have 1 dashboard. One place to see: installs, who is active, who stays. So we put effort where it works for 200.</span>
+                <span class="lang-zh">我们发 13 帖。我们有 1 个仪表板。一个地方看清：安装数、谁在用、谁留下。这样我们把力气用在有效的地方，冲向 200。</span>
             </p>
-            <p class="key-line s3"><span class="lang-en">Value to company: one place to see pipeline, retention, and content performance — so we double down on what drives 200.</span><span class="lang-zh">对公司价值：在一个地方看到管线、留存与内容表现，从而把资源集中在能驱动 200 的地方。</span></p>
             <div class="info-grid info-purple s4" style="grid-template-columns: repeat(2,1fr);">
                 <div class="info-card">
                     <div class="ic-icon">📅</div>
@@ -404,18 +414,18 @@
             </div>
             <div class="goal-row s5">
                 <div class="goal-block gb-purple">
-                    <p class="goal-label"><span class="lang-en">Schedule content + report</span><span class="lang-zh">排期内容 + 报告</span></p>
+                    <p class="goal-label"><span class="lang-en">13 posts + 1 report</span><span class="lang-zh">13 帖 + 1 报告</span></p>
                     <ul class="goal-bullets">
-                        <li><span class="lang-en">Schedule all SoulGarden content; 13 posts live + 1 first-week performance report</span><span class="lang-zh">排期全部 SoulGarden 内容；13 帖上线 + 1 份首周表现报告</span></li>
+                        <li><span class="lang-en">Post 13 times. Write 1 report: what worked, what did not.</span><span class="lang-zh">发 13 帖。写 1 份报告：什么有效、什么无效。</span></li>
                     </ul>
-                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: 13 posts live + performance report</span><span class="lang-zh">交付物：13 帖上线 + 表现报告</span></p>
+                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Give: 13 posts + report</span><span class="lang-zh">交付：13 帖 + 报告</span></p>
                 </div>
                 <div class="goal-block gb-purple">
-                    <p class="goal-label"><span class="lang-en">Dashboard + tracking</span><span class="lang-zh">仪表板 + 追踪</span></p>
+                    <p class="goal-label"><span class="lang-en">1 dashboard</span><span class="lang-zh">1 个仪表板</span></p>
                     <ul class="goal-bullets">
-                        <li><span class="lang-en">Deliver 1 working dashboard + 1 tracking framework; 6 core metrics (installs, active, paying, frequency, retention, organic vs. internal)</span><span class="lang-zh">交付 1 个可用仪表板 + 1 份追踪框架；6 项核心指标</span></li>
+                        <li><span class="lang-en">1 link. See: installs, active users, who pays, who stays, organic vs internal. Update every day.</span><span class="lang-zh">1 个链接。可看：安装、活跃用户、谁付费、谁留下、有机 vs 内部。每日更新。</span></li>
                     </ul>
-                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Deliverable: live dashboard link + tracking framework doc</span><span class="lang-zh">交付物：仪表板链接 + 追踪框架文档</span></p>
+                    <p class="goal-check"><span class="ck">✓</span> <span class="lang-en">Give: dashboard link + short doc</span><span class="lang-zh">交付：仪表板链接 + 说明</span></p>
                 </div>
             </div>
         </div>
@@ -425,32 +435,32 @@
     <section class="slide" data-slide="6">
         <div class="inner">
             <h2 class="audit-hero s2">
-                <span class="lang-en">What we're checking by Friday.</span>
-                <span class="lang-zh">周五前要确认的事。</span>
+                <span class="lang-en">By Friday: proof.</span>
+                <span class="lang-zh">周五前：证明。</span>
             </h2>
-            <p class="context s3" style="margin-bottom:1rem;"><span class="lang-en">By Friday we have proof of progress on pipeline, retention, and measurement — the three legs that get us to 200.</span><span class="lang-zh">到周五我们将有管线、留存与衡量三方面的进展证明 — 这是达成 200 的三大支柱。</span></p>
+            <p class="context s3" style="margin-bottom:1rem;"><span class="lang-en">Three areas. All lead to 200.</span><span class="lang-zh">三个板块。都指向 200。</span></p>
             <div class="audit-grid s3">
                 <div class="audit-col ac-cyan">
-                    <p class="audit-col-title"><span class="lang-en">Community</span><span class="lang-zh">社群</span></p>
+                    <p class="audit-col-title"><span class="lang-en">1. Find & build</span><span class="lang-zh">1. 找到并建设</span></p>
                     <ul class="audit-list">
-                        <li><span class="lang-en">Deliver 1 WhatsApp channel (10+ communities ranked)</span><span class="lang-zh">交付 1 个 WhatsApp 频道（10+ 社群已排序）</span></li>
-                        <li><span class="lang-en">Deliver 100 KOL list + onboard min. 2</span><span class="lang-zh">交付 100 KOL 名单 + 至少 2 位入驻</span></li>
-                        <li><span class="lang-en">Track community-sourced installs</span><span class="lang-zh">追踪社群来源安装</span></li>
+                        <li><span class="lang-en">1 map (10+ places)</span><span class="lang-zh">1 份地图（10+ 个地方）</span></li>
+                        <li><span class="lang-en">100 names. 2 say yes.</span><span class="lang-zh">100 个名字。2 位答应。</span></li>
+                        <li><span class="lang-en">Count installs from community</span><span class="lang-zh">数来自社群的安装</span></li>
                     </ul>
                 </div>
                 <div class="audit-col ac-amber">
-                    <p class="audit-col-title"><span class="lang-en">Nurture</span><span class="lang-zh">培育</span></p>
+                    <p class="audit-col-title"><span class="lang-en">2. Keep users</span><span class="lang-zh">2. 留住用户</span></p>
                     <ul class="audit-list">
-                        <li><span class="lang-en">Deliver nurture plan + execution evidence</span><span class="lang-zh">交付培育计划 + 执行证明</span></li>
-                        <li><span class="lang-en">5+ user feedback responses</span><span class="lang-zh">5+ 用户反馈</span></li>
-                        <li><span class="lang-en">Day-7 retention baseline</span><span class="lang-zh">7 日留存基线</span></li>
+                        <li><span class="lang-en">1 plan. Talk to 29.</span><span class="lang-zh">1 份计划。与 29 位沟通。</span></li>
+                        <li><span class="lang-en">5+ replies from users</span><span class="lang-zh">5+ 条用户回复</span></li>
+                        <li><span class="lang-en">Day 7: who still here?</span><span class="lang-zh">第 7 天：谁还在？</span></li>
                     </ul>
                 </div>
                 <div class="audit-col ac-purple">
-                    <p class="audit-col-title"><span class="lang-en">Content & data</span><span class="lang-zh">内容与数据</span></p>
+                    <p class="audit-col-title"><span class="lang-en">3. Count & report</span><span class="lang-zh">3. 计数与汇报</span></p>
                     <ul class="audit-list">
-                        <li><span class="lang-en">13 posts live + 1 performance report</span><span class="lang-zh">13 帖上线 + 1 份表现报告</span></li>
-                        <li><span class="lang-en">1 dashboard + 1 tracking framework (6 metrics)</span><span class="lang-zh">1 个仪表板 + 1 份追踪框架（6 项指标）</span></li>
+                        <li><span class="lang-en">13 posts. 1 report.</span><span class="lang-zh">13 帖。1 份报告。</span></li>
+                        <li><span class="lang-en">1 dashboard (6 numbers)</span><span class="lang-zh">1 个仪表板（6 个数字）</span></li>
                     </ul>
                 </div>
             </div>
