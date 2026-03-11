@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Engagements · ChronoAI Reporting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Dark content canvas (reference: dark charcoal modules) */
+            --bg: #0f0f12;
+            --surface: #16161a;
+            --surface-2: #1c1c21;
+            --border: #2a2a30;
+            --border-2: #3d3d45;
+            --text: #fafafa;
+            --text-2: #b4b4bc;
+            --text-3: #787883;
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            /* Vibrant accents: neon lime, pastel lavender, muted sky */
+            --lime: #c8ff50;
+            --lime-soft: rgba(200, 255, 80, 0.14);
+            --sky: #7dc8f0;
+            --sky-soft: rgba(125, 200, 240, 0.14);
+            --lavender: #b8a8e8;
+            --lavender-soft: rgba(184, 168, 232, 0.14);
+            --radius: 16px;
+            --radius-sm: 12px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 100%;
+            width: 100%;
+            min-height: 100vh;
+            margin: 0;
+            padding: 32px 20px 80px;
+        }
+        @media (min-width: 640px) {
+            .container {
+                max-width: 960px;
+                margin: 0 auto;
+                padding: 40px 32px 100px;
+            }
+        }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-3);
+            text-decoration: none;
+            margin-bottom: 28px;
+            transition: color 0.2s ease;
+        }
+        .back:hover { color: var(--lime); }
+
+        .hero-accent-line {
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--lime), var(--lavender));
+            border-radius: 2px;
+            margin-bottom: 20px;
+        }
+        .brand {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 12px;
+        }
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.12;
+            color: var(--text);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .subtitle {
+            font-size: 1.05rem;
+            color: var(--text-2);
+            font-weight: 500;
+            max-width: 540px;
+            margin-bottom: 16px;
+            line-height: 1.65;
+        }
+        .sentiment-counter {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-2);
+            margin-bottom: 48px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .sentiment-counter .sentiment-positive { color: var(--lime); }
+        .sentiment-counter .sentiment-negative { color: var(--text-3); }
+
+        .section-head {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-head::after {
+            content: '';
+            flex: 1;
+            max-width: 280px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border), transparent);
+        }
+
+        .week-dropdown-wrap {
+            margin-bottom: 24px;
+        }
+        .week-dropdown-wrap label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-3);
+            margin-bottom: 8px;
+        }
+        .week-select {
+            display: block;
+            width: 100%;
+            max-width: 280px;
+            padding: 12px 40px 12px 16px;
+            font-family: var(--font);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a1a1aa' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+        }
+        .week-select:hover { border-color: var(--border-2); }
+        .week-select:focus {
+            outline: none;
+            border-color: var(--lime);
+            box-shadow: 0 0 0 2px var(--lime-soft);
+        }
+
+        .week-section {
+            margin-bottom: 48px;
+        }
+        .week-section:last-child { margin-bottom: 0; }
+        .week-section[hidden] { display: none !important; }
+        .week-empty {
+            padding: 40px 28px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-3);
+            background: var(--surface);
+            border: 1px dashed var(--border);
+            border-radius: var(--radius);
+        }
+        .week-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: border-color 0.2s ease, box-shadow 0.25s ease, transform 0.2s ease;
+        }
+        .card:hover {
+            border-color: var(--border-2);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+        }
+        .card--lime { border-left: 4px solid var(--lime); background: linear-gradient(90deg, var(--lime-soft) 0%, var(--surface) 18%); }
+        .card--sky  { border-left: 4px solid var(--sky);  background: linear-gradient(90deg, var(--sky-soft) 0%, var(--surface) 18%); }
+        .card--lavender { border-left: 4px solid var(--lavender); background: linear-gradient(90deg, var(--lavender-soft) 0%, var(--surface) 18%); }
+
+        .card-img-wrap {
+            aspect-ratio: 4/3;
+            background: var(--surface-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .card-img-wrap:focus { outline: none; }
+        .card-img-wrap:focus-visible { box-shadow: 0 0 0 2px var(--lime); }
+
+        .card-product-pill {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 12px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text);
+            background: rgba(0,0,0,0.65);
+            border-radius: 999px;
+            z-index: 1;
+        }
+
+        .card-caption {
+            padding: 18px 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-2);
+            line-height: 1.5;
+        }
+        .card-caption a {
+            color: var(--lime);
+            text-decoration: none;
+        }
+        .card-caption a:hover { text-decoration: underline; }
+
+        .card-sentiment {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+        .card-sentiment svg {
+            width: 16px;
+            height: 16px;
+            color: var(--text);
+        }
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 24px;
+            cursor: pointer;
+        }
+        .lightbox[hidden] { display: none !important; }
+        .lightbox-inner {
+            cursor: default;
+            max-width: 100%;
+            max-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-inner img {
+            max-width: 100%;
+            max-height: calc(100vh - 48px);
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: var(--surface);
+            color: var(--text);
+            font-size: 1.5rem;
+            line-height: 1;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox-close:hover { background: var(--border-2); }
+
+        .footer {
+            margin-top: 64px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+            font-size: 0.72rem;
+            color: var(--text-3);
+            font-weight: 500;
+        }
+        .footer a { color: var(--text-3); text-decoration: none; }
+        .footer a:hover { color: var(--lime); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a class="back" href="../overview.html">← Overview</a>
+        <p class="brand">ChronoAI · Reporting Hub</p>
+        <div class="hero-accent-line" aria-hidden="true"></div>
+        <h1>Community Engagements</h1>
+        <p class="subtitle">Screenshots of replies, threads, and feedback gathered from Reddit, Discord, and social—organised by date. Tangible outcomes of organic community and social lead work.</p>
+        <p id="sentiment-counter" class="sentiment-counter" aria-live="polite">—</p>
+
+        <p class="section-head">By week</p>
+        <div class="week-dropdown-wrap">
+            <label for="week-select">Week</label>
+            <select id="week-select" class="week-select" aria-label="Filter by week">
+                <option value="all">All weeks</option>
+                <option value="11">Week 11 (9–13 Mar)</option>
+                <option value="10">Week 10 (2–6 Mar)</option>
+                <option value="09">Week 09 (23–27 Feb)</option>
+            </select>
+        </div>
+
+        <!-- Latest first. Duplicate a week block for each new week; create folder engagements/YYYY-MM-DD/ and add images. -->
+        <section class="week-section" id="week-11" data-week="11">
+            <h2 class="week-title">Week 11 (9–13 Mar)</h2>
+            <div class="cards">
+                <div class="card card--lime" data-sentiment="positive">
+                    <div class="card-img-wrap" role="button" tabindex="0" aria-label="Enlarge screenshot">
+                        <span class="card-product-pill">SoulGarden</span>
+                        <span class="card-sentiment" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="9" cy="10" r="1.2" fill="currentColor"/><circle cx="15" cy="10" r="1.2" fill="currentColor"/><path d="M8 14q4 4 8 0"/></svg></span>
+                        <img src="engagements/2026-03-09/reddit-01.png" alt="Reddit · positive reply" />
+                    </div>
+                    <p class="card-caption"><a href="#" target="_blank" rel="noopener">Reddit</a></p>
+                </div>
+                <div class="card card--sky" data-sentiment="negative">
+                    <div class="card-img-wrap" role="button" tabindex="0" aria-label="Enlarge screenshot">
+                        <span class="card-product-pill">SoulGarden</span>
+                        <span class="card-sentiment" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="9" cy="15" r="1.2" fill="currentColor"/><circle cx="15" cy="15" r="1.2" fill="currentColor"/><path d="M8 10q4 -4 8 0"/></svg></span>
+                        <img src="engagements/2026-03-09/02.png" alt="Community engagement screenshot 2" />
+                    </div>
+                    <p class="card-caption">User feedback / DM</p>
+                </div>
+                <div class="card card--lavender" data-sentiment="positive">
+                    <div class="card-img-wrap" role="button" tabindex="0" aria-label="Enlarge screenshot">
+                        <span class="card-product-pill">SoulGarden</span>
+                        <span class="card-sentiment" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="9" cy="10" r="1.2" fill="currentColor"/><circle cx="15" cy="10" r="1.2" fill="currentColor"/><path d="M8 14q4 4 8 0"/></svg></span>
+                        <img src="engagements/2026-03-09/03.png" alt="Community engagement screenshot 3" />
+                    </div>
+                    <p class="card-caption">Affiliate / KOL reply</p>
+                </div>
+            </div>
+        </section>
+        <section class="week-section" id="week-10" data-week="10">
+            <h2 class="week-title">Week 10 (2–6 Mar)</h2>
+            <div class="week-empty">No engagements captured for this week yet.</div>
+        </section>
+        <section class="week-section" id="week-09" data-week="09">
+            <h2 class="week-title">Week 09 (23–27 Feb)</h2>
+            <div class="week-empty">No engagements captured for this week yet.</div>
+        </section>
+
+        <!-- Add more weeks above Week 11 (insert new section at top) so order stays latest → oldest. -->
+
+        <script>
+        (function() {
+            var select = document.getElementById('week-select');
+            var sections = document.querySelectorAll('.week-section');
+            function showWeek(week) {
+                sections.forEach(function(s) {
+                    var w = s.getAttribute('data-week');
+                    if (week === 'all') s.removeAttribute('hidden');
+                    else s.toggleAttribute('hidden', w !== week);
+                });
+            }
+            select.addEventListener('change', function() { showWeek(select.value); });
+
+            function updateSentiment() {
+                var counter = document.getElementById('sentiment-counter');
+                var cards = document.querySelectorAll('.week-section .card[data-sentiment]');
+                var pos = 0, neg = 0;
+                cards.forEach(function(c) {
+                    if (c.getAttribute('data-sentiment') === 'positive') pos++;
+                    else if (c.getAttribute('data-sentiment') === 'negative') neg++;
+                });
+                var total = pos + neg;
+                if (total === 0) {
+                    counter.textContent = 'No reviews with sentiment yet.';
+                    return;
+                }
+                var pctPos = Math.round((pos / total) * 100);
+                var pctNeg = Math.round((neg / total) * 100);
+                counter.innerHTML = '<span class="sentiment-positive">😊 ' + pctPos + '% positive</span><span class="sentiment-negative">😞 ' + pctNeg + '% negative</span><span> (from ' + total + ' review' + (total === 1 ? '' : 's') + ')</span>';
+            }
+            updateSentiment();
+        })();
+        </script>
+
+        <div id="lightbox" class="lightbox" hidden aria-modal="true" role="dialog" aria-label="Enlarged screenshot">
+            <button type="button" class="lightbox-close" aria-label="Close">×</button>
+            <div class="lightbox-inner">
+                <img src="" alt="" />
+            </div>
+        </div>
+
+        <div class="footer">
+            ChronoAI · Social Media & Community Lead · Tangible outcomes
+        </div>
+    </div>
+    <script>
+    (function() {
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = lightbox.querySelector('.lightbox-inner img');
+        var closeBtn = lightbox.querySelector('.lightbox-close');
+        document.querySelectorAll('.card-img-wrap').forEach(function(wrap) {
+            var img = wrap.querySelector('img');
+            if (!img) return;
+            wrap.addEventListener('click', function(e) {
+                e.preventDefault();
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightbox.hidden = false;
+            });
+            wrap.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); wrap.click(); }
+            });
+        });
+        function closeLightbox() {
+            lightbox.hidden = true;
+        }
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !lightbox.hidden) closeLightbox();
+        });
+    })();
+    </script>
+</body>
+</html>
