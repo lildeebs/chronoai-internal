@@ -6,12 +6,13 @@
     <title>ChronoAI · Week 11 · Dionne · Friday Review</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #09090b; --surface: #111114; --surface-2: #18181b; --border: #27272a;
             --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a; --accent: #818cf8; --accent-soft: rgba(129,140,248,0.12);
             --cyan: #22d3ee; --amber: #fbbf24; --purple: #a78bfa; --green: #34d399; --font: 'Inter', -apple-system, sans-serif;
+            --font-cursive: 'Cormorant Garamond', Georgia, serif;
         }
         * { box-sizing: border-box; font-family: var(--font); margin: 0; padding: 0; }
         body { background: var(--bg); color: var(--text); min-height: 100vh; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
@@ -34,13 +35,13 @@
         .slide.active .s5 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .38s both; }
 
         .inner { max-width: 860px; margin: 0 auto; width: 100%; }
-        .slide-layout-split { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 2.5rem; align-items: start; max-width: 960px; margin-left: auto; margin-right: auto; width: 100%; }
-        .slide-left { padding-right: 0.5rem; border-right: 1px solid var(--border); min-height: 1px; }
-        .slide-left .label { margin-bottom: 0.5rem; }
-        .slide-left .hero-2 { margin-bottom: 0.35rem; }
-        .slide-left .hero-sub { margin-top: 0; }
-        .slide-right { min-width: 0; }
-        @media (max-width: 768px) { .slide-layout-split { grid-template-columns: 1fr; gap: 1.25rem; } .slide-left { border-right: none; padding-right: 0; padding-bottom: 1rem; border-bottom: 1px solid var(--border); } }
+        .slide-layout-split { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 2.5rem; align-items: stretch; max-width: 960px; margin-left: auto; margin-right: auto; width: 100%; max-height: calc(100vh - 184px); min-height: 0; }
+        .slide-left { padding-right: 0.5rem; border-right: 1px solid var(--border); align-self: start; position: sticky; top: 84px; }
+        .slide-left .label { margin-bottom: 0.5rem; font-family: var(--font-cursive); font-weight: 600; font-style: italic; text-transform: none; letter-spacing: 0.02em; font-size: 0.85rem; }
+        .slide-left .hero-2 { margin-bottom: 0.35rem; font-family: var(--font-cursive); font-weight: 600; font-style: italic; }
+        .slide-left .hero-sub { margin-top: 0; font-family: var(--font-cursive); font-style: italic; font-weight: 500; }
+        .slide-right { min-width: 0; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-right: 0.25rem; }
+        @media (max-width: 768px) { .slide-layout-split { grid-template-columns: 1fr; gap: 1.25rem; max-height: none; } .slide-left { border-right: none; padding-right: 0; padding-bottom: 1rem; border-bottom: 1px solid var(--border); position: static; } .slide-right { overflow-y: visible; } }
         .capsule { display: inline-block; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 2px solid var(--accent); padding: .4rem 1.1rem; border-radius: 999px; font-weight: 600; margin-bottom: 2rem; }
         .hero { font-size: clamp(2.5rem,6vw,3.75rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.08; color: var(--text); max-width: 780px; }
         .hero-2 { font-size: clamp(2rem,4.5vw,3rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.12; color: var(--text); }
@@ -48,7 +49,9 @@
         .hero-period-pill { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); background: var(--surface-2); border: 1px solid var(--border); padding: 0.3rem 0.7rem; border-radius: 999px; margin-top: 0.5rem; }
         .mc-dip { color: var(--text-3); font-weight: 600; }
         .label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-3); font-weight: 700; margin-bottom: .5rem; }
+        .label.cursive { font-family: var(--font-cursive); font-weight: 600; font-style: italic; text-transform: none; letter-spacing: 0.02em; }
         .subline { color: var(--text-2); font-size: 1.15rem; margin-top: 1.25rem; max-width: 580px; font-weight: 500; line-height: 1.5; }
+        .slide[data-slide="1"] .subline { font-family: var(--font-cursive); font-style: italic; font-weight: 500; }
         .byline { color: var(--text-3); font-size: 1.05rem; margin-top: .6rem; font-weight: 500; }
         .lane-line { margin-top: .75rem; padding: .6rem 0; border-top: 1px solid var(--border); font-size: 0.95rem; color: var(--text-2); font-weight: 500; line-height: 1.5; max-width: 560px; }
         .lane-line strong { color: var(--accent); font-weight: 600; }
@@ -65,9 +68,10 @@
         .date-pill { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; font-weight: 600; padding: 0.4rem 0.85rem; border-radius: 8px; background: rgba(34,211,238,0.2); border: 1px solid rgba(34,211,238,0.5); color: #67e8f9; }
         .date-pill .date { font-weight: 800; letter-spacing: 0.02em; }
 
-        .metric-row { display: grid; grid-template-columns: repeat(4,1fr); gap: .65rem; margin-top: 1.25rem; }
-        @media (max-width: 640px) { .metric-row { grid-template-columns: 1fr 1fr; } }
-        .metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.1rem; text-align: center; }
+        .metric-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.25rem; }
+        .metric-row.metric-row-3 { grid-template-columns: repeat(3, 1fr); }
+        @media (max-width: 640px) { .metric-row { grid-template-columns: 1fr 1fr; } .metric-row.metric-row-3 { grid-template-columns: 1fr 1fr; } }
+        .metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; text-align: center; min-width: 0; }
         .metric-card .mc-num { font-size: 2rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; }
         .mc-cyan { color: var(--cyan); } .mc-amber { color: var(--amber); } .mc-purple { color: var(--purple); } .mc-green { color: var(--green); }
         .metric-card .mc-label { font-size: 0.68rem; font-weight: 600; color: var(--text-3); margin-top: .3rem; letter-spacing: 0.04em; text-transform: uppercase; }
@@ -137,8 +141,9 @@
         .kol-checklist li.note::before { content: '·'; color: var(--amber); }
         .kol-summary { font-size: 0.85rem; color: var(--text-2); margin-top: 0.5rem; font-weight: 600; }
         .app-feedback-section { margin-top: 1rem; padding: 1rem 1.25rem; background: rgba(34,211,238,0.06); border-left: 4px solid var(--cyan); border-radius: 0 12px 12px 0; }
-        .app-feedback-section .label:first-child { color: var(--cyan); }
-        .app-feedback-section .lark-embed-wrap { margin-top: 0.75rem; margin-bottom: 1rem; }
+        .app-feedback-section .app-feedback-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+        .app-feedback-section .app-feedback-header .label { margin: 0; color: var(--cyan); }
+        .app-feedback-section .app-feedback-header .link-block { font-size: 0.85rem; font-weight: 600; white-space: nowrap; }
         .feedback-goal-block { margin-top: 1rem; padding: 0.9rem 1.1rem; background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.4); border-radius: 10px; }
         .feedback-goal-block .label { margin-bottom: 0.35rem; }
         .feedback-goal-block .goal-visual { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
@@ -214,17 +219,6 @@
         .community-card .cc-body { padding: 0.75rem; }
         .community-card .cc-body img { width: 100%; height: auto; display: block; border-radius: 8px; }
         .community-card .cc-meta { font-size: 0.8rem; color: var(--text-2); margin-top: 0.5rem; }
-        .community-channel-block { margin-top: 1rem; padding: 1rem 1.25rem; background: var(--surface); border: 2px solid var(--green); border-radius: 12px; }
-        .community-channel-block .cc-head { padding: 0 0 0.5rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); border: none; }
-        .community-channel-block .channel-row { display: flex; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
-        .community-channel-block .channel-visual { flex-shrink: 0; }
-        .community-channel-block .channel-goal { flex: 1; min-width: 200px; }
-        .community-channel-block .goal-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 0.35rem; }
-        .community-channel-block .goal-nums { font-size: 1.5rem; font-weight: 800; color: var(--green); }
-        .community-channel-block .goal-nums .goal-target { color: var(--text-3); font-weight: 600; }
-        .community-channel-block .progress-track { margin-top: 0.5rem; }
-        .community-channel-block .daily-active { font-size: 0.75rem; color: var(--green); font-weight: 600; margin-top: 0.35rem; }
-        .community-channel-block .wa-strategy-link { margin-top: 1rem; }
         .whats-next-highlight { margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(129,140,248,0.08); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; }
         .whats-next-highlight .wn-label { margin-top: 0; font-weight: 700; color: var(--accent); }
         .why-highlight { padding: 0.5rem 0.75rem; background: rgba(52,211,153,0.08); border-left: 4px solid var(--green); border-radius: 0 8px 8px 0; margin-bottom: 0.5rem; }
@@ -300,13 +294,13 @@
                 <p class="status-pill s3"><span class="lang-en">Status · Maintenance</span><span class="lang-zh">状态 · 维护</span></p>
             </div>
             <div class="slide-right">
-            <div class="metric-row s3">
+            <div class="metric-row metric-row-3 s3">
                 <div class="metric-card"><p class="mc-num mc-cyan">29,102</p><p class="mc-label"><span class="lang-en">Total following</span><span class="lang-zh">总关注数</span> · <span class="mc-dip">-1.6%</span></p></div>
                 <div class="metric-card"><p class="mc-num mc-amber">180</p><p class="mc-label"><span class="lang-en">Engagement</span><span class="lang-zh">互动</span> · -98.4%</p></div>
                 <div class="metric-card"><p class="mc-num mc-purple">7.9K</p><p class="mc-label"><span class="lang-en">Views</span><span class="lang-zh">播放</span> · -99.9%</p></div>
             </div>
             <div class="finding-block s4">
-                <p class="finding-label"><span class="lang-en">Interesting finding</span><span class="lang-zh">发现</span></p>
+                <p class="finding-label"><span class="lang-en">What's Interesting?</span><span class="lang-zh">有什么有趣的？</span></p>
                 <p class="finding-text"><span class="lang-en">UGC videos have been our top-performing content consistently over the past 60 days.</span><span class="lang-zh">过去 60 天，UGC 视频一直是我们表现最好的内容。</span></p>
             </div>
             <div class="s4" style="margin-top: 1rem; border-radius: 12px; overflow: hidden; border: 2px solid var(--border);">
@@ -345,13 +339,13 @@
                 </div>
             </div>
             <div class="slide-right">
-            <div class="metric-row s3">
+            <div class="metric-row metric-row-3 s3">
                 <div class="metric-card"><p class="mc-num mc-cyan">17</p><p class="mc-label"><span class="lang-en">Total following</span><span class="lang-zh">总关注数</span></p></div>
                 <div class="metric-card"><p class="mc-num mc-amber">192</p><p class="mc-label"><span class="lang-en">Engagement</span><span class="lang-zh">互动</span></p></div>
                 <div class="metric-card"><p class="mc-num mc-green">3.2K</p><p class="mc-label"><span class="lang-en">Views</span><span class="lang-zh">播放</span></p></div>
             </div>
             <div class="finding-block s4">
-                <p class="finding-label"><span class="lang-en">Interesting finding</span><span class="lang-zh">发现</span></p>
+                <p class="finding-label"><span class="lang-en">What's Interesting?</span><span class="lang-zh">有什么有趣的？</span></p>
                 <p class="finding-text"><span class="lang-en">Top content based on engagement — carousel posts and video driving reach and saves.</span><span class="lang-zh">按互动排序的头部内容：轮播帖与视频带动触达与收藏。</span></p>
             </div>
             <div class="s4" style="margin-top: 1rem; border-radius: 12px; overflow: hidden; border: 2px solid var(--border);">
@@ -421,6 +415,7 @@
                     </ul>
                     <div class="wa-channel-goal">
                         <p class="goal-label"><span class="lang-en">WHAT'S NEW · OUR CHANNEL</span><span class="lang-zh">新动态 · 我们的频道</span></p>
+                        <p class="goal-label" style="margin-bottom: 0.25rem;"><span class="lang-en">GOAL: 50 MEMBERS WITHIN 30 DAYS</span><span class="lang-zh">目标：30 天内 50 成员</span></p>
                         <p class="goal-nums"><span class="gate1-current">30</span><span class="gate1-sep"> / </span><span class="goal-target">50</span></p>
                         <div class="progress-track"><div class="progress-fill" style="width: 60%;"></div></div>
                         <p class="goal-caption"><span class="lang-en">60% of 30-day target</span><span class="lang-zh">30 天目标完成 60%</span></p>
@@ -439,8 +434,8 @@
                 </div>
             </div>
             <div class="app-feedback-section s3">
-            <p class="label" style="margin-top:0; margin-bottom: 0.5rem;"><span class="lang-en">APP FEEDBACK</span><span class="lang-zh">应用反馈</span></p>
-            <div class="lark-embed-wrap">
+            <div class="app-feedback-header">
+                <p class="label"><span class="lang-en">APP FEEDBACK</span><span class="lang-zh">应用反馈</span></p>
                 <a class="link-block" href="https://aelfblockchain.sg.larksuite.com/base/S0KobKH3WaiVtgsbg9LlHttagxe?table=tblBOWFJQuSBKl6l&view=vewxh42Xfo" target="_blank" rel="noopener"><span class="lang-en">Community Engagements Tracker ↗</span><span class="lang-zh">社区互动追踪 ↗</span></a>
             </div>
             <div class="feedback-goal-block s3">
@@ -497,7 +492,7 @@
                 <p class="kol-summary"><span class="lang-en">By 27 Apr: 700 outreach → 70 responses (10%).</span><span class="lang-zh">至 4 月 27 日：700 次外联 → 70 次回复（10%）。</span></p>
             </div>
             <div class="finding-block s4" style="margin-top: 0.75rem;">
-                <p class="finding-label"><span class="lang-en">Finding</span><span class="lang-zh">发现</span></p>
+                <p class="finding-label"><span class="lang-en">What's Interesting?</span><span class="lang-zh">有什么有趣的？</span></p>
                 <p class="finding-text" style="margin-bottom: 0.5rem;"><span class="lang-en">~10% response rate, but outreach builds exposure. Some KOLs ask for payment; others want to try the app first — we're nurturing interest before they promote.</span><span class="lang-zh">约 10% 回复率，但外联带来曝光。部分 KOL 要求付费，部分愿先试用 — 我们先培养兴趣再推广。</span></p>
             </div>
             <div class="whats-next-highlight s4">
