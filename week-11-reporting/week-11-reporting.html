@@ -131,6 +131,7 @@
         .kol-summary { font-size: 0.85rem; color: var(--text-2); margin-top: 0.5rem; font-weight: 600; }
         .app-feedback-section { margin-top: 1rem; padding: 1rem 1.25rem; background: rgba(34,211,238,0.06); border-left: 4px solid var(--cyan); border-radius: 0 12px 12px 0; }
         .app-feedback-section .label:first-child { color: var(--cyan); }
+        .app-feedback-section .lark-embed-wrap { margin-top: 0.75rem; margin-bottom: 1rem; }
         .feedback-goal-block { margin-top: 1rem; padding: 0.9rem 1.1rem; background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.4); border-radius: 10px; }
         .feedback-goal-block .label { margin-bottom: 0.35rem; }
         .feedback-goal-block .goal-visual { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
@@ -208,6 +209,8 @@
         .community-channel-block .progress-track { margin-top: 0.5rem; }
         .community-channel-block .daily-active { font-size: 0.75rem; color: var(--green); font-weight: 600; margin-top: 0.35rem; }
         .community-channel-block .wa-strategy-link { margin-top: 1rem; }
+        .whats-next-highlight { margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(129,140,248,0.08); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; }
+        .whats-next-highlight .wn-label { margin-top: 0; font-weight: 700; color: var(--accent); }
         .community-feedback-wrap { margin-top: 1rem; background: var(--surface); border: 2px solid var(--border); border-radius: 12px; overflow: hidden; }
         .community-feedback-wrap .cc-head { padding: 0.6rem 1rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); border-bottom: 1px solid var(--border); }
         .community-feedback-wrap .cc-body { padding: 0.75rem; }
@@ -400,8 +403,19 @@
                     </div>
                 </div>
             </div>
+            <div class="community-channel-block s3" style="margin-top: 1rem;">
+                <p class="cc-head"><span class="lang-en">What's new · Our channel</span><span class="lang-zh">新动态 · 我们的频道</span></p>
+                <p class="goal-label"><span class="lang-en">Goal: 50 members within 30 days</span><span class="lang-zh">目标：30 天内 50 成员</span></p>
+                <div class="goal-nums" style="margin-top: 0.25rem;"><span class="gate1-current">30</span><span class="goal-target"> / 50</span></div>
+                <div class="progress-track" style="margin-top: 0.5rem;"><div class="progress-fill" style="width: 60%;"></div></div>
+                <p class="gate1-caption" style="margin-top: 0.35rem; font-size: 0.8rem;"><span class="lang-en">60% of 30-day target</span><span class="lang-zh">30 天目标 60%</span></p>
+                <p class="wa-strategy-link" style="margin-top: 0.75rem;"><a class="link-block" href="https://aelfblockchain.sg.larksuite.com/docx/DTVedskrsowp1kxeqJglUF5zg7b?from=from_copylink" target="_blank" rel="noopener"><span class="lang-en">WA maintenance strategy · Keep users engaged ↗</span><span class="lang-zh">WA 维护策略 · 保持用户参与 ↗</span></a></p>
+            </div>
             <div class="app-feedback-section s3">
             <p class="label" style="margin-top:0; margin-bottom: 0.5rem;"><span class="lang-en">APP FEEDBACK</span><span class="lang-zh">应用反馈</span></p>
+            <div class="lark-embed-wrap">
+                <a class="link-block" href="https://aelfblockchain.sg.larksuite.com/base/S0KobKH3WaiVtgsbg9LlHttagxe?table=tblBOWFJQuSBKl6l&view=vewxh42Xfo" target="_blank" rel="noopener"><span class="lang-en">Community Engagements Tracker ↗</span><span class="lang-zh">社区互动追踪 ↗</span></a>
+            </div>
             <div class="feedback-goal-block s3">
                 <p class="label"><span class="lang-en">USER FEEDBACK GOAL · BY 27 APR</span><span class="lang-zh">用户反馈目标 · 至 4 月 27 日</span></p>
                 <p class="s4" style="font-size:0.85rem; color: var(--text-2);"><span class="lang-en">Min. 2 quality user feedback per week → min. 16 by Gate 1 end.</span><span class="lang-zh">每周至少 2 条优质用户反馈 → Gate 1 结束至少 16 条。</span></p>
@@ -448,14 +462,6 @@
             <p class="s4" style="font-size:0.9rem; color: var(--text-2);"><span class="lang-en">~90 people reached across valued communities. Outcome: ~10% response rate. 5 new communities identified this week (Discord, Reddit, WhatsApp). Tracking:</span><span class="lang-zh">在价值社区触达约 90 人。结果：约 10% 回复率。本周新识别 5 个社区（Discord、Reddit、WhatsApp）。追踪：</span></p>
             <a class="link-block s4" href="https://aelfblockchain.sg.larksuite.com/base/S0KobKH3WaiVtgsbg9LlHttagxe?from=from_copylink" target="_blank" rel="noopener"><span class="lang-en">Community engagement tracker ↗</span><span class="lang-zh">社区互动追踪 ↗</span></a>
             <a class="link-block s4" href="https://aelfblockchain.sg.larksuite.com/base/S0KobKH3WaiVtgsbg9LlHttagxe?table=tblBOWFJQuSBKl6l&view=vewxh42Xfo" target="_blank" rel="noopener" style="margin-left: 0.5rem;"><span class="lang-en">Lark Base · Community &amp; feedback ↗</span><span class="lang-zh">Lark Base · 社区与反馈 ↗</span></a>
-            <div class="community-channel-block s4" style="margin-top: 1rem;">
-                <p class="cc-head"><span class="lang-en">What's new · Our channel</span><span class="lang-zh">新动态 · 我们的频道</span></p>
-                <p class="goal-label"><span class="lang-en">Goal: 50 members within 30 days</span><span class="lang-zh">目标：30 天内 50 成员</span></p>
-                <div class="goal-nums" style="margin-top: 0.25rem;"><span class="gate1-current">30</span><span class="goal-target"> / 50</span></div>
-                <div class="progress-track" style="margin-top: 0.5rem;"><div class="progress-fill" style="width: 60%;"></div></div>
-                <p class="gate1-caption" style="margin-top: 0.35rem; font-size: 0.8rem;"><span class="lang-en">60% of 30-day target</span><span class="lang-zh">30 天目标 60%</span></p>
-                <p class="wa-strategy-link" style="margin-top: 0.75rem;"><a class="link-block" href="https://aelfblockchain.sg.larksuite.com/docx/DTVedskrsowp1kxeqJglUF5zg7b?from=from_copylink" target="_blank" rel="noopener"><span class="lang-en">WA maintenance strategy · Keep users engaged ↗</span><span class="lang-zh">WA 维护策略 · 保持用户参与 ↗</span></a></p>
-            </div>
             <p class="label s4" style="margin-top:1.25rem;"><span class="lang-en">KOL OUTREACH</span><span class="lang-zh">KOL 外联</span></p>
             <div class="finding-block s4" style="margin-top: 0.5rem;">
                 <p class="finding-label"><span class="lang-en">Finding</span><span class="lang-zh">发现</span></p>
@@ -468,22 +474,17 @@
                 </ul>
                 <p class="kol-summary"><span class="lang-en">By 27 Apr: 700 outreach → 70 responses (10%).</span><span class="lang-zh">至 4 月 27 日：700 次外联 → 70 次回复（10%）。</span></p>
             </div>
-            <p class="wn-label s4" style="margin-top: 0.5rem; font-size: 0.68rem;"><span class="lang-en">What's next</span><span class="lang-zh">下一步</span></p>
-            <p class="s4" style="font-size: 0.85rem; color: var(--text-2); margin-top: 0.25rem;"><span class="lang-en">Keep 100 outreach per week. Nurture the 3 in conversation; aim for 2+ to try the app and share. Maintain exposure and interest so when we scale, we have a pipeline.</span><span class="lang-zh">维持每周 100 次外联。跟进 3 位洽谈中的 KOL；目标至少 2 位试用并分享。持续曝光与兴趣，以便日后放大时有管线。</span></p>
+            <div class="whats-next-highlight s4">
+                <p class="wn-label" style="font-size: 0.68rem;"><span class="lang-en">What's next</span><span class="lang-zh">下一步</span></p>
+                <p class="s4" style="font-size: 0.85rem; color: var(--text-2); margin-top: 0.25rem;"><span class="lang-en">Keep 100 outreach per week. Nurture the 3 in conversation; aim for 2+ to try the app and share. Maintain exposure and interest so when we scale, we have a pipeline.</span><span class="lang-zh">维持每周 100 次外联。跟进 3 位洽谈中的 KOL；目标至少 2 位试用并分享。持续曝光与兴趣，以便日后放大时有管线。</span></p>
+            </div>
             <div class="community-grid s4" style="margin-top: 1.25rem;">
                 <div class="community-card">
-                    <p class="cc-head"><span class="lang-en">Joining communities</span><span class="lang-zh">加入社区</span> · Discord, Reddit, WhatsApp</p>
+                    <p class="cc-head"><span class="lang-en">Goal met · Joining communities</span><span class="lang-zh">目标达成 · 加入社区</span></p>
                     <div class="cc-body">
-                        <p class="cc-meta"><span class="lang-en">5 identified this week</span><span class="lang-zh">本周识别 5 个</span></p>
+                        <p class="cc-meta"><span class="lang-en">Communities we joined on Discord, Reddit, WhatsApp — 5 this week.</span><span class="lang-zh">我们在 Discord、Reddit、WhatsApp 加入的社区 — 本周 5 个。</span></p>
                         <img src="assets/soulgarden-feedback-lark.png" alt="Community engagement tracking - Discord, Reddit, outreach" loading="lazy" style="margin-top: 0.5rem;">
                     </div>
-                </div>
-            </div>
-            <div class="community-feedback-wrap s4" style="margin-top: 1rem;">
-                <p class="cc-head"><span class="lang-en">User feedback on SoulGarden</span><span class="lang-zh">SoulGarden 用户反馈</span></p>
-                <div class="cc-body">
-                    <img src="assets/soulgarden-feedback-lark.png" alt="SoulGarden user feedback - Lark Base" loading="lazy">
-                    <a class="link-block" href="https://aelfblockchain.sg.larksuite.com/base/S0KobKH3WaiVtgsbg9LlHttagxe?table=tblBOWFJQuSBKl6l&view=vewxh42Xfo" target="_blank" rel="noopener"><span class="lang-en">Open Lark Base · Community & feedback ↗</span><span class="lang-zh">打开 Lark Base · 社区与反馈 ↗</span></a>
                 </div>
             </div>
         </div>
