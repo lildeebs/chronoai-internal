@@ -5,7 +5,8 @@
 
 cd "$(dirname "$0")"
 echo "Serving at http://localhost:5555/"
-echo "  Overview: http://localhost:5555/overview.html"
-echo "  Week 11:  http://localhost:5555/week-11-target/week-11-target.html"
+echo "  Overview:     http://localhost:5555/overview.html"
+echo "  Week 11 Mon:  http://localhost:5555/week-11-target/week-11-target.html"
+echo "  Week 11 Fri:  http://localhost:5555/week-11-reporting/week-11-reporting.html"
 echo "Press Ctrl+C to stop."
 python3 -m http.server 5555
