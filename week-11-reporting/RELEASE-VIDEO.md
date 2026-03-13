@@ -1,6 +1,7 @@
 # Slide 4 screen recording (WhatsApp chat)
 
-The deck uses your screen recording from a **GitHub Release** so the file can be >100 MB.
+The deck uses your screen recording from a **GitHub Release** so the file can be >100 MB.  
+**Until you complete the steps below, the public slide will not show your recording** (it will show a placeholder).
 
 ## One-time setup
 
