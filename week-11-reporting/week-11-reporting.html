@@ -34,7 +34,13 @@
         .slide.active .s4 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .30s both; }
         .slide.active .s5 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .38s both; }
 
-        .inner { max-width: 860px; margin: 0 auto; width: 100%; }
+        .inner { max-width: 900px; margin: 0 auto; width: 100%; }
+        .slide .inner > .label { margin-top: 0; }
+        .slide .inner > .hero-2 { margin-top: 0.25rem; }
+        .slide .inner > .metric-row { margin-top: 1.5rem; }
+        .slide .inner > .finding-block { margin-top: 1.5rem; }
+        .slide .inner > .whats-next-note { margin-top: 1.5rem; }
+        .slide-content-break { border-top: 1px solid var(--border); margin-top: 1.75rem; padding-top: 1.5rem; }
         .capsule { display: inline-block; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 2px solid var(--accent); padding: .4rem 1.1rem; border-radius: 999px; font-weight: 600; margin-bottom: 2rem; }
         .hero { font-size: clamp(2.5rem,6vw,3.75rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; color: var(--text); max-width: 780px; font-family: var(--font-cursive); font-style: normal; }
         .hero-2 { font-size: clamp(2rem,4.5vw,3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.12; color: var(--text); font-family: var(--font-cursive); font-style: normal; }
@@ -62,8 +68,10 @@
         .date-pill { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.8rem; font-weight: 600; padding: 0.4rem 0.85rem; border-radius: 8px; background: rgba(34,211,238,0.2); border: 1px solid rgba(34,211,238,0.5); color: #67e8f9; }
         .date-pill .date { font-weight: 800; letter-spacing: 0.02em; }
 
-        .metric-row { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.25rem; max-width: 360px; margin-left: auto; margin-right: auto; }
-        .metric-row.metric-row-3 { grid-template-columns: 1fr; }
+        .metric-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.25rem; }
+        .metric-row.metric-row-3 { grid-template-columns: repeat(3, 1fr); }
+        @media (max-width: 640px) { .metric-row { grid-template-columns: 1fr 1fr; } .metric-row.metric-row-3 { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 420px) { .metric-row { grid-template-columns: 1fr; } }
         .metric-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; text-align: center; min-width: 0; }
         .metric-card .mc-num { font-size: 2rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1.1; }
         .mc-cyan { color: var(--cyan); } .mc-amber { color: var(--amber); } .mc-purple { color: var(--purple); } .mc-green { color: var(--green); }
@@ -73,15 +81,18 @@
         .chart-placeholder { background: var(--surface); border: 2px dashed var(--border); border-radius: 12px; padding: 2rem; text-align: center; margin-top: 1rem; min-height: 200px; display: flex; align-items: center; justify-content: center; color: var(--text-3); font-size: 0.9rem; }
         .embed-frame { border: 2px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--surface); }
         .embed-frame iframe { width: 100%; border: none; display: block; }
-        .tiktok-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-top: 0.75rem; max-width: 340px; margin-left: auto; margin-right: auto; }
+        .tiktok-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 0.75rem; }
+        @media (max-width: 768px) { .tiktok-grid { grid-template-columns: 1fr; } }
         .tiktok-embed-wrap { border-radius: 12px; overflow: hidden; border: 2px solid var(--border); background: var(--surface); }
         .tiktok-embed-wrap iframe { display: block; width: 100%; min-height: 380px; border: none; }
         .finding-embed-wrap.tiktok-embed-video-only { border-radius: 12px; overflow: hidden; border: 2px solid var(--border); background: var(--surface); max-width: 100%; }
         .finding-embed-wrap.tiktok-embed-video-only iframe { display: block; width: 100%; min-height: 420px; border: none; }
-        .finding-embed-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-top: 0; align-items: start; max-width: 320px; margin-left: auto; margin-right: auto; }
+        .finding-embed-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 0; align-items: start; }
         .finding-embed-grid .finding-embed-wrap.tiktok-embed-video-only { margin: 0; width: 100%; aspect-ratio: 9 / 16; overflow: hidden; }
         .finding-embed-grid .finding-embed-wrap.tiktok-embed-video-only iframe { display: block; width: 100%; height: 100%; min-height: 0; border: none; }
-        .instagram-embed-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; max-width: 420px; margin-left: auto; margin-right: auto; }
+        @media (max-width: 520px) { .finding-embed-grid { grid-template-columns: 1fr; } }
+        .instagram-embed-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem; }
+        @media (max-width: 520px) { .instagram-embed-grid { grid-template-columns: 1fr; } }
         .instagram-embed-grid .embed-frame-wrap { border-radius: 12px; overflow: hidden; border: 2px solid var(--border); background: var(--surface); }
         .instagram-embed-grid .embed-frame { min-height: 420px; }
         .instagram-embed-grid .embed-frame iframe { min-height: 420px; width: 100%; }
@@ -144,8 +155,28 @@
 
         .list-check { list-style: none; padding: 0; } .list-check li { position: relative; padding-left: 1.4rem; margin-bottom: .4rem; color: var(--text-2); font-size: .92rem; line-height: 1.5; }
         .list-check li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+        .friday-audit { margin-top: 1.5rem; }
+        .friday-audit .audit-title { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); font-weight: 700; margin-bottom: 0.5rem; }
+        .friday-audit .audit-sub { font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
+        .audit-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        @media (max-width: 640px) { .audit-cols { grid-template-columns: 1fr; } }
+        .audit-col { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; border-top: 3px solid; }
+        .audit-col.col-cyan { border-top-color: var(--cyan); }
+        .audit-col.col-amber { border-top-color: var(--amber); }
+        .audit-col.col-purple { border-top-color: var(--purple); }
+        .audit-col .col-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
+        .audit-col.col-cyan .col-title { color: var(--cyan); }
+        .audit-col.col-amber .col-title { color: var(--amber); }
+        .audit-col.col-purple .col-title { color: var(--purple); }
+        .audit-item { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.88rem; color: var(--text-2); line-height: 1.4; }
+        .audit-item:last-child { margin-bottom: 0; }
+        .audit-item .check { flex-shrink: 0; width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; }
+        .audit-item.done .check { border-color: var(--green); background: rgba(52,211,153,0.2); color: var(--green); }
+        .audit-item.partial .check { border-color: var(--amber); background: rgba(251,191,36,0.15); color: var(--amber); }
+        .audit-item .result { display: block; font-size: 0.75rem; color: var(--text-3); margin-top: 0.2rem; }
         .feedback-quote { background: var(--surface); border-left: 3px solid var(--cyan); border-radius: 0 8px 8px 0; padding: .9rem 1.1rem; margin-bottom: .6rem; font-size: .9rem; color: var(--text-2); font-style: italic; }
-        .feedback-findings-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-top: 0.5rem; max-width: 380px; margin-left: auto; margin-right: auto; }
+        .feedback-findings-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 0.5rem; }
+        @media (max-width: 520px) { .feedback-findings-grid { grid-template-columns: 1fr; } }
         .feedback-finding-card { display: block; width: 100%; background: var(--surface); border: 2px solid var(--border); border-radius: 10px; overflow: hidden; color: var(--text-2); font-size: 0.9rem; font-weight: 600; transition: border-color 0.2s, background 0.2s; cursor: pointer; padding: 0; text-align: left; font-family: inherit; }
         .feedback-finding-card:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
         .feedback-finding-card:hover { border-color: var(--cyan); background: rgba(34,211,238,0.08); color: var(--text); }
@@ -280,7 +311,7 @@
             <p class="hero-sub s2"><span class="lang-en">We're in maintenance — channels kept active while we focus acquisition on SoulGarden.</span><span class="lang-zh">当前维护中 — 渠道保持活跃，获客重心在 SoulGarden。</span></p>
             <p class="hero-period-pill s3"><span class="lang-en">Past 30 days</span><span class="lang-zh">过去 30 天</span></p>
             <p class="status-pill s3"><span class="lang-en">Status · Maintenance</span><span class="lang-zh">状态 · 维护</span></p>
-            <div class="metric-row metric-row-3 s3">
+            <div class="metric-row metric-row-3 s3 slide-content-break">
                 <div class="metric-card"><p class="mc-num mc-cyan">29,102</p><p class="mc-label"><span class="lang-en">Total following</span><span class="lang-zh">总关注数</span> · <span class="mc-dip">-1.6%</span></p></div>
                 <div class="metric-card"><p class="mc-num mc-amber">180</p><p class="mc-label"><span class="lang-en">Engagement</span><span class="lang-zh">互动</span> · -98.4%</p></div>
                 <div class="metric-card"><p class="mc-num mc-purple">7.9K</p><p class="mc-label"><span class="lang-en">Views</span><span class="lang-zh">播放</span> · -99.9%</p></div>
@@ -321,7 +352,7 @@
                 <span class="date-pill"><span class="lang-en">First content posted on</span><span class="lang-zh">首帖发布于</span> <span class="date">20 Feb</span></span>
                 <span class="date-pill"><span class="lang-en">App launched on</span><span class="lang-zh">应用上线于</span> <span class="date">27 Feb</span></span>
             </div>
-            <div class="metric-row metric-row-3 s3">
+            <div class="metric-row metric-row-3 s3 slide-content-break">
                 <div class="metric-card"><p class="mc-num mc-cyan">17</p><p class="mc-label"><span class="lang-en">Total following</span><span class="lang-zh">总关注数</span></p></div>
                 <div class="metric-card"><p class="mc-num mc-amber">192</p><p class="mc-label"><span class="lang-en">Engagement</span><span class="lang-zh">互动</span></p></div>
                 <div class="metric-card"><p class="mc-num mc-green">3.2K</p><p class="mc-label"><span class="lang-en">Views</span><span class="lang-zh">播放</span></p></div>
@@ -363,7 +394,7 @@
             <p class="label s1"><span class="lang-en">COMMUNITY · GATE 1 PIPELINE</span><span class="lang-zh">社区 · GATE 1 管线</span></p>
             <h2 class="hero-2 s2"><span class="lang-en">Consistent <span class="title-brand">Community</span> Outreach — Driving Downloads and Feedback Toward <span class="title-brand">Gate 1</span>.</span><span class="lang-zh">持续<span class="title-brand">社区</span>外联 — 推动下载与反馈，迈向 <span class="title-brand">Gate 1</span>。</span></h2>
             <p class="s3" style="font-size: 0.85rem; color: var(--accent); font-weight: 600;"><span class="lang-en">Priority this gate: quality user feedback + KOL pipeline — so we learn fast and scale what converts.</span><span class="lang-zh">本阶段重点：优质用户反馈 + KOL 管线 — 快速学习并放大能转化的部分。</span></p>
-            <div class="soulgarden-graph s3">
+            <div class="soulgarden-graph s3 slide-content-break">
                 <p class="label" style="margin-bottom: 0.5rem;"><span class="lang-en">SOULGARDEN · FIRST-TIME DOWNLOADS (GATE 1)</span><span class="lang-zh">SOULGARDEN · 首次下载（GATE 1）</span></p>
                 <div class="gate1-visual">
                     <div class="gate1-nums"><span class="gate1-current">70</span><span class="gate1-sep">/</span><span class="gate1-target">200</span></div>
@@ -416,7 +447,7 @@
                 <p class="label"><span class="lang-en">APP FEEDBACK</span><span class="lang-zh">应用反馈</span></p>
                 <a class="link-block" href="https://aelfblockchain.sg.larksuite.com/base/S0KobKH3WaiVtgsbg9LlHttagxe?table=tblBOWFJQuSBKl6l&view=vewxh42Xfo" target="_blank" rel="noopener"><span class="lang-en">Community Engagements Tracker ↗</span><span class="lang-zh">社区互动追踪 ↗</span></a>
             </div>
-            <div class="feedback-goal-block s3">
+            <div class="feedback-goal-block s3 slide-content-break">
                 <p class="label"><span class="lang-en">USER FEEDBACK GOAL · BY 27 APR</span><span class="lang-zh">用户反馈目标 · 至 4 月 27 日</span></p>
                 <p class="s4" style="font-size:0.85rem; color: var(--text-2);"><span class="lang-en">Min. 2 quality user feedback per week → min. 16 by Gate 1 end.</span><span class="lang-zh">每周至少 2 条优质用户反馈 → Gate 1 结束至少 16 条。</span></p>
                 <div class="goal-visual">
@@ -553,13 +584,37 @@
         </div>
     </section>
 
-    <!-- Slide 6: What's coming next week -->
+    <!-- Slide 6: Friday Audit + What's coming next week -->
     <section class="slide" data-slide="6">
         <div class="inner">
-            <p class="label s1"><span class="lang-en">WHAT'S COMING · NEXT WEEK</span><span class="lang-zh">下周预告</span></p>
-            <h2 class="hero-2 s2"><span class="lang-en">What's Coming <span class="title-brand">Next Week</span>.</span><span class="lang-zh">下周<span class="title-brand">计划</span>。</span></h2>
-            <p class="s3" style="font-size: 0.9rem; color: var(--accent); font-weight: 600;"><span class="lang-en">Priority: sustain KOL pipeline + daily SoulGarden cadence + second batch of feedback — on track for 200 by 27 Apr.</span><span class="lang-zh">重点：维持 KOL 管线 + SoulGarden 日更 + 第二批反馈 — 确保 4 月 27 日前达成 200。</span></p>
-            <ul class="list-check s3">
+            <p class="label s1"><span class="lang-en">FRIDAY AUDIT · MON TARGET VS FRI RESULT</span><span class="lang-zh">周五审计 · 周一目标 vs 周五结果</span></p>
+            <h2 class="hero-2 s2"><span class="lang-en">What we're checking by <span class="title-brand">Friday</span>.</span><span class="lang-zh">周五<span class="title-brand">检查清单</span>。</span></h2>
+            <p class="s3 audit-sub"><span class="lang-en">Three areas. All lead to 200.</span><span class="lang-zh">三个领域。均服务于 200。</span></p>
+            <div class="friday-audit s3 slide-content-break">
+                <div class="audit-cols">
+                    <div class="audit-col col-cyan">
+                        <p class="col-title"><span class="lang-en">1. FIND &amp; BUILD</span><span class="lang-zh">1. 发现与建设</span></p>
+                        <div class="audit-item partial"><span class="check">~</span><span><span class="lang-en">1 map (10+ places)</span><span class="lang-zh">1 张地图（10+ 渠道）</span><span class="result">— 5 communities joined</span></span></div>
+                        <div class="audit-item done"><span class="check">✓</span><span><span class="lang-en">100 names. 2 say yes.</span><span class="lang-zh">100 名单。2 人同意。</span><span class="result">— 100 outreach, 3 in conversation</span></span></div>
+                        <div class="audit-item done"><span class="check">✓</span><span><span class="lang-en">Count installs from community</span><span class="lang-zh">统计社区安装量</span><span class="result">— 70/200 tracked</span></span></div>
+                    </div>
+                    <div class="audit-col col-amber">
+                        <p class="col-title"><span class="lang-en">2. KEEP USERS</span><span class="lang-zh">2. 留存用户</span></p>
+                        <div class="audit-item done"><span class="check">✓</span><span><span class="lang-en">1 plan. Nurture users we can reach.</span><span class="lang-zh">1 计划。培育可触达用户。</span><span class="result">— WA Manifest community + strategy</span></span></div>
+                        <div class="audit-item done"><span class="check">✓</span><span><span class="lang-en">5+ replies from users</span><span class="lang-zh">5+ 用户回复</span><span class="result">— 4 feedback gathered</span></span></div>
+                        <div class="audit-item partial"><span class="check">~</span><span><span class="lang-en">Day 7: who still here?</span><span class="lang-zh">第 7 天：谁还在？</span><span class="result">— retention baseline next week</span></span></div>
+                    </div>
+                    <div class="audit-col col-purple">
+                        <p class="col-title"><span class="lang-en">3. COUNT &amp; REPORT</span><span class="lang-zh">3. 统计与汇报</span></p>
+                        <div class="audit-item done"><span class="check">✓</span><span><span class="lang-en">13 posts. 1 report.</span><span class="lang-zh">13 帖。1 份报告。</span><span class="result">— SoulGarden + GenViral; this deck</span></span></div>
+                        <div class="audit-item done"><span class="check">✓</span><span><span class="lang-en">1 dashboard (6 numbers)</span><span class="lang-zh">1 仪表板（6 个数字）</span><span class="result">— metrics in deck</span></span></div>
+                    </div>
+                </div>
+            </div>
+            <p class="label s4" style="margin-top: 2rem;"><span class="lang-en">WHAT'S COMING · NEXT WEEK</span><span class="lang-zh">下周预告</span></p>
+            <h2 class="hero-2 s4"><span class="lang-en">What's Coming <span class="title-brand">Next Week</span>.</span><span class="lang-zh">下周<span class="title-brand">计划</span>。</span></h2>
+            <p class="s4" style="font-size: 0.9rem; color: var(--accent); font-weight: 600;"><span class="lang-en">Priority: sustain KOL pipeline + daily SoulGarden cadence + second batch of feedback — on track for 200 by 27 Apr.</span><span class="lang-zh">重点：维持 KOL 管线 + SoulGarden 日更 + 第二批反馈 — 确保 4 月 27 日前达成 200。</span></p>
+            <ul class="list-check s4">
                 <li><span class="lang-en">Sustain 100 KOL outreach/week; aim for 2+ onboarded</span><span class="lang-zh">维持每周 100 次 KOL 外联；目标至少 2 位入驻</span></li>
                 <li><span class="lang-en">30-day SoulGarden cadence (1/day) live from 13 Mar</span><span class="lang-zh">SoulGarden 30 天节奏（每日 1 帖）自 3 月 13 日起</span></li>
                 <li><span class="lang-en">Second batch of community feedback + retention baseline</span><span class="lang-zh">第二批社区反馈 + 留存基线</span></li>
