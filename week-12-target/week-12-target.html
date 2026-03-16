@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoAI · Week 12 · Dionne · Monday Target</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #09090b; --surface: #111114; --surface-2: #18181b; --border: #27272a;
+            --text: #fafafa; --text-2: #a1a1aa; --text-3: #71717a;
+            --accent: #818cf8; --accent-soft: rgba(129,140,248,0.12);
+            --cyan: #22d3ee; --amber: #fbbf24; --purple: #a78bfa; --green: #34d399; --neon-green: #39ff14;
+            --font: 'Inter', -apple-system, sans-serif;
+            --font-cursive: 'Cormorant Garamond', Georgia, serif;
+        }
+        * { box-sizing: border-box; font-family: var(--font); margin: 0; padding: 0; }
+        body { background: var(--bg); color: var(--text); min-height: 100vh; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        body .lang-zh { display: none; } body.lang-zh .lang-en { display: none; } body.lang-zh .lang-zh { display: inline; }
+
+        .topbar { position: fixed; top: 0; left: 0; right: 0; height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 150; }
+        .topbar-left { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
+        .lang-toggle { display: flex; gap: 2px; background: var(--surface-2); padding: 3px 4px; border-radius: 8px; border: 1px solid var(--border); }
+        .lang-toggle button { padding: 4px 12px; font-size: 0.78rem; font-weight: 600; border: none; border-radius: 6px; cursor: pointer; background: transparent; color: var(--text-3); transition: all 0.2s ease; }
+        .lang-toggle button.active { background: var(--surface-2); color: var(--accent); }
+
+        .slide { min-height: 100vh; display: none; padding: 84px 40px 100px; }
+        .slide.active { display: flex; flex-direction: column; justify-content: center; animation: slideIn 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+        @keyframes slideIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes stagger { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+        .slide.active .s1 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .06s both; }
+        .slide.active .s2 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .14s both; }
+        .slide.active .s3 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .22s both; }
+        .slide.active .s4 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .30s both; }
+        .slide.active .s5 { animation: stagger .5s cubic-bezier(.22,1,.36,1) .38s both; }
+
+        .inner { max-width: 900px; margin: 0 auto; width: 100%; }
+
+        .label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-3); font-weight: 700; margin-bottom: .5rem; }
+        .hero { font-size: clamp(2.5rem,6vw,3.75rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; color: var(--text); font-family: var(--font-cursive); }
+        .hero-2 { font-size: clamp(2rem,4.5vw,3rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.12; color: var(--text); font-family: var(--font-cursive); }
+        .hero .title-brand, .hero-2 .title-brand { color: var(--text); }
+        .title-brand { color: var(--neon-green); font-weight: 700; }
+        .hero-sub { font-size: clamp(1rem,2.2vw,1.2rem); font-weight: 500; color: var(--text-2); margin-top: .4rem; line-height: 1.55; max-width: 720px; }
+        .capsule { display: inline-block; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border: 2px solid var(--accent); padding: .4rem 1.1rem; border-radius: 999px; font-weight: 600; margin-bottom: 2rem; }
+        .byline { color: var(--text-3); font-size: 1rem; margin-top: .5rem; font-weight: 500; }
+
+        .pill-row { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-top: 1.5rem; }
+        .pill { display: inline-flex; align-items: center; gap: .4rem; font-size: .83rem; font-weight: 600; padding: .45rem 1rem; border-radius: 999px; border: 2px solid; }
+        .pill-cyan { border-color: var(--cyan); background: rgba(34,211,238,0.12); color: #67e8f9; }
+        .pill-amber { border-color: var(--amber); background: rgba(251,191,36,0.12); color: #fcd34d; }
+        .pill-purple { border-color: var(--purple); background: rgba(167,139,250,0.12); color: #c4b5fd; }
+        .pill-green { border-color: var(--green); background: rgba(52,211,153,0.12); color: #6ee7b7; }
+        .pill-accent { border-color: var(--accent); background: rgba(129,140,248,0.12); color: #a5b4fc; }
+
+        .cho-badge { display: inline-flex; align-items: center; gap: 0.75rem; margin-top: 1.75rem; padding: 0.75rem 1.25rem; background: linear-gradient(135deg, rgba(52,211,153,0.12), rgba(34,211,238,0.08)); border: 1px solid rgba(52,211,153,0.4); border-radius: 10px; }
+        .cho-score { font-size: 1.75rem; font-weight: 900; color: var(--green); letter-spacing: -0.02em; line-height: 1; }
+        .cho-label { font-size: 0.8rem; font-weight: 600; color: var(--text-2); line-height: 1.35; }
+        .cho-label strong { color: var(--text); display: block; font-size: 0.85rem; }
+
+        .section-break { border-top: 1px solid var(--border); margin-top: 1.75rem; padding-top: 1.5rem; }
+
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.25rem; }
+        @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+        .col-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.25rem; border-top: 3px solid; }
+        .col-card.cc-cyan { border-top-color: var(--cyan); }
+        .col-card.cc-purple { border-top-color: var(--purple); }
+        .col-card.cc-amber { border-top-color: var(--amber); }
+        .col-card.cc-green { border-top-color: var(--green); }
+        .col-card .cc-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.65rem; display: flex; align-items: center; gap: 0.5rem; }
+        .col-card.cc-cyan .cc-title { color: var(--cyan); }
+        .col-card.cc-purple .cc-title { color: var(--purple); }
+        .col-card.cc-amber .cc-title { color: var(--amber); }
+        .col-card.cc-green .cc-title { color: var(--green); }
+        .col-card ul { list-style: none; padding: 0; }
+        .col-card ul li { font-size: 0.875rem; color: var(--text-2); padding: 0.3rem 0; border-bottom: 1px solid var(--border); line-height: 1.45; }
+        .col-card ul li:last-child { border-bottom: none; }
+
+        .pipeline-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-top: 1.25rem; }
+        @media (max-width: 560px) { .pipeline-row { grid-template-columns: 1fr 1fr; } }
+        .pipeline-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 0.75rem; text-align: center; }
+        .pipeline-card .p-num { font-size: 2rem; font-weight: 900; letter-spacing: -0.03em; line-height: 1; }
+        .pipeline-card .p-target { font-size: 0.7rem; color: var(--text-3); font-weight: 600; margin-top: 0.15rem; }
+        .pipeline-card .p-label { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); margin-top: 0.4rem; }
+        .num-cyan { color: var(--cyan); } .num-amber { color: var(--amber); } .num-green { color: var(--green); } .num-purple { color: var(--purple); }
+
+        .callout { margin-top: 1.25rem; padding: 0.85rem 1.1rem; background: rgba(251,146,60,0.08); border-left: 4px solid #f97316; border-radius: 0 8px 8px 0; }
+        .callout .cl-label { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: #f97316; font-weight: 700; margin-bottom: 0.35rem; }
+        .callout p { font-size: 0.875rem; color: var(--text-2); line-height: 1.5; }
+
+        .tasks-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 0.5rem; }
+        .tasks-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+        .tasks-list li { display: flex; align-items: flex-start; gap: 0.55rem; font-size: 0.875rem; color: var(--text-2); line-height: 1.45; }
+        .tasks-list li .box { flex-shrink: 0; width: 16px; height: 16px; border-radius: 3px; border: 1.5px solid var(--border); margin-top: 3px; }
+
+        .outcome-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+        @media (max-width: 520px) { .outcome-row { grid-template-columns: 1fr; } }
+        .outcome-card { padding: 0.85rem 1rem; border-radius: 8px; border: 1px solid; }
+        .outcome-card.deliverable { background: rgba(129,140,248,0.07); border-color: rgba(129,140,248,0.3); }
+        .outcome-card.metric { background: rgba(52,211,153,0.07); border-color: rgba(52,211,153,0.3); }
+        .outcome-card .oc-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.35rem; }
+        .outcome-card.deliverable .oc-label { color: var(--accent); }
+        .outcome-card.metric .oc-label { color: var(--green); }
+        .outcome-card .oc-text { font-size: 0.875rem; color: var(--text-2); line-height: 1.45; }
+
+        .cho-pick { color: var(--amber); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; border: 1px solid rgba(251,191,36,0.4); background: rgba(251,191,36,0.1); padding: 0.15rem 0.45rem; border-radius: 4px; white-space: nowrap; }
+
+        .footer { position: fixed; bottom: 0; left: 0; right: 0; height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; background: var(--surface); border-top: 1px solid var(--border); z-index: 150; }
+        .footer-credit { font-size: 0.72rem; color: var(--text-3); font-weight: 500; letter-spacing: 0.04em; }
+        .footer-nav { display: flex; align-items: center; gap: 16px; }
+        .nav-btn { background: var(--surface-2); border: 1px solid var(--border); color: var(--text-2); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .nav-btn:hover { background: var(--accent-soft); color: var(--accent); }
+        .slide-counter { font-size: 0.78rem; font-weight: 600; color: var(--text-3); min-width: 48px; text-align: center; }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <span class="topbar-left">ChronoAI · Week 12 · Dionne · Monday Target</span>
+        <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="zh">中文</button>
+        </div>
+    </header>
+
+    <!-- Slide 1: Cover -->
+    <section class="slide active" data-slide="1">
+        <div class="inner">
+            <p class="capsule s1"><span class="lang-en">MONDAY TARGET · 16–20 MAR 2026</span><span class="lang-zh">周一目标 · 3 月 16–20 日</span></p>
+            <h1 class="hero s2"><span class="lang-en">Week 12.</span><span class="lang-zh">第 12 周。</span></h1>
+            <h1 class="hero s2" style="margin-top:.05em;"><span class="lang-en">Prove the model.</span><span class="lang-zh">验证模型。</span></h1>
+            <p class="hero-sub s3">
+                <span class="lang-en">One KOL activates without payment. One dashboard goes live. One content format wins. That's Friday.</span>
+                <span class="lang-zh">一名 KOL 无需付费激活。一个看板上线。一种内容格式胜出。这就是本周目标。</span>
+            </p>
+            <p class="byline s3"><span class="lang-en">Dionne · Social Media &amp; Creator Partnerships</span><span class="lang-zh">Dionne · 社媒与创作者合作</span></p>
+            <div class="cho-badge s4">
+                <span class="cho-score">9/10</span>
+                <span class="cho-label">
+                    <strong>CHO Audit Score</strong>
+                    Goals hit the standard. Proceed to execution.
+                </span>
+            </div>
+            <div class="pill-row s4">
+                <span class="pill pill-cyan">KOL Pipeline</span>
+                <span class="pill pill-accent">PostHog Dashboard</span>
+                <span class="pill pill-amber">Content Test</span>
+                <span class="pill pill-green">Community Installs</span>
+                <span class="pill pill-purple">n8n Automation</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: KOL Pipeline -->
+    <section class="slide" data-slide="2">
+        <div class="inner">
+            <p class="label s1"><span class="lang-en">KOL PIPELINE · GATE 1</span><span class="lang-zh">KOL 管线 · GATE 1</span></p>
+            <h2 class="hero-2 s2">
+                <span class="lang-en">Prove affiliate-first works. Once is enough to scale.</span>
+                <span class="lang-zh">验证无预付模型。一次成功即可复制。</span>
+            </h2>
+            <p class="hero-sub s2">
+                <span class="lang-en">1 activated KOL = proof of concept. If it works once, it's repeatable for the remaining 500+ outreach.</span>
+                <span class="lang-zh">1 名 KOL 激活 = 概念验证。一次成功，后续 500+ 外联均可复制。</span>
+            </p>
+            <div class="pipeline-row s3">
+                <div class="pipeline-card"><p class="p-num num-cyan">20</p><p class="p-target">of 70 cumul.</p><p class="p-label">Warm Leads</p></div>
+                <div class="pipeline-card"><p class="p-num num-amber">200</p><p class="p-target">of 700 cumul.</p><p class="p-label">Outreach</p></div>
+                <div class="pipeline-card"><p class="p-num num-green">1</p><p class="p-target">minimum</p><p class="p-label">KOL Activated</p></div>
+                <div class="pipeline-card"><p class="p-num num-purple">$0</p><p class="p-target">upfront</p><p class="p-label">Payment Required</p></div>
+            </div>
+            <div class="callout s3">
+                <p class="cl-label">Strategic Lens</p>
+                <p><span class="lang-en">The pipeline metric is warm leads (20/70), not outreach volume. KOL-driven installs are the Gate 1 attribution story — not activity count.</span><span class="lang-zh">核心指标是意向线索（20/70），不是外联量。KOL 驱动安装是 Gate 1 归因叙事。</span></p>
+            </div>
+            <div class="section-break s4">
+                <p class="tasks-label"><span class="lang-en">THIS WEEK'S TASKS</span><span class="lang-zh">本周任务</span></p>
+                <ul class="tasks-list">
+                    <li><span class="box"></span><span><span class="lang-en">100 outreach → 20 warm leads logged in Upfluence</span><span class="lang-zh">100 外联 → 20 条意向线索记录于 Upfluence</span></span></li>
+                    <li><span class="box"></span><span><span class="lang-en">Activate min. 1 KOL on affiliate-first trial — gifted premium access, no payment</span><span class="lang-zh">至少激活 1 名 KOL，联盟优先模型，赠送高级权限，无需付款</span></span></li>
+                    <li><span class="box"></span><span><span class="lang-en">First KOL content piece live or scheduled by Friday</span><span class="lang-zh">首条 KOL 内容周五前上线或已排期</span></span></li>
+                </ul>
+            </div>
+            <div class="outcome-row s5">
+                <div class="outcome-card deliverable">
+                    <p class="oc-label">Deliverable</p>
+                    <p class="oc-text">Upfluence dashboard showing cumulative pipeline: total outreached, warm leads, affiliate-activated, payment-required</p>
+                </div>
+                <div class="outcome-card metric">
+                    <p class="oc-label">Core Metric</p>
+                    <p class="oc-text">KOL-driven installs directly attributable to Gate 1 — 200 installs by 27 Apr</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Data Infrastructure -->
+    <section class="slide" data-slide="3">
+        <div class="inner">
+            <p class="label s1"><span class="lang-en">DATA · INFRASTRUCTURE</span><span class="lang-zh">数据 · 基础设施</span></p>
+            <h2 class="hero-2 s2">
+                <span class="lang-en">One link. Real-time. CEO-ready.</span>
+                <span class="lang-zh">一个链接。实时更新。CEO 随时可看。</span>
+            </h2>
+            <p class="hero-sub s2">
+                <span class="lang-en">PostHog dashboard + n8n automation both live by Friday. Manual reporting ends this week.</span>
+                <span class="lang-zh">PostHog 看板 + n8n 自动化周五前全部上线。本周终结手动汇报。</span>
+            </p>
+            <div class="two-col s3">
+                <div class="col-card cc-cyan">
+                    <p class="cc-title">PostHog Dashboard</p>
+                    <ul>
+                        <li>Total installs · active users · paying customers</li>
+                        <li>Organic vs. internal install split</li>
+                        <li>SoulGarden + GenViral: views, engagement rate, follower growth per channel</li>
+                        <li>Updated daily. One link for team and CEO.</li>
+                    </ul>
+                </div>
+                <div class="col-card cc-purple">
+                    <p class="cc-title">n8n Automation <span class="cho-pick">★ CHO PICK</span></p>
+                    <ul>
+                        <li>Auto-pull TikTok/Instagram metrics daily</li>
+                        <li>App Store Connect install count → dashboard</li>
+                        <li>1 automation map doc: tasks, tools, time saved</li>
+                        <li>Time reclaimed → reallocated to KOL + community</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section-break s4">
+                <p class="tasks-label"><span class="lang-en">THIS WEEK'S TASKS</span><span class="lang-zh">本周任务</span></p>
+                <ul class="tasks-list">
+                    <li><span class="box"></span><span><span class="lang-en">Configure and launch PostHog with all 5 core metrics live</span><span class="lang-zh">配置并上线 PostHog，5 项核心指标全部展示</span></span></li>
+                    <li><span class="box"></span><span><span class="lang-en">Build and activate n8n automation for daily analytics pull</span><span class="lang-zh">构建并激活 n8n 自动化，实现每日数据拉取</span></span></li>
+                    <li><span class="box"></span><span><span class="lang-en">Deliver automation map doc — all repeatable tasks, tools, estimated time savings</span><span class="lang-zh">交付自动化地图文档 — 所有可重复任务、工具及节省时长</span></span></li>
+                </ul>
+            </div>
+            <div class="outcome-row s5">
+                <div class="outcome-card deliverable">
+                    <p class="oc-label">Deliverable</p>
+                    <p class="oc-text">1 live PostHog dashboard link + 1 live n8n automation + 1 automation map doc</p>
+                </div>
+                <div class="outcome-card metric">
+                    <p class="oc-label">Core Metric</p>
+                    <p class="oc-text">Gate 1 progress visible in real-time for team and CEO — zero manual effort</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Content Test -->
+    <section class="slide" data-slide="4">
+        <div class="inner">
+            <p class="label s1"><span class="lang-en">CONTENT · FORMAT TEST</span><span class="lang-zh">内容 · 格式测试</span></p>
+            <h2 class="hero-2 s2">
+                <span class="lang-en">Carousel or UGC. One format wins. We scale that.</span>
+                <span class="lang-zh">轮播还是 UGC。一种格式胜出。我们放大它。</span>
+            </h2>
+            <p class="hero-sub s2">
+                <span class="lang-en">Hypothesis: carousel posts drive higher saves → profile visits → installs vs. UGC video.</span>
+                <span class="lang-zh">假设：轮播帖带来更高收藏 → 主页访问 → 安装，优于 UGC 视频。</span>
+            </p>
+            <div class="two-col s3">
+                <div class="col-card cc-amber">
+                    <p class="cc-title">Channels</p>
+                    <ul>
+                        <li>SoulGarden Instagram</li>
+                        <li>SoulGarden TikTok</li>
+                        <li>5 GenViral manifestation accounts</li>
+                    </ul>
+                </div>
+                <div class="col-card cc-green">
+                    <p class="cc-title">What We Track</p>
+                    <ul>
+                        <li>Saves + profile visits per format</li>
+                        <li>Install attribution: carousel vs. UGC</li>
+                        <li>Engagement rate delta: Week 11 → Week 12</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section-break s4">
+                <p class="tasks-label"><span class="lang-en">THIS WEEK'S TASKS</span><span class="lang-zh">本周任务</span></p>
+                <ul class="tasks-list">
+                    <li><span class="box"></span><span><span class="lang-en">Post carousel variants across all channels — track saves and profile visits</span><span class="lang-zh">在所有渠道发布轮播帖，追踪收藏与主页访问</span></span></li>
+                    <li><span class="box"></span><span><span class="lang-en">Post UGC variants across all channels — track the same metrics</span><span class="lang-zh">在所有渠道发布 UGC 帖，追踪相同指标</span></span></li>
+                    <li><span class="box"></span><span><span class="lang-en">Compile Week 11 vs. Week 12 performance report with clear scale recommendation</span><span class="lang-zh">整合第 11 周 vs 第 12 周表现报告，附明确的格式放大建议</span></span></li>
+                </ul>
+            </div>
+            <div class="outcome-row s5">
+                <div class="outcome-card deliverable">
+                    <p class="oc-label">Deliverable</p>
+                    <p class="oc-text">1 content performance report (Wk 11 vs Wk 12) with format recommendation and rationale</p>
+                </div>
+                <div class="outcome-card metric">
+                    <p class="oc-label">Core Metric</p>
+                    <p class="oc-text">Content-to-install conversion — identifies the highest-leverage format to scale toward 200</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Community -->
+    <section class="slide" data-slide="5">
+        <div class="inner">
+            <p class="label s1"><span class="lang-en">COMMUNITY · INSTALLS</span><span class="lang-zh">社区 · 安装转化</span></p>
+            <h2 class="hero-2 s2">
+                <span class="lang-en">Not members. Installs.</span>
+                <span class="lang-zh">不是成员数。是安装量。</span>
+            </h2>
+            <p class="hero-sub s2">
+                <span class="lang-en">Target: 2–3 community-sourced installs this week. Every post carries an install CTA with outcome tracked.</span>
+                <span class="lang-zh">目标：本周 2–3 次社区驱动安装。每条帖子含安装 CTA，结果追踪记录。</span>
+            </p>
+            <div class="two-col s3">
+                <div class="col-card cc-green">
+                    <p class="cc-title">WhatsApp Community</p>
+                    <ul>
+                        <li>30 → 40 members (Week 2 of 30-day sprint)</li>
+                        <li>Target: 100 members by Gate 1 end</li>
+                        <li>Min. 2 quality survey responses collected</li>
+                    </ul>
+                </div>
+                <div class="col-card cc-cyan">
+                    <p class="cc-title">Reddit + Discord Outreach</p>
+                    <ul>
+                        <li>Sustained ~90 outreach per week</li>
+                        <li>Every post: install CTA + outcome tracked</li>
+                        <li>Engagement log updated in Lark Base</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="callout s3">
+                <p class="cl-label">Narrative Shift</p>
+                <p><span class="lang-en">Member count (30→40) is supporting evidence. The headline is install-CTA outcomes: clicks, installs, and user feedback that validates product-community fit for Gate 1.</span><span class="lang-zh">成员数（30→40）是支撑证据。核心叙事是安装 CTA 结果：点击、安装与用户反馈，验证 Gate 1 产品-社区契合度。</span></p>
+            </div>
+            <div class="section-break s4">
+                <p class="tasks-label"><span class="lang-en">THIS WEEK'S TASKS</span><span class="lang-zh">本周任务</span></p>
+                <ul class="tasks-list">
+                    <li><span class="box"></span><span><span class="lang-en">Every community post includes install CTA — log outcomes (clicks/installs) in Lark Base</span><span class="lang-zh">每条社区帖包含安装 CTA，在 Lark Base 记录结果（点击/安装）</span></span></li>
+                    <li><span class="box"></span><span><span class="lang-en">Direct personal follow-up to convert min. 2 quality survey responses</span><span class="lang-zh">一对一跟进，转化至少 2 条优质问卷回复</span></span></li>
+                    <li><span class="box"></span><span><span class="lang-en">Grow WhatsApp community from 30 → 40 members</span><span class="lang-zh">WhatsApp 社区成员从 30 增长至 40</span></span></li>
+                </ul>
+            </div>
+            <div class="outcome-row s5">
+                <div class="outcome-card deliverable">
+                    <p class="oc-label">Deliverable</p>
+                    <p class="oc-text">WA screenshot (40+) + 2 quality survey responses + Lark Base log with install-CTA outcomes</p>
+                </div>
+                <div class="outcome-card metric">
+                    <p class="oc-label">Core Metric</p>
+                    <p class="oc-text">Community-sourced installs + quality product feedback — validates product-community fit for Gate 1</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <span class="footer-credit"><span class="lang-en">Dionne · Marketing · SoulGarden + GodGPT · Week 12 · 16–20 March 2026</span><span class="lang-zh">Dionne · 营销 · SoulGarden + GodGPT · 第 12 周 · 2026 年 3 月 16–20 日</span></span>
+        <div class="footer-nav">
+            <button type="button" class="nav-btn" id="prev" aria-label="Previous slide">←</button>
+            <span class="slide-counter" id="counter">01 / 05</span>
+            <button type="button" class="nav-btn" id="next" aria-label="Next slide">→</button>
+        </div>
+    </footer>
+
+    <script>
+        function initSlides() {
+            var slides = document.querySelectorAll('.slide');
+            var total = slides.length;
+            if (!total) return;
+            var current = 0;
+            var counterEl = document.getElementById('counter');
+            var prevBtn = document.getElementById('prev');
+            var nextBtn = document.getElementById('next');
+            function pad2(n) { return (n < 10 ? '0' : '') + n; }
+            function goTo(i) {
+                current = ((i % total) + total) % total;
+                slides.forEach(function(s, j) { s.classList.toggle('active', j === current); });
+                if (counterEl) counterEl.textContent = pad2(current + 1) + ' / ' + pad2(total);
+            }
+            if (prevBtn) prevBtn.addEventListener('click', function() { goTo(current - 1); });
+            if (nextBtn) nextBtn.addEventListener('click', function() { goTo(current + 1); });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') { goTo(current - 1); e.preventDefault(); }
+                if (e.key === 'ArrowRight') { goTo(current + 1); e.preventDefault(); }
+            });
+            goTo(0);
+        }
+        if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initSlides); }
+        else { initSlides(); }
+
+        var langBtns = document.querySelectorAll('.lang-toggle .lang-btn');
+        langBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                langBtns.forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                if (btn.getAttribute('data-lang') === 'zh') document.body.classList.add('lang-zh');
+                else document.body.classList.remove('lang-zh');
+            });
+        });
+    </script>
+</body>
+</html>
