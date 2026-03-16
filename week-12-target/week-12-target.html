@@ -61,10 +61,10 @@
         .pill-accent { border-color: var(--accent); background: rgba(129,140,248,0.1); color: #a5b4fc; }
 
         /* CHO SCORE */
-        .cho-badge { display: inline-flex; align-items: center; gap: 1rem; margin-top: 1.75rem; padding: 0.75rem 1.25rem; background: rgba(52,211,153,0.08); border: 1px solid rgba(52,211,153,0.35); border-radius: 10px; }
-        .cho-score { font-size: 2rem; font-weight: 900; color: var(--green); letter-spacing: -0.03em; line-height: 1; }
-        .cho-label { font-size: 0.78rem; color: var(--text-2); line-height: 1.4; }
-        .cho-label strong { display: block; color: var(--text); font-size: 0.82rem; margin-bottom: 0.1rem; }
+        .cho-badge { display: flex; align-items: center; gap: 0.75rem; margin-top: 1.5rem; padding: 0.55rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .cho-score { font-size: 1rem; font-weight: 800; color: var(--green); letter-spacing: -0.01em; line-height: 1; }
+        .cho-label { font-size: 0.72rem; color: var(--text-3); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+        .cho-divider { width: 1px; height: 14px; background: var(--border); }
 
         /* DIVIDER */
         .divider { border-top: 1px solid var(--border); margin-top: 1.75rem; padding-top: 1.5rem; }
@@ -485,9 +485,10 @@
                 <span class="lang-zh">需要完成的事。周五前。</span>
             </h2>
 
-            <div class="cho-badge s3" style="gap: 0.5rem;">
+            <div class="cho-badge s3">
                 <span class="cho-score">9/10</span>
-                <span class="cho-label" style="font-size: 0.82rem; font-weight: 700; color: var(--text-2);">CHO Audit Score</span>
+                <span class="cho-divider"></span>
+                <span class="cho-label">CHO Audit Score</span>
             </div>
 
             <div class="two-col s3" style="margin-top: 1.5rem;">
