@@ -43,7 +43,9 @@
             padding: 0 32px; background: var(--surface);
             border-bottom: 1px solid var(--border); z-index: 150;
         }
-        .topbar-left { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
+        .topbar-left { display: flex; align-items: center; gap: 0.75rem; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
+        .back-btn { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); text-decoration: none; padding: 0.3rem 0.75rem; border: 1px solid var(--border); border-radius: 6px; background: transparent; transition: all 0.2s; white-space: nowrap; }
+        .back-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
         .lang-toggle { display: flex; gap: 2px; background: var(--surface-2); padding: 3px 4px; border-radius: 8px; border: 1px solid var(--border); }
         .lang-toggle button { padding: 4px 12px; font-size: 0.78rem; font-weight: 600; border: none; border-radius: 6px; cursor: pointer; background: transparent; color: var(--text-3); transition: all 0.2s ease; }
         .lang-toggle button:hover { color: var(--text-2); }
@@ -183,6 +185,7 @@
     <header class="topbar">
         <a class="back-btn" href="https://lildeebs.github.io/chronoai-internal/overview.html">← Overview</a>
         <span class="topbar-left">
+            <a class="back-btn" href="../overview.html">← Overview</a>
             <span class="lang-en">Week 11 · Monday Targets</span>
             <span class="lang-zh">第 11 周 · 周一目标</span>
         </span>
