@@ -19,6 +19,14 @@
         * { box-sizing: border-box; font-family: var(--font); margin: 0; padding: 0; }
         body { background: var(--bg); color: var(--text); min-height: 100vh; font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
+        /* BILINGUAL */
+        body .lang-zh { display: none; }
+        body.lang-zh .lang-en { display: none; }
+        body.lang-zh .lang-zh { display: inline; }
+        .lang-toggle { display: flex; gap: 2px; background: var(--surface); padding: 3px 4px; border-radius: 8px; border: 1px solid var(--border); }
+        .lang-toggle button { padding: 4px 12px; font-size: 0.78rem; font-weight: 600; border: none; border-radius: 6px; cursor: pointer; background: transparent; color: var(--text-3); transition: all 0.2s; }
+        .lang-toggle button.active { background: var(--accent); color: #fff; }
+
         /* TOPBAR */
         .topbar { position: fixed; top: 0; left: 0; right: 0; height: 52px; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; background: var(--surface); border-bottom: 1px solid var(--border); z-index: 150; }
         .topbar-left { display: flex; align-items: center; gap: 0.75rem; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); font-weight: 600; }
@@ -187,18 +195,22 @@
     <header class="topbar">
         <span class="topbar-left">
             <a class="back-btn" href="../overview.html">← Overview</a>
-            <span>Week 12 · Friday Report</span>
+            <span><span class="lang-en">Week 12 · Friday Report</span><span class="lang-zh">第 12 周 · 周五报告</span></span>
         </span>
+        <div class="lang-toggle">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="zh">中文</button>
+        </div>
     </header>
 
     <!-- Slide 1: Cover -->
     <section class="slide active" data-slide="1">
         <div class="inner">
-            <p class="capsule s1">WEEK 12 · FRIDAY REPORT · 21 MAR 2026</p>
+            <p class="capsule s1"><span class="lang-en">WEEK 12 · FRIDAY REPORT · 21 MAR 2026</span><span class="lang-zh">第 12 周 · 周五报告 · 2026年3月21日</span></p>
             <h1 class="hero s2">91 of 200.</h1>
-            <h1 class="hero s2" style="margin-top:.04em;color:var(--green);">45.5% to Gate 1.</h1>
-            <p class="hero-note s2">+21 installs this week. On track.</p>
-            <p class="hero-sub s3">Data is moving. Content is testing. Community is converting. KOL pipeline has its first activation.</p>
+            <h1 class="hero s2" style="margin-top:.04em;color:var(--green);"><span class="lang-en">45.5% to Gate 1.</span><span class="lang-zh">Gate 1 进度达 45.5%。</span></h1>
+            <p class="hero-note s2"><span class="lang-en">+21 installs this week. On track.</span><span class="lang-zh">本周新增 21 次安装，进展顺利。</span></p>
+            <p class="hero-sub s3"><span class="lang-en">Data is moving. Content is testing. Community is converting. KOL pipeline has its first activation.</span><span class="lang-zh">数据在流动。内容在测试。社群在转化。KOL 管道首次激活。</span></p>
             <div class="gate-bar s3">
                 <div class="gate-bar-meta">
                     <span class="gb-label">Gate 1 Progress · 200 Installs by 27 Apr</span>
@@ -207,12 +219,12 @@
                 <div class="gate-bar-track"><div class="gate-bar-fill" style="width:45.5%;"></div></div>
                 <div class="gate-bar-sub"><span>Wk 11: 70</span><span>Wk 12: 91</span><span>Target: 200</span></div>
             </div>
-            <p class="byline s4">Dionne · Social Media &amp; Creator Partnerships</p>
+            <p class="byline s4"><span class="lang-en">Dionne · Social Media &amp; Creator Partnerships</span><span class="lang-zh">Dionne · 社媒与创作者合作</span></p>
             <div class="pill-row s4">
-                <span class="pill pill-green">🌱 SoulGarden Community Building</span>
-                <span class="pill pill-cyan">🎬 Content Testing</span>
-                <span class="pill pill-purple">🤝 KOL Outreach</span>
-                <span class="pill pill-amber">⚙️ Data Automation & Infrastructure</span>
+                <span class="pill pill-green">🌱 <span class="lang-en">SoulGarden Community Building</span><span class="lang-zh">SoulGarden 社群建设</span></span>
+                <span class="pill pill-cyan">🎬 <span class="lang-en">Content Testing</span><span class="lang-zh">内容测试</span></span>
+                <span class="pill pill-purple">🤝 <span class="lang-en">KOL Outreach</span><span class="lang-zh">KOL 拓展</span></span>
+                <span class="pill pill-amber">⚙️ <span class="lang-en">Data Automation & Infrastructure</span><span class="lang-zh">数据自动化与基础设施</span></span>
             </div>
         </div>
     </section>
@@ -220,8 +232,8 @@
     <!-- Slide 2: SoulGarden Owned Channels -->
     <section class="slide" data-slide="2">
         <div class="inner">
-            <p class="label s1">SOULGARDEN · OWNED CHANNELS</p>
-            <h2 class="hero-2 s2">TikTok for reach.<br>Instagram for conversion.</h2>
+            <p class="label s1"><span class="lang-en">SOULGARDEN · OWNED CHANNELS</span><span class="lang-zh">SOULGARDEN · 自有渠道</span></p>
+            <h2 class="hero-2 s2"><span class="lang-en">TikTok for reach.<br>Instagram for conversion.</span><span class="lang-zh">TikTok 扩大触达。<br>Instagram 驱动转化。</span></h2>
 
             <div class="stat-row stat-row-4 s3">
                 <div class="stat-card">
@@ -283,8 +295,8 @@
     <!-- Slide 3: n8n Automation + Genviral Numbers -->
     <section class="slide" data-slide="3">
         <div class="inner">
-            <p class="label s1">AUTOMATION · AI TIKTOK PIPELINE</p>
-            <h2 class="hero-2 s2">Automation map done.<br><em style="font-style:italic;font-weight:500;color:var(--text-2);font-size:0.88em;">n8n partially live.</em></h2>
+            <p class="label s1"><span class="lang-en">AUTOMATION · AI TIKTOK PIPELINE</span><span class="lang-zh">自动化 · AI TikTok 管道</span></p>
+            <h2 class="hero-2 s2"><span class="lang-en">Automation map done.<br><em style="font-style:italic;font-weight:500;color:var(--text-2);font-size:0.88em;">n8n partially live.</em></span><span class="lang-zh">自动化地图已完成。<br><em style="font-style:italic;font-weight:500;color:var(--text-2);font-size:0.88em;">n8n 部分上线。</em></span></h2>
             <p class="ctx s3">Instead of pulling analytics manually each week, n8n does it automatically — scraping all AI-powered TikTok accounts, identifying top posts, and sending a summary report to Discord. Less admin, more time for work that drives growth.</p>
 
             <div class="stat-row stat-row-4 s3" style="grid-template-columns:repeat(2,1fr);">
@@ -314,8 +326,8 @@
     <!-- Slide 4: Genviral Content Findings -->
     <section class="slide" data-slide="4">
         <div class="inner">
-            <p class="label s1">AI TIKTOK · CONTENT FINDINGS</p>
-            <h2 class="hero-2 s2">Manifestation leads.<br><em style="font-style:italic;font-weight:500;color:var(--text-2);font-size:0.85em;">Fitness holds. Both above average.</em></h2>
+            <p class="label s1"><span class="lang-en">AI TIKTOK · CONTENT FINDINGS</span><span class="lang-zh">AI TikTok · 内容发现</span></p>
+            <h2 class="hero-2 s2"><span class="lang-en">Manifestation leads.<br><em style="font-style:italic;font-weight:500;color:var(--text-2);font-size:0.85em;">Fitness holds. Both above average.</em></span><span class="lang-zh">心灵显化类内容领先。<br><em style="font-style:italic;font-weight:500;color:var(--text-2);font-size:0.85em;">健身类内容稳定，两者均高于平均水平。</em></span></h2>
 
             <!-- Posts published this week -->
             <div class="s3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-top:1rem;margin-bottom:0.75rem;">
@@ -424,8 +436,8 @@
     <!-- Slide 5: Community & Feedback -->
     <section class="slide" data-slide="5">
         <div class="inner">
-            <p class="label s1">COMMUNITY · INSTALLS &amp; FEEDBACK</p>
-            <h2 class="hero-2 s2">5 responses. 15 installed.<span class="badge badge-win">CONVERTING</span></h2>
+            <p class="label s1"><span class="lang-en">COMMUNITY · INSTALLS &amp; FEEDBACK</span><span class="lang-zh">社群 · 安装与反馈</span></p>
+            <h2 class="hero-2 s2"><span class="lang-en">5 responses. 15 installed.</span><span class="lang-zh">5条反馈。15次安装。</span><span class="badge badge-win"><span class="lang-en">CONVERTING</span><span class="lang-zh">转化中</span></span></h2>
             <p class="ctx s3">Reached 50 people across Reddit, Discord, and WhatsApp with a direct app install CTA. 5 gave quality product feedback. Reddit emerged as the highest-response channel this week.</p>
 
             <div class="stat-row stat-row-4 s3">
@@ -538,8 +550,8 @@
     <!-- Slide 6: KOL Pipeline -->
     <section class="slide" data-slide="6">
         <div class="inner">
-            <p class="label s1">KOL · AFFILIATE PIPELINE</p>
-            <h2 class="hero-2 s2">1 KOL activated.<span class="badge badge-win">FIRST WIN</span><br><em style="font-style:italic;font-weight:500;color:var(--text-2);font-size:0.85em;">Affiliate-first model is working.</em></h2>
+            <p class="label s1"><span class="lang-en">KOL · AFFILIATE PIPELINE</span><span class="lang-zh">KOL · 联盟营销管道</span></p>
+            <h2 class="hero-2 s2"><span class="lang-en">1 KOL activated.</span><span class="lang-zh">1位 KOL 已激活。</span><span class="badge badge-win"><span class="lang-en">FIRST WIN</span><span class="lang-zh">首胜</span></span><br><em style="font-style:italic;font-weight:500;color:var(--text-2);font-size:0.85em;"><span class="lang-en">Affiliate-first model is working.</span><span class="lang-zh">联盟优先模式正在生效。</span></em></h2>
             <p class="ctx s3">1 KOL activated this week on a non-paid affiliate trial — proof the model works without upfront cost. Cumulative pipeline now at 18 warm leads toward the 70-by-Gate-1 target. Main friction: payment requests from warm leads, addressed by prioritising trial-friendly creators next week.</p>
 
             <!-- KOL Pipeline progress -->
@@ -605,8 +617,8 @@
     <!-- Slide 7: Week in Review (Closing) -->
     <section class="slide" data-slide="7">
         <div class="inner">
-            <p class="label s1">WEEK 12 · IN REVIEW</p>
-            <h2 class="hero-2 s2">Week 12. Here's where we stand.</h2>
+            <p class="label s1"><span class="lang-en">WEEK 12 · IN REVIEW</span><span class="lang-zh">第 12 周 · 回顾</span></p>
+            <h2 class="hero-2 s2"><span class="lang-en">Week 12. Here's where we stand.</span><span class="lang-zh">第 12 周。我们的现状。</span></h2>
 
             <!-- Gate 1 progress -->
             <div class="gate-bar s3">
@@ -675,6 +687,16 @@
     </footer>
 
     <script>
+        // Language toggle
+        document.querySelectorAll('.lang-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var lang = this.dataset.lang;
+                document.body.classList.toggle('lang-zh', lang === 'zh');
+                document.querySelectorAll('.lang-btn').forEach(function(b) { b.classList.remove('active'); });
+                this.classList.add('active');
+            });
+        });
+
         function initSlides() {
             var slides = document.querySelectorAll('.slide');
             var total = slides.length;
