@@ -289,12 +289,7 @@
             <h2 class="hero-2 s2">Automation map done.<br><em style="font-style:italic;font-weight:500;color:var(--text-2);font-size:0.88em;">n8n partially live.</em></h2>
             <p class="ctx s3">10 Genviral posts published this week (5 manifestation, 5 fitness). Automation map completed. n8n workflow foundation is built — API free-tier execution limits are the current blocker preventing full activation.</p>
 
-            <div class="stat-row stat-row-4 s3">
-                <div class="stat-card">
-                    <p class="stat-num na">10</p>
-                    <p class="stat-label">Genviral Posts</p>
-                    <p class="stat-of">5 manifestation · 5 fitness</p>
-                </div>
+            <div class="stat-row stat-row-4 s3" style="grid-template-columns:repeat(2,1fr);">
                 <div class="stat-card">
                     <p class="stat-num ng">✓</p>
                     <p class="stat-label">Automation Map</p>
@@ -304,11 +299,6 @@
                     <p class="stat-num na">~</p>
                     <p class="stat-label">n8n Flow</p>
                     <p class="stat-of">partially implemented</p>
-                </div>
-                <div class="stat-card">
-                    <p class="stat-num ng">0</p>
-                    <p class="stat-label">Manual Reports</p>
-                    <p class="stat-of">App Store bridge active</p>
                 </div>
             </div>
 
@@ -329,8 +319,17 @@
             <p class="label s1">GENVIRAL · CONTENT FINDINGS</p>
             <h2 class="hero-2 s2">Manifestation leads.<br><em style="font-style:italic;font-weight:500;color:var(--text-2);font-size:0.85em;">Fitness holds. Both above average.</em></h2>
 
+            <!-- Posts published this week -->
+            <div class="s3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-top:1rem;margin-bottom:0.75rem;">
+                <div class="stat-card" style="grid-column:span 1;">
+                    <p class="stat-num na">10</p>
+                    <p class="stat-label">Genviral Posts</p>
+                    <p class="stat-of">5 manifestation · 5 fitness</p>
+                </div>
+            </div>
+
             <!-- Side-by-side niche comparison -->
-            <div class="s3" style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:1rem;">
+            <div class="s3" style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:0;">
 
                 <!-- Manifestation — winner -->
                 <div style="background:rgba(56,189,103,0.07);border:1px solid rgba(56,189,103,0.25);border-top:3px solid var(--green);border-radius:10px;padding:1rem;">
